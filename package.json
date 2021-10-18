@@ -1,6 +1,6 @@
 {
   "homepage": "http://jonsax6.github.io/nft-gallery-client/",
-  "name": "nft-gallery",
+  "name": "nft-gallery-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
