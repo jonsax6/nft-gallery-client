@@ -1,20 +1,9 @@
 import React from 'react'
-import { Typography, Container, Grid, Button } from '@mui/material'
+import { Typography, Container, Grid, Button, Card, CardMedia, CardContent, CardActions } from '@mui/material'
 
 // import { withRouter } from 'react-router-dom'
 
-// const useStyles = makeStyles((theme) => ({
-//   container: {
-//     backgroundColor: theme.palette.background.paper,
-//     padding: theme.spacing(8, 0, 6)
-//   }
-// }))
-
-// const StatWrapper = styled('div')(
-//   ({ theme }) => `
-//   background-color: ${theme.palette.background.paper}
-//   padding: ${theme.spacing(8, 0, 6)}`
-// )
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 const Gallery = () => {
   // const classes = StatWrapper()
@@ -38,7 +27,7 @@ const Gallery = () => {
           Exclusive works by iconic artists
         </Typography>
         <div>
-          <Grid container spacing={2} justifyContent='center'>
+          <Grid container spacing={2} justifyContent='center' sx={{ marginTop: '20px' }}>
             <Grid item>
               <Button variant='contained' color='warning'>See All Artists</Button>
             </Grid>
@@ -47,6 +36,52 @@ const Gallery = () => {
             </Grid>
           </Grid>
         </div>
+      </Container>
+      <Container maxWidth="md"
+        sx={{
+          padding: '20px 0'
+        }}>
+        <Grid container spacing={4}>
+          {cards.map((card) => (
+            <Grid
+              item
+              key={card}
+              xs={12}
+              sm={6}
+              md={4}
+            >
+              <Card sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column'
+              }}>
+                <CardMedia
+                  sx={{
+                    paddingTop: '56.25%' // 16:9 aspect ratio
+                  }}
+                  image="https://source.unsplash.com/random"
+                  title="Image Title"
+                />
+                <CardContent sx={{
+                  flexGrow: 1
+                }}>
+                  <Typography gutterBottom variant="h6">
+                    Heading
+                  </Typography>
+                  <Typography>
+                    This is a media card use this section to describe the content
+                  </Typography>
+                  <CardActions>
+                    <Button size="small" color="primary">View</Button>
+                    <Button size="small" color="primary">Request Price</Button>
+
+                  </CardActions>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+
+        </Grid>
       </Container>
     </>
   )
