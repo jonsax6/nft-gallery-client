@@ -35,8 +35,8 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar style={{ backgroundColor: 'orange' }} position='static'>
+    <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
+      <AppBar style={{ backgroundColor: 'grey' }} position='static'>
         <Toolbar>
           <IconButton
             size='large'
@@ -52,7 +52,8 @@ const Header = ({ user }) => (
               style={{
                 paddingLeft: '20px',
                 color: '#FFF',
-                textDecoration: 'none'
+                textDecoration: 'none',
+                fontWeight: '100'
               }}>
               <ChevronLeftIcon />
               <ColorLensIcon />

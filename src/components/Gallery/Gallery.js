@@ -1,29 +1,35 @@
 import React from 'react'
 import { Typography, Container, Grid, Button, Card, CardMedia, CardContent, CardActions } from '@mui/material'
+import '../../App.css'
 
 // import { withRouter } from 'react-router-dom'
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 const Gallery = () => {
-  // const classes = StatWrapper()
   return (
     <>
       <Container
         maxWidth='sm'
         sx={{
-          backgroundColor: 'background.paper',
           padding: '8, 0, 6',
           marginTop: '50px'
         }}>
         <Typography
+          style={{ fontWeight: '100' }}
           variant='h4'
           align='center'
-          color='textPrimary'
+          color='white'
           gutterBottom>
           All Artists
         </Typography>
-        <Typography variant='h6' align='center' color='textSecondary' paragraph>
+        <Typography
+          style={{ fontWeight: '100' }}
+          variant='h6'
+          align='center'
+          color='white'
+          paragraph
+        >
           Exclusive works by iconic artists
         </Typography>
         <div>
