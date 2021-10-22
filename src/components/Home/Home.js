@@ -12,7 +12,14 @@ const Home = () => {
       backgroundPosition: 'center center',
       padding: '0'
     }}>
-      <Typography>Home Page</Typography>
+      <Typography
+        style={{ fontWeight: '100' }}
+        variant='h4'
+        align='center'
+        color='white'
+        gutterBottom>
+        All Artists
+      </Typography>
     </Container>
   )
 }

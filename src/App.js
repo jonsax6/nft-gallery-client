@@ -7,7 +7,7 @@ import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRou
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
 import SignUp from './components/auth/SignUp'
-import SignIn from './components/auth/SignIn'
+import SignIn_ from './components/auth/SignIn_'
 import SignOut from './components/auth/SignOut'
 import Home from './components/Home/Home'
 import ChangePassword from './components/auth/ChangePassword'
@@ -47,7 +47,7 @@ class App extends Component {
     const { msgAlerts, user } = this.state
 
     return (
-      <div style={{ backgroundColor: '#424242' }}>
+      <div>
         <CssBaseline />
         <Header user={user} />
         {msgAlerts.map((msgAlert) => (
@@ -60,7 +60,7 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-        <main className='container'>
+        <main className='container' style={{ width: '100vw', padding: '0' }}>
           <Route
             exact path='/'
             render={() => (
@@ -82,8 +82,7 @@ class App extends Component {
           <Route
             path='/sign-in'
             render={() => (
-              <SignIn
-                style={{ backgroundColor: 'black' }}
+              <SignIn_
                 msgAlert={this.msgAlert}
                 setUser={this.setUser}
               />

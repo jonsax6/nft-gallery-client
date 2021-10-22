@@ -1,34 +1,71 @@
+// {
+//     "extends": [
+//         "plugin:react/recommended",
+//         "standard"
+//     ],
+//     "root": true,
+//     "parser": "babel-eslint",
+//     "parserOptions": {
+//         "sourceType": "module"
+//     },
+//     "env": {
+//         "node": true,
+//         "es6": true
+//     },
+//     "rules": {
+//         "prefer-const": "error",
+//         "no-var": "error",
+//         "semi": [
+//             "error",
+//             "never"
+//         ],
+//         "quotes": [
+//             "error",
+//             "single"
+//         ],
+//         "indent": [
+//             "error",
+//             2
+//         ],
+//         "react/prop-types": [
+//             0
+//         ]
+//     }
+// }
+
 {
-    "extends": [
-        "plugin:react/recommended",
-        "standard"
+  "extends": [
+    "plugin:react/recommended",
+    "standard"
+  ],
+  "root": true,
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "no-unused-vars": 0,
+    "eol-last": 0,
+    "prefer-const": "error",
+    "no-var": "error",
+    "semi": [
+      "error",
+      "never"
     ],
-    "root": true,
-    "parser": "babel-eslint",
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "env": {
-        "node": true,
-        "es6": true
-    },
-    "rules": {
-        "prefer-const": "error",
-        "no-var": "error",
-        "semi": [
-            "error",
-            "never"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "indent": [
-            "error",
-            2
-        ],
-        "react/prop-types": [
-            0
-        ]
-    }
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "react/prop-types": [
+      0
+    ]
+  }
 }

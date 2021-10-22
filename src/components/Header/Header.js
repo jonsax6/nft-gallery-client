@@ -8,28 +8,29 @@ import Typography from '@mui/material/Typography'
 // import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
-import ColorLensIcon from '@mui/icons-material/ColorLens'
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+// import ColorLensIcon from '@mui/icons-material/ColorLens'
+// import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+// import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import logo from '../../images/zyzygy-logo.png'
 
 const authenticatedOptions = (
   <Fragment>
-    <NavLink style={{ color: 'white' }} to='/change-password' className='nav-link'>Change Password</NavLink>
-    <NavLink style={{ color: 'white' }} to='/sign-out' className='nav-link'>Sign Out</NavLink>
+    <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/change-password' className='nav-link'>Change Password</NavLink>
+    <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/sign-out' className='nav-link'>Sign Out</NavLink>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <NavLink style={{ color: 'white' }} to='/sign-up' className='nav-link'>Sign Up</NavLink>
-    <NavLink style={{ color: 'white' }} to='/sign-in' className='nav-link'>Sign In</NavLink>
+    <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/sign-up' className='nav-link'>Sign Up</NavLink>
+    <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/sign-in' className='nav-link'>Sign In</NavLink>
   </Fragment>
 )
 
 const alwaysOptions = (
   <Fragment>
-    <NavLink style={{ color: 'white' }} exact to='/' className='nav-link'>Home</NavLink>
-    <NavLink style={{ color: 'white' }} exact to='/gallery' className='nav-link'>Gallery</NavLink>
+    <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} exact to='/' className='nav-link'>Home</NavLink>
+    <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} exact to='/gallery' className='nav-link'>Gallery</NavLink>
   </Fragment>
 )
 
@@ -55,10 +56,16 @@ const Header = ({ user }) => (
                 textDecoration: 'none',
                 fontWeight: '100'
               }}>
-              <ChevronLeftIcon />
+              <img
+                src={logo}
+                style={{
+                  width: '300px',
+                  marginTop: 10
+                }}
+              />
+              {/* <ChevronLeftIcon />
               <ColorLensIcon />
-              <ChevronRightIcon style={{ marginRight: '10px' }} />
-              Zyzygy Studios
+              <ChevronRightIcon style={{ marginRight: '10px' }} /> */}
             </Link>
           </Typography>
           {user && (

@@ -5,7 +5,9 @@ import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import Button from '@mui/material/Button'
+// import TextField from '@mui/material/TextField'
+// import Box from '@mui/material/Box'
 
 class SignIn extends Component {
   constructor (props) {
@@ -51,8 +53,27 @@ render () {
   const { email, password } = this.state
 
   return (
+  // <Box
+  //   component="form"
+  //   sx={{
+  //     '& > :not(style)': { m: 1, width: '25ch' },
+  //     marginTop: '50px',
+  //     marginBottom: '50px',
+  //     display: 'block',
+  //     justifyContent: 'center'
+  //   }}
+  //   noValidate
+  //   autoComplete="off"
+  // >
+  //   <form>
+  //     <TextField id="filled-basic" label="Email" variant="filled" required />
+  //     <TextField id="filled-basic" label="Password" variant="filled" required />
+  //     <Button variant='contained' type='submit' color="warning" style={{ marginTop: 10 }}>Submit</Button>
+  //   </form>
+  // </Box>
+
     <div className='row'>
-      <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+      <div className='col-sm-10 col-md-8 mx-auto mt-5 text-light'>
         <h3>Sign In</h3>
         <Form onSubmit={this.onSignIn}>
           <Form.Group controlId='email'>

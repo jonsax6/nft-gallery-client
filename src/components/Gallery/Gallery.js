@@ -28,65 +28,72 @@ const Gallery = () => {
           variant='h6'
           align='center'
           color='white'
-          paragraph
-        >
+          paragraph>
           Exclusive works by iconic artists
         </Typography>
         <div>
-          <Grid container spacing={2} justifyContent='center' sx={{ marginTop: '20px' }}>
-            <Grid item>
+          <Grid
+            container
+            spacing={2}
+            justifyContent='center'
+            sx={{ marginTop: '20px' }}>
+            {/* <Grid item>
               <Button variant='contained' color='warning'>See All Artists</Button>
             </Grid>
             <Grid item>
               <Button variant='outlined' color='warning'>Secondary Action</Button>
-            </Grid>
+            </Grid> */}
           </Grid>
         </div>
       </Container>
-      <Container maxWidth="md"
+      <Container
+        maxWidth='flex'
         sx={{
           padding: '20px 0'
         }}>
         <Grid container spacing={4}>
           {cards.map((card) => (
-            <Grid
-              item
-              key={card}
-              xs={12}
-              sm={6}
-              md={4}
-            >
-              <Card sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
+            <Grid item key={card} xs={12} sm={6} md={4}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  borderRadius: '0',
+                  margin: '0',
+                  color: 'white',
+                  backgroundColor: 'gray'
+                }}>
                 <CardMedia
                   sx={{
                     paddingTop: '56.25%' // 16:9 aspect ratio
                   }}
-                  image="https://source.unsplash.com/random"
-                  title="Image Title"
+                  image='https://source.unsplash.com/random'
+                  title='Image Title'
                 />
-                <CardContent sx={{
-                  flexGrow: 1
-                }}>
-                  <Typography gutterBottom variant="h6">
+                <CardContent
+                  sx={{
+                    flexGrow: 1
+                  }}>
+                  <Typography gutterBottom variant='h6'>
                     Heading
                   </Typography>
                   <Typography>
-                    This is a media card use this section to describe the content
+                    This is a media card use this section to describe the
+                    content
                   </Typography>
                   <CardActions>
-                    <Button size="small" color="primary">View</Button>
-                    <Button size="small" color="primary">Request Price</Button>
-
+                    <Button size='small' color='warning'>
+                      View
+                    </Button>
+                    <Button size='small' color='warning'>
+                      Request Price
+                    </Button>
                   </CardActions>
                 </CardContent>
               </Card>
             </Grid>
           ))}
-
         </Grid>
       </Container>
     </>
