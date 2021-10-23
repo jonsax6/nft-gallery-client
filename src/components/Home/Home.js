@@ -13,12 +13,12 @@ const Home = () => {
       padding: '0'
     }}>
       <Typography
-        style={{ fontWeight: '100' }}
+        style={{ fontWeight: '100', padding: '50px' }}
         variant='h4'
         align='center'
         color='white'
         gutterBottom>
-        All Artists
+        Featured Artists
       </Typography>
     </Container>
   )

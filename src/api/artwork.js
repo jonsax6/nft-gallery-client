@@ -5,14 +5,14 @@ import axios from 'axios'
 export const indexArtwork = () => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/artwork',
+    url: apiUrl + '/artwork'
   })
 }
 
 export const showArtwork = (id) => {
   return axios({
     method: 'GET',
-    url: apiUrl + `/artwork/${id}`,
+    url: apiUrl + `/artwork/${id}`
   })
 }
 
@@ -21,7 +21,7 @@ export const createArtwork = (user, data) => {
     method: 'POST',
     url: apiUrl + '/artwork',
     headers: {
-      Authorization: `Bearer ${user.token}`,
+      Authorization: `Bearer ${user.token}`
     },
     data: {
       artwork: {
@@ -36,9 +36,9 @@ export const createArtwork = (user, data) => {
         exhibitionHistory: data.exhibitionHistory,
         publishingHistory: data.publishingHistory,
         notes: data.notes,
-        owner: data.owner
-      },
-    },
+        owner: user
+      }
+    }
   })
 }
 
@@ -47,7 +47,7 @@ export const updateArtwork = (id, data, user) => {
     method: 'PATCH',
     url: apiUrl + `/artwork/${id}`,
     headers: {
-      Authorization: `Bearer ${user.token}`,
+      Authorization: `Bearer ${user.token}`
     },
     data: {
       artwork: {
@@ -63,8 +63,8 @@ export const updateArtwork = (id, data, user) => {
         publishingHistory: data.publishingHistory,
         notes: data.notes,
         owner: data.owner
-      },
-    },
+      }
+    }
   })
 }
 
@@ -73,7 +73,7 @@ export const removeArtwork = (id, user) => {
     method: 'DELETE',
     url: apiUrl + `/artwork/${id}`,
     headers: {
-      Authorization: `Bearer ${user.token}`,
-    },
+      Authorization: `Bearer ${user.token}`
+    }
   })
 }

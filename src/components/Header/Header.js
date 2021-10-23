@@ -15,6 +15,7 @@ import logo from '../../images/zyzygy-logo.png'
 
 const authenticatedOptions = (
   <Fragment>
+    <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/submit-art' className='nav-link'>Submit Art</NavLink>
     <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/change-password' className='nav-link'>Change Password</NavLink>
     <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/sign-out' className='nav-link'>Sign Out</NavLink>
   </Fragment>
