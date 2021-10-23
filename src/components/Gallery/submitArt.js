@@ -35,10 +35,8 @@ const SubmitArt = ({ msgAlert, user }) => {
     notes: notes
   }
 
-  const handleChangeArtist = (event) => {
+  const handleChangeArtist = (event) =>
     setArtist(event.target.value)
-    console.log(artist)
-  }
 
   const handleChangeTitle = (event) =>
     setTitle(event.target.value)
@@ -70,7 +68,7 @@ const SubmitArt = ({ msgAlert, user }) => {
   const handleChangeNotes = (event) =>
     setNotes(event.target.value)
 
-  createArtwork(art, user)
+  createArtwork(user, art)
     .then((res) => {
       console.log(res)
     })
