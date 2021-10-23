@@ -79,10 +79,6 @@ const SubmitArt = ({ msgAlert, user }) => {
       console.error(err)
     })
 
-  const testArtwork = (art) => {
-    console.log(art)
-  }
-
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -281,7 +277,7 @@ const SubmitArt = ({ msgAlert, user }) => {
             md={6}
             lg={4}
             style={{ marginTop: '20px', marginLeft: '10px' }}>
-            <Button variant='contained' type='submit' onClick={testArtwork}>
+            <Button variant='contained' type='submit' onClick={createArtwork}>
               Submit Artwork
             </Button>
           </Grid>

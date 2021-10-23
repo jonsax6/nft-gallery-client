@@ -40,35 +40,34 @@ const Header = ({ user }) => (
     <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
       <AppBar style={{ backgroundColor: 'grey' }} position='static'>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size='large'
             edge='start'
             color='inherit'
             aria-label='menu'
             sx={{ mr: 2 }}>
             <MenuIcon />
-          </IconButton>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            <Link
-              to='/'
+          </IconButton> */}
+          <Link
+            to='/'
+            style={{
+              paddingLeft: '20px',
+              color: '#FFF',
+              textDecoration: 'none',
+              fontWeight: '100',
+              flexGrow: 1
+            }}>
+            <img
+              src={logo}
               style={{
-                paddingLeft: '20px',
-                color: '#FFF',
-                textDecoration: 'none',
-                fontWeight: '100'
-              }}>
-              <img
-                src={logo}
-                style={{
-                  width: '300px',
-                  marginTop: 10
-                }}
-              />
-              {/* <ChevronLeftIcon />
-              <ColorLensIcon />
-              <ChevronRightIcon style={{ marginRight: '10px' }} /> */}
-            </Link>
-          </Typography>
+                width: '300px',
+                marginTop: 10
+              }}
+            />
+            {/* <ChevronLeftIcon />
+            <ColorLensIcon />
+            <ChevronRightIcon style={{ marginRight: '10px' }} /> */}
+          </Link>
           {user && (
             <span className='navbar-text mr-2'>Welcome, {user.email}</span>
           )}
