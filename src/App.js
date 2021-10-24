@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
-import SignUp from './components/auth/SignUp'
+import SignUp_ from './components/auth/SignUp_'
 import SignIn_ from './components/auth/SignIn_'
 import SignOut from './components/auth/SignOut'
 import Home from './components/Home/Home'
@@ -70,7 +70,7 @@ class App extends Component {
           <Route
             path='/sign-up'
             render={() => (
-              <SignUp
+              <SignUp_
                 style={{ backgroundColor: 'black' }}
                 msgAlert={this.msgAlert}
                 setUser={this.setUser}

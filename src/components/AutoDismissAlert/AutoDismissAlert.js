@@ -1,6 +1,6 @@
 import React from 'react'
-import Alert from 'react-bootstrap/Alert'
-// import Alert from '@mui/material/Alert'
+// import Alert from 'react-bootstrap/Alert'
+import Alert from '@mui/material/Alert'
 
 import './AutoDismissAlert.scss'
 
@@ -34,16 +34,19 @@ render () {
   }
 
   return (
-    <Alert
-      dismissible
-      show={this.state.show}
-      variant={variant}
-      onClose={this.handleClose}>
-      <div className='container'>
-        <Alert.Heading>{heading}</Alert.Heading>
-        <p className='alert-body'>{message}</p>
-      </div>
+    <Alert variant="filled" severity={variant}>
+      {heading} - {message}
     </Alert>
+    // <Alert
+    //   dismissible
+    //   show={this.state.show}
+    //   variant={variant}
+    //   onClose={this.handleClose}>
+    //   <div className='container'>
+    //     <Alert.Heading>{heading}</Alert.Heading>
+    //     <p className='alert-body'>{message}</p>
+    //   </div>
+    // </Alert>
   )
 }
 }

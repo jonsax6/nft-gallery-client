@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Typography, Container, Grid, Button, Card, CardMedia, CardContent, CardActions } from '@mui/material'
 import '../../App.css'
+import { indexArtwork } from '../../api/artwork'
 
 // import { withRouter } from 'react-router-dom'
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
 const Gallery = () => {
+  const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    indexArtwork()
+      .then((res) => {
+        setCards(res.data.artwork)
+        console.log(cards)
+      })
+  }, [])
+
   return (
     <>
       <Container
@@ -52,8 +61,8 @@ const Gallery = () => {
           padding: '20px 0'
         }}>
         <Grid container spacing={4}>
-          {cards.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4} lg={3}>
+          {cards.map((card, index) => (
+            <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
               <Card
                 sx={{
                   height: '100%',
@@ -68,7 +77,7 @@ const Gallery = () => {
                   sx={{
                     paddingTop: '56.25%' // 16:9 aspect ratio
                   }}
-                  image='https://source.unsplash.com/random'
+                  image={card.imageUrl}
                   title='Image Title'
                 />
                 <CardContent
@@ -76,11 +85,10 @@ const Gallery = () => {
                     flexGrow: 1
                   }}>
                   <Typography gutterBottom variant='h6'>
-                    Heading
+                    {card.artist}
                   </Typography>
                   <Typography>
-                    This is a media card use this section to describe the
-                    content
+                    {card.notes}
                   </Typography>
                   <CardActions>
                     <Button size='small' color='warning'>

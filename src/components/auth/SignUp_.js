@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { signIn } from '../../api/auth'
-import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
+import { signIn, signUp } from '../../api/auth'
+import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import { Typography } from '@mui/material'
 
-const SignIn_ = ({ msgAlert, setUser }) => {
+const SignUp_ = ({ msgAlert, setUser }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [passwordConfirmation, setPasswordConfirmation] = useState('')
   const history = useHistory()
 
   const handleChangeEmail = (event) =>
@@ -19,15 +20,19 @@ const SignIn_ = ({ msgAlert, setUser }) => {
   const handleChangePassword = (event) =>
     setPassword(event.target.value)
 
-  const onSignIn = (event) => {
+  const handleChangePasswordConfirmation = (event) =>
+    setPasswordConfirmation(event.target.value)
+
+  const onSignUp = (event) => {
     event.preventDefault()
 
-    signIn({ email, password, history })
+    signUp({ email, password, passwordConfirmation })
+      .then(() => signIn({ email, password }))
       .then((res) => setUser(res.data.user))
       .then(() =>
         msgAlert({
-          heading: 'Sign In Success',
-          message: signInSuccess,
+          heading: 'Sign Up Success',
+          message: signUpSuccess,
           variant: 'success'
         })
       )
@@ -35,9 +40,10 @@ const SignIn_ = ({ msgAlert, setUser }) => {
       .catch((error) => {
         setEmail('')
         setPassword('')
+        setPasswordConfirmation('')
         msgAlert({
-          heading: 'Sign In Failed with error: ' + error.message,
-          message: signInFailure,
+          heading: 'Sign Up Failed with error: ' + error.message,
+          message: signUpFailure,
           variant: 'error'
         })
       })
@@ -49,8 +55,13 @@ const SignIn_ = ({ msgAlert, setUser }) => {
           <Grid item xs>
             <div></div>
           </Grid>
-          <Grid item xs={10} md={6} lg={4} style={{ marginTop: '20px', marginLeft: '10px' }}>
-            <Typography variant="h5">Sign In</Typography>
+          <Grid
+            item
+            xs={10}
+            md={6}
+            lg={4}
+            style={{ marginTop: '20px', marginLeft: '10px' }}>
+            <Typography variant='h5'>Sign Up</Typography>
           </Grid>
           <Grid item xs>
             <div></div>
@@ -60,7 +71,7 @@ const SignIn_ = ({ msgAlert, setUser }) => {
           <Grid item xs>
             <div></div>
           </Grid>
-          <Grid item xs={10} md={6} lg={4} >
+          <Grid item xs={10} md={6} lg={4}>
             <TextField
               required
               id='email'
@@ -99,8 +110,35 @@ const SignIn_ = ({ msgAlert, setUser }) => {
           <Grid item xs>
             <div></div>
           </Grid>
-          <Grid item xs={10} md={6} lg={4} style={{ marginTop: '20px', marginLeft: '10px' }}>
-            <Button variant='contained' type='submit' onClick={onSignIn}>Sign In</Button>
+          <Grid item xs={10} md={6} lg={4}>
+            <TextField
+              required
+              id='passwordConfirmation'
+              label='Password Confirmation'
+              type='password'
+              variant='outlined'
+              color='primary'
+              onChange={handleChangePasswordConfirmation}
+              style={{ width: '100%', marginTop: '20px' }}
+            />{' '}
+          </Grid>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            md={6}
+            lg={4}
+            style={{ marginTop: '20px', marginLeft: '10px' }}>
+            <Button variant='contained' type='submit' onClick={onSignUp}>
+              Sign Up
+            </Button>
           </Grid>
           <Grid item xs>
             <div></div>
@@ -111,4 +149,4 @@ const SignIn_ = ({ msgAlert, setUser }) => {
   )
 }
 
-export default SignIn_
+export default SignUp_

@@ -44,7 +44,7 @@ onSignUp = (event) => {
       msgAlert({
         heading: 'Sign Up Failed with error: ' + error.message,
         message: signUpFailure,
-        variant: 'danger'
+        variant: 'error'
       })
     })
 }

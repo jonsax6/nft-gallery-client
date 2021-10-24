@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { createArtwork, showArtwork } from '../../api/artwork'
+import { submitArtworkSuccess, submitArtworkFailure } from '../AutoDismissAlert/messages'
 import {
   Typography,
   Grid,
@@ -20,6 +21,7 @@ const SubmitArt = ({ msgAlert, user }) => {
   const [exhibitionHistory, setExhibitionHistory] = useState(null)
   const [publishingHistory, setPublishingHistory] = useState(null)
   const [notes, setNotes] = useState(null)
+  const [success, setSuccess] = useState(false)
 
   const art = {
     artist: artist,
@@ -68,14 +70,42 @@ const SubmitArt = ({ msgAlert, user }) => {
   const handleChangeNotes = (event) =>
     setNotes(event.target.value)
 
-  createArtwork(user, art)
-    .then((res) => {
-      console.log(res)
-    })
-    // .then((res) => setArtwork(res.data.order))
-    .catch((err) => {
-      console.error(err)
-    })
+  const onCreateArtwork = (event) => {
+    event.preventDefault()
+    console.log(art)
+    console.log(success)
+
+    createArtwork(user, art)
+      .then((res) => {
+        console.log(res.data.artwork)
+      })
+      .then(() =>
+        msgAlert({
+          heading: 'Submit Artwork Success',
+          message: submitArtworkSuccess,
+          variant: 'success'
+        }))
+      .catch((error) => {
+        msgAlert({
+          heading: 'Submit Art Failed with error: ' + error.message,
+          message: submitArtworkFailure,
+          variant: 'error'
+        })
+      })
+      .finally(() => {
+        setArtist('')
+        setTitle('')
+        setImageUrl('')
+        setReleaseDate('')
+        setMedium('')
+        setArtistRoyalty('')
+        setCuratorRoyalty('')
+        setExhibitionHistory('')
+        setPublishingHistory('')
+        setProvenance('')
+        setNotes('')
+      })
+  }
 
   return (
     <>
@@ -103,10 +133,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           <Grid item xs={5} md={3} lg={2}>
             <TextField
               required
-              id='outlined-required'
+              id='artist-required'
               label='Artist'
               variant='outlined'
               color='primary'
+              value={artist}
               onChange={handleChangeArtist}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -114,10 +145,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           <Grid item xs={5} md={3} lg={2}>
             <TextField
               required
-              id='outlined-required'
+              id='title-required'
               label='Title'
               variant='outlined'
               color='primary'
+              value={title}
               onChange={handleChangeTitle}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -133,10 +165,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           <Grid item xs={5} md={3} lg={2}>
             <TextField
               required
-              id='outlined-required'
+              id='imageUrl-required'
               label='ImageUrl'
               variant='outlined'
               color='primary'
+              value={imageUrl}
               onChange={handleChangeImageUrl}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -144,10 +177,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           <Grid item xs={5} md={3} lg={2}>
             <TextField
               required
-              id='outlined-required'
+              id='releaseDate-required'
               label='ReleaseDate'
               variant='outlined'
               color='primary'
+              value={releaseDate}
               onChange={handleChangeReleaseDate}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -163,10 +197,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           <Grid item xs={5} md={3} lg={2}>
             <TextField
               required
-              id='outlined-required'
+              id='medium-required'
               label='Medium'
               variant='outlined'
               color='primary'
+              value={medium}
               onChange={handleChangeMedium}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -174,10 +209,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           <Grid item xs={5} md={3} lg={2}>
             <TextField
               required
-              id='outlined-required'
+              id='artistRoyalty-required'
               label='ArtistRoyalty'
               variant='outlined'
               color='primary'
+              value={artistRoyalty}
               onChange={handleChangeArtistRoyalty}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -193,10 +229,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           <Grid item xs={5} md={3} lg={2}>
             <TextField
               required
-              id='outlined-required'
+              id='curatorRoyalty-required'
               label='CuratorRoyalty'
               variant='outlined'
               color='primary'
+              value={curatorRoyalty}
               onChange={handleChangeCuratorRoyalty}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -204,10 +241,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           <Grid item xs={5} md={3} lg={2}>
             <TextField
               required
-              id='outlined-required'
+              id='provenance-required'
               label='Provenance'
               variant='outlined'
               color='primary'
+              value={provenance}
               onChange={handleChangeProvenance}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -222,22 +260,22 @@ const SubmitArt = ({ msgAlert, user }) => {
           </Grid>
           <Grid item xs={5} md={3} lg={2}>
             <TextField
-              required
-              id='outlined-required'
+              id='exhibitionHistory-required'
               label='ExhibitionHistory'
               variant='outlined'
               color='primary'
+              value={exhibitionHistory}
               onChange={handleChangeExhibitionHistory}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
           </Grid>
           <Grid item xs={5} md={3} lg={2}>
             <TextField
-              required
-              id='outlined-required'
+              id='publishingHistory-required'
               label='PublishingHistory'
               variant='outlined'
               color='primary'
+              value={publishingHistory}
               onChange={handleChangePublishingHistory}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -252,11 +290,11 @@ const SubmitArt = ({ msgAlert, user }) => {
           </Grid>
           <Grid item xs={10} md={6} lg={4}>
             <TextField
-              required
-              id='outlined-required'
+              id='notes-required'
               label='Notes'
               variant='outlined'
               color='primary'
+              value={notes}
               onChange={handleChangeNotes}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -275,7 +313,7 @@ const SubmitArt = ({ msgAlert, user }) => {
             md={6}
             lg={4}
             style={{ marginTop: '20px', marginLeft: '10px' }}>
-            <Button variant='contained' type='submit' onClick={createArtwork}>
+            <Button variant='contained' type='submit' onClick={onCreateArtwork}>
               Submit Artwork
             </Button>
           </Grid>

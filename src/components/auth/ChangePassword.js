@@ -41,7 +41,7 @@ onChangePassword = (event) => {
       msgAlert({
         heading: 'Change Password Failed with error: ' + error.message,
         message: changePasswordFailure,
-        variant: 'danger'
+        variant: 'error'
       })
     })
 }
