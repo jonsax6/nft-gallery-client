@@ -1,6 +1,8 @@
 import React from 'react'
 // import Alert from 'react-bootstrap/Alert'
-import Alert from '@mui/material/Alert'
+// import Alert from '@mui/material/Alert'
+// import Snackbar from '@mui/material/Snackbar'
+import { Alert, Snackbar, Typography } from '@mui/material'
 
 import './AutoDismissAlert.scss'
 
@@ -34,19 +36,14 @@ render () {
   }
 
   return (
-    <Alert variant="filled" severity={variant}>
-      {heading} - {message}
-    </Alert>
-    // <Alert
-    //   dismissible
-    //   show={this.state.show}
-    //   variant={variant}
-    //   onClose={this.handleClose}>
-    //   <div className='container'>
-    //     <Alert.Heading>{heading}</Alert.Heading>
-    //     <p className='alert-body'>{message}</p>
-    //   </div>
-    // </Alert>
+    <Snackbar open={open} autoHideDuration={6000} onClose={this.handleClose}>
+      <Alert variant='filled' severity={variant} onClose={this.handleClose}>
+        <div className='container'>
+          <Typography variant='h6'>{heading}</Typography>
+          <p className='alert-body'>{message}</p>
+        </div>
+      </Alert>
+    </Snackbar>
   )
 }
 }

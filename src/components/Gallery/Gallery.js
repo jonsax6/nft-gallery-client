@@ -28,7 +28,6 @@ const Gallery = () => {
           style={{ fontWeight: '100' }}
           variant='h4'
           align='center'
-          color='white'
           gutterBottom>
           All Artists
         </Typography>
@@ -36,7 +35,6 @@ const Gallery = () => {
           style={{ fontWeight: '100' }}
           variant='h6'
           align='center'
-          color='white'
           paragraph>
           Exclusive works by iconic artists
         </Typography>
@@ -75,7 +73,7 @@ const Gallery = () => {
                 }}>
                 <CardMedia
                   sx={{
-                    paddingTop: '56.25%' // 16:9 aspect ratio
+                    paddingTop: '92%' // 16:9 aspect ratio
                   }}
                   image={card.imageUrl}
                   title='Image Title'
@@ -84,12 +82,12 @@ const Gallery = () => {
                   sx={{
                     flexGrow: 1
                   }}>
-                  <Typography gutterBottom variant='h6'>
+                  <Typography gutterBottom variant='h5'>
                     {card.artist}
                   </Typography>
-                  <Typography>
-                    {card.notes}
-                  </Typography>
+                  <Typography gutterBottom paragraph>{card.notes}</Typography>{' '}
+                  <Typography variant="h6">Medium</Typography>
+                  <Typography>{card.medium}</Typography>{' '}
                   <CardActions>
                     <Button size='small' color='warning'>
                       View
