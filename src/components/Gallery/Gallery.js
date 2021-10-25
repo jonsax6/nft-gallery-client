@@ -87,7 +87,7 @@ const Gallery = () => {
                   borderRadius: '0',
                   margin: '0',
                   color: 'white',
-                  backgroundColor: 'gray'
+                  backgroundColor: '#505050'
                 }}>
                 <CardMedia
                   sx={{
@@ -108,12 +108,13 @@ const Gallery = () => {
                   </Typography>{' '}
                   <CardActions>
                     <Button
-                      variant='contained'
+                      variant='outlined'
+                      color='warning'
                       size='small'
                       onClick={(e) => handleOpen(i)}>
                       Info...
                     </Button>
-                    <Button variant='contained' size='small' color='success'>
+                    <Button variant='outlined' size='small' color='warning'>
                       Price
                     </Button>
                   </CardActions>
