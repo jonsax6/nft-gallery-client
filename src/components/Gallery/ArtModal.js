@@ -37,11 +37,14 @@ const ArtModal = ({ card, handleClose, open }) => {
           <div style={{ padding: '0px' }}>
             <img style={{ maxWidth: '100%' }} src={card.imageUrl} alt={card.artist}/>
           </div>
-          <Typography gutterBottom variant='h5'>
+          <Typography gutterBottom variant='h4'>
             {card.artist}
           </Typography>
+          <Typography gutterBottom variant='h5'>
+            Title: {`'${card.title}'`}
+          </Typography>
           <Typography gutterBottom paragraph>{card.notes}</Typography>{' '}
-          <Typography variant="h6">Medium</Typography>
+          <Typography variant="h5">Medium</Typography>
           <Typography>{card.medium}</Typography>{' '}
         </Box>
       </Fade>

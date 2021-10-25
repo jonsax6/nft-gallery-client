@@ -68,8 +68,7 @@ const Gallery = () => {
             container
             spacing={2}
             justifyContent='center'
-            sx={{ marginTop: '20px' }}>
-          </Grid>
+            sx={{ marginTop: '20px' }}></Grid>
         </div>
       </Container>
       <Container
@@ -105,11 +104,16 @@ const Gallery = () => {
                     {card.artist}
                   </Typography>
                   <Typography gutterBottom paragraph>
-                    {card.title}
+                    {`'${card.title}'`}
                   </Typography>{' '}
                   <CardActions>
-                    <Button variant="contained" size='small' onClick={(e) => handleOpen(i)}>Info...</Button>
-                    <Button variant="contained" size='small' color='success'>
+                    <Button
+                      variant='contained'
+                      size='small'
+                      onClick={(e) => handleOpen(i)}>
+                      Info...
+                    </Button>
+                    <Button variant='contained' size='small' color='success'>
                       Price
                     </Button>
                   </CardActions>
@@ -117,7 +121,13 @@ const Gallery = () => {
               </Card>
             </Grid>
           ))}
-          {cards.length > 0 ? <ArtModal card={cards[index]} handleClose={handleClose} open={open} /> : <></>}
+          {cards.length > 0
+            ? <ArtModal
+              card={cards[index]}
+              handleClose={handleClose}
+              open={open}
+            />
+            : <></>}
         </Grid>
       </Container>
     </div>
