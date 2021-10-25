@@ -95,6 +95,7 @@ const Gallery = () => {
                   }}
                   image={card.imageUrl}
                   title='Image Title'
+                  onClick={(e) => handleOpen(i)}
                 />
                 <CardContent
                   sx={{
