@@ -42,7 +42,7 @@ const Gallery = () => {
   const handleClose = () => setOpen(false)
 
   return (
-    <>
+    <div style={{ backgroundColor: '#424242' }}>
       <Container
         maxWidth='sm'
         sx={{
@@ -50,14 +50,14 @@ const Gallery = () => {
           marginTop: '50px'
         }}>
         <Typography
-          style={{ fontWeight: '100' }}
+          style={{ fontWeight: '100', color: 'white' }}
           variant='h4'
           align='center'
           gutterBottom>
           All Artists
         </Typography>
         <Typography
-          style={{ fontWeight: '100' }}
+          style={{ fontWeight: '100', color: 'white' }}
           variant='h6'
           align='center'
           paragraph>
@@ -69,12 +69,6 @@ const Gallery = () => {
             spacing={2}
             justifyContent='center'
             sx={{ marginTop: '20px' }}>
-            {/* <Grid item>
-              <Button variant='contained' color='warning'>See All Artists</Button>
-            </Grid>
-            <Grid item>
-              <Button variant='outlined' color='warning'>Secondary Action</Button>
-            </Grid> */}
           </Grid>
         </div>
       </Container>
@@ -111,13 +105,11 @@ const Gallery = () => {
                     {card.artist}
                   </Typography>
                   <Typography gutterBottom paragraph>
-                    {card.notes}
+                    {card.title}
                   </Typography>{' '}
-                  <Typography variant='h6'>Medium</Typography>
-                  <Typography>{card.medium}</Typography>{' '}
                   <CardActions>
-                    <Button onClick={(e) => handleOpen(i)}>Info...</Button>
-                    <Button size='small' color='warning'>
+                    <Button variant="contained" size='small' onClick={(e) => handleOpen(i)}>Info...</Button>
+                    <Button variant="contained" size='small' color='success'>
                       Price
                     </Button>
                   </CardActions>
@@ -128,7 +120,7 @@ const Gallery = () => {
           {cards.length > 0 ? <ArtModal card={cards[index]} handleClose={handleClose} open={open} /> : <></>}
         </Grid>
       </Container>
-    </>
+    </div>
   )
 }
 

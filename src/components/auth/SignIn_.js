@@ -68,7 +68,7 @@ const SignIn_ = ({ msgAlert, setUser }) => {
               variant='outlined'
               color='primary'
               onChange={handleChangeEmail}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{ width: '100%', marginTop: '20px' }}
             />{' '}
           </Grid>
           <Grid item xs>

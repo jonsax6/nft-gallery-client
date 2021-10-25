@@ -48,7 +48,7 @@ class App extends Component {
     const { msgAlerts, user } = this.state
 
     return (
-      <div>
+      <div style={{ backgroundColor: '#424242', height: '100vh' }}>
         <CssBaseline />
         <Header user={user} />
         {msgAlerts.map((msgAlert) => (
@@ -85,7 +85,7 @@ class App extends Component {
           />
           <Route
             path='/gallery'
-            render={() => <Gallery style={{ backgroundColor: '#4424242' }} />}
+            render={() => <Gallery style={{ backgroundColor: '#424242' }} />}
           />
           <AuthenticatedRoute
             user={user}

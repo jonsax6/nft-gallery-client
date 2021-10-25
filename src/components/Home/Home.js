@@ -7,11 +7,9 @@ const Home = () => {
     <Container style={{
       height: '100vh',
       width: '100vw',
-      display: 'fluid',
       backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center center',
-      padding: '0'
+      backgroundPosition: 'center center'
     }}>
       <Typography
         style={{ fontWeight: '100', padding: '50px' }}
