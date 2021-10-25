@@ -98,6 +98,7 @@ const SignUp_ = ({ msgAlert, setUser }) => {
               type='password'
               variant='outlined'
               color='primary'
+              autoComplete='new-password'
               onChange={handleChangePassword}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
@@ -118,6 +119,7 @@ const SignUp_ = ({ msgAlert, setUser }) => {
               type='password'
               variant='outlined'
               color='primary'
+              autoComplete='new-password'
               onChange={handleChangePasswordConfirmation}
               style={{ width: '100%', marginTop: '20px' }}
             />{' '}
