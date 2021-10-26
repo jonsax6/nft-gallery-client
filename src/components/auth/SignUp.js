@@ -1,101 +1,154 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
-
-import { signUp, signIn } from '../../api/auth'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { signIn, signUp } from '../../api/auth'
 import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
+import { Typography } from '@mui/material'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+const SignUp = ({ msgAlert, setUser }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const history = useHistory()
 
-class SignUp extends Component {
-  constructor (props) {
-    super(props)
+  const handleChangeEmail = (event) =>
+    setEmail(event.target.value)
 
-    this.state = {
-      email: '',
-      password: '',
-      passwordConfirmation: ''
-    }
+  const handleChangePassword = (event) =>
+    setPassword(event.target.value)
+
+  const handleChangePasswordConfirmation = (event) =>
+    setPasswordConfirmation(event.target.value)
+
+  const onSignUp = (event) => {
+    event.preventDefault()
+
+    signUp({ email, password, passwordConfirmation })
+      .then(() => signIn({ email, password }))
+      .then((res) => setUser(res.data.user))
+      .then(() =>
+        msgAlert({
+          heading: 'Sign Up Success',
+          message: signUpSuccess,
+          variant: 'success'
+        })
+      )
+      .then(() => history.push('/'))
+      .catch((error) => {
+        setEmail('')
+        setPassword('')
+        setPasswordConfirmation('')
+        msgAlert({
+          heading: 'Sign Up Failed with error: ' + error.message,
+          message: signUpFailure,
+          variant: 'error'
+        })
+      })
   }
-
-handleChange = (event) =>
-  this.setState({
-    [event.target.name]: event.target.value
-  })
-
-onSignUp = (event) => {
-  event.preventDefault()
-
-  const { msgAlert, history, setUser } = this.props
-
-  signUp(this.state)
-    .then(() => signIn(this.state))
-    .then((res) => setUser(res.data.user))
-    .then(() =>
-      msgAlert({
-        heading: 'Sign Up Success',
-        message: signUpSuccess,
-        variant: 'success'
-      })
-    )
-    .then(() => history.push('/'))
-    .catch((error) => {
-      this.setState({ email: '', password: '', passwordConfirmation: '' })
-      msgAlert({
-        heading: 'Sign Up Failed with error: ' + error.message,
-        message: signUpFailure,
-        variant: 'error'
-      })
-    })
-}
-
-render () {
-  const { email, password, passwordConfirmation } = this.state
-
   return (
-    <div className='row'>
-      <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Sign Up</h3>
-        <Form onSubmit={this.onSignUp}>
-          <Form.Group controlId='email'>
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            md={6}
+            lg={4}
+            style={{ marginTop: '20px', marginLeft: '10px', color: 'white' }}>
+            <Typography variant='h5'>Sign Up</Typography>
+          </Grid>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+          <Grid item xs={10} md={6} lg={4}>
+            <TextField
               required
-              type='email'
-              name='email'
-              value={email}
-              placeholder='Enter email'
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
+              id='email'
+              label='Email'
+              variant='outlined'
+              color='primary'
+              onChange={handleChangeEmail}
+              style={{ width: '100%', marginTop: '20px' }}
+            />{' '}
+          </Grid>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+          <Grid item xs={10} md={6} lg={4}>
+            <TextField
               required
-              name='password'
-              value={password}
+              id='password'
+              label='Password'
               type='password'
-              placeholder='Password'
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId='passwordConfirmation'>
-            <Form.Label>Password Confirmation</Form.Label>
-            <Form.Control
+              variant='outlined'
+              color='primary'
+              autoComplete='new-password'
+              onChange={handleChangePassword}
+              style={{ width: '100%', marginTop: '20px' }}
+            />{' '}
+          </Grid>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+          <Grid item xs={10} md={6} lg={4}>
+            <TextField
               required
-              name='passwordConfirmation'
-              value={passwordConfirmation}
+              id='passwordConfirmation'
+              label='Password Confirmation'
               type='password'
-              placeholder='Confirm Password'
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
-        </Form>
-      </div>
-    </div>
+              variant='outlined'
+              color='primary'
+              autoComplete='new-password'
+              onChange={handleChangePasswordConfirmation}
+              style={{ width: '100%', marginTop: '20px' }}
+            />{' '}
+          </Grid>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+          <Grid
+            item
+            xs={10}
+            md={6}
+            lg={4}
+            style={{ marginTop: '20px', marginLeft: '10px' }}>
+            <Button variant='contained' type='submit' onClick={onSignUp}>
+              Sign Up
+            </Button>
+          </Grid>
+          <Grid item xs>
+            <div></div>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
   )
 }
-}
 
-export default withRouter(SignUp)
+export default SignUp

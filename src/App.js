@@ -6,8 +6,8 @@ import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
-import SignUp_ from './components/auth/SignUp_'
-import SignIn_ from './components/auth/SignIn_'
+import SignUp from './components/auth/SignUp'
+import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import Home from './components/Home/Home'
 import ChangePassword from './components/auth/ChangePassword'
@@ -70,7 +70,7 @@ class App extends Component {
           <Route
             path='/sign-up'
             render={() => (
-              <SignUp_
+              <SignUp
                 style={{ backgroundColor: 'black' }}
                 msgAlert={this.msgAlert}
                 setUser={this.setUser}
@@ -80,7 +80,7 @@ class App extends Component {
           <Route
             path='/sign-in'
             render={() => (
-              <SignIn_ msgAlert={this.msgAlert} setUser={this.setUser} />
+              <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
             )}
           />
           <Route

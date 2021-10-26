@@ -22,6 +22,11 @@ import ArtModal from './ArtModal'
 const Gallery = () => {
   const [cards, setCards] = useState([])
   const [index, setIndex] = useState(0)
+  const [hovered, setHovered] = useState(false)
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
 
   useEffect(() => {
     indexArtwork()
@@ -96,6 +101,8 @@ const Gallery = () => {
                   image={card.imageUrl}
                   title='Image Title'
                   onClick={(e) => handleOpen(i)}
+                  onPointerOver={() => setHovered(true)}
+                  onPointerOut={() => setHovered(false)}
                 />
                 <CardContent
                   sx={{
@@ -108,28 +115,12 @@ const Gallery = () => {
                     {`'${card.title}'`}
                   </Typography>{' '}
                   <CardActions>
-                    <Button
-                      variant='outlined'
-                      color='warning'
-                      size='small'
-                      onClick={(e) => handleOpen(i)}>
-                      Info...
-                    </Button>
-                    <Button variant='outlined' size='small' color='warning'>
-                      Price
-                    </Button>
                   </CardActions>
                 </CardContent>
               </Card>
             </Grid>
           ))}
-          {cards.length > 0
-            ? <ArtModal
-              card={cards[index]}
-              handleClose={handleClose}
-              open={open}
-            />
-            : <></>}
+          {cards.length > 0 ? <ArtModal card={cards[index]} handleClose={handleClose} open={open}/> : <></>}
         </Grid>
       </Container>
     </div>

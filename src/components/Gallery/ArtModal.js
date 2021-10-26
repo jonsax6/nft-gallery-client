@@ -4,7 +4,8 @@ import {
   Fade,
   Box,
   Typography,
-  Backdrop
+  Backdrop,
+  Button
 } from '@mui/material'
 
 const style = {
@@ -19,7 +20,6 @@ const style = {
 }
 
 const ArtModal = ({ card, handleClose, open }) => {
-  console.log(card.artist)
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -35,17 +35,26 @@ const ArtModal = ({ card, handleClose, open }) => {
       <Fade in={open}>
         <Box sx={style}>
           <div style={{ padding: '0px' }}>
-            <img style={{ maxWidth: '100%' }} src={card.imageUrl} alt={card.artist}/>
+            <img
+              style={{ maxWidth: '100%' }}
+              src={card.imageUrl}
+              alt={card.artist}
+            />
           </div>
-          <Typography gutterBottom variant='h4'>
-            {card.artist}
-          </Typography>
-          <Typography gutterBottom variant='h5'>
-            Title: {`'${card.title}'`}
-          </Typography>
-          <Typography gutterBottom paragraph>{card.notes}</Typography>{' '}
-          <Typography variant="h5">Medium</Typography>
-          <Typography>{card.medium}</Typography>{' '}
+          <div style={{ padding: '20px' }}>
+            <Typography gutterBottom variant='h4'>
+              {card.artist}
+            </Typography>
+            <Typography gutterBottom variant='h5'>
+              Title: {`'${card.title}'`}
+            </Typography>
+            <Typography gutterBottom paragraph>{card.notes}</Typography>{' '}
+            <Typography variant="h5">Medium</Typography>
+            <Typography>{card.medium}</Typography>{' '}
+            <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
+              Inquire
+            </Button>
+          </div>
         </Box>
       </Fade>
     </Modal>
