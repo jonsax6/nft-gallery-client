@@ -6,7 +6,9 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import { Typography } from '@mui/material'
+import { Typography, Card, CardContent, InputAdornment } from '@mui/material'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import LockIcon from '@mui/icons-material/Lock'
 
 const SignUp = ({ msgAlert, setUser }) => {
   const [email, setEmail] = useState('')
@@ -50,103 +52,151 @@ const SignUp = ({ msgAlert, setUser }) => {
   }
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid
-            item
-            xs={10}
-            md={6}
-            lg={4}
-            style={{ marginTop: '20px', marginLeft: '10px', color: 'white' }}>
-            <Typography variant='h5'>Sign Up</Typography>
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
+      <Grid style={{ marginTop: '50px' }} container justify='center'>
+        <Grid item xs>
+          <div></div>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={10} md={6} lg={4}>
-            <TextField
-              required
-              id='email'
-              label='Email'
-              variant='outlined'
-              color='primary'
-              onChange={handleChangeEmail}
-              style={{ width: '100%', marginTop: '20px' }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
+        <Grid item xs={12} sm={12} md={4}>
+          <Card style={{ backgroundColor: 'gray' }}>
+            <CardContent style={{ color: 'white' }}>
+              <Typography variant="h5">
+                Register for an Account
+              </Typography>
+              <TextField
+                required
+                id='email'
+                label='Email'
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircle sx={{ color: 'white' }} />
+                    </InputAdornment>
+                  )
+                }}
+                variant='outlined'
+                color='primary'
+                onChange={handleChangeEmail}
+                sx={{
+                  width: '100%',
+                  marginTop: '40px',
+                  '& label.Mui-focused': {
+                    color: 'green'
+                  },
+                  '& label': {
+                    color: 'white'
+                  },
+                  '&:hover label': {
+                    color: '#5ba7ff'
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'white'
+                    },
+                    '&:hover fieldset': {
+                      borderColor: '#5ba7ff'
+                    },
+                    '&.Mui-focused fieldset': {
+                      borderColor: 'green'
+                    }
+                  }
+                }}
+              />{' '}
+              <TextField
+                required
+                id='password'
+                label='Password'
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockIcon sx={{ color: 'white' }} />
+                    </InputAdornment>
+                  )
+                }}
+                type='password'
+                variant='outlined'
+                color='primary'
+                onChange={handleChangePassword}
+                sx={{
+                  width: '100%',
+                  marginTop: '20px',
+                  '& label.Mui-focused': {
+                    color: 'green'
+                  },
+                  '& label': {
+                    color: 'white'
+                  },
+                  '&:hover label': {
+                    color: '#5ba7ff'
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'white'
+                    },
+                    '&:hover fieldset': {
+                      borderColor: '#5ba7ff'
+                    },
+                    '&.Mui-focused fieldset': {
+                      borderColor: 'green'
+                    }
+                  }
+                }}
+              />{' '}
+              <TextField
+                required
+                id='passwordConfirmation'
+                label='Password Confirmation'
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockIcon sx={{
+                        color: 'white'
+                      }} />
+                    </InputAdornment>
+                  )
+                }}
+                type='password'
+                variant='outlined'
+                color='primary'
+                autoComplete='new-password'
+                onChange={handleChangePasswordConfirmation}
+                sx={{
+                  width: '100%',
+                  marginTop: '20px',
+                  '& label.Mui-focused': {
+                    color: 'green'
+                  },
+                  '& label': {
+                    color: 'white'
+                  },
+                  '&:hover label': {
+                    color: '#5ba7ff'
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'white'
+                    },
+                    '&:hover fieldset': {
+                      borderColor: '#5ba7ff'
+                    },
+                    '&.Mui-focused fieldset': {
+                      borderColor: 'green'
+                    }
+                  }
+                }}
+              />{' '}
+              <Button
+                style={{ marginTop: '20px', marginLeft: '10px' }}
+                variant='contained' type='submit'
+                onClick={onSignUp}>
+                Register
+              </Button>
+            </CardContent>
+          </Card>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={10} md={6} lg={4}>
-            <TextField
-              required
-              id='password'
-              label='Password'
-              type='password'
-              variant='outlined'
-              color='primary'
-              autoComplete='new-password'
-              onChange={handleChangePassword}
-              style={{ width: '100%', marginTop: '20px' }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
+        <Grid item xs>
+          <div></div>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={10} md={6} lg={4}>
-            <TextField
-              required
-              id='passwordConfirmation'
-              label='Password Confirmation'
-              type='password'
-              variant='outlined'
-              color='primary'
-              autoComplete='new-password'
-              onChange={handleChangePasswordConfirmation}
-              style={{ width: '100%', marginTop: '20px' }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid
-            item
-            xs={10}
-            md={6}
-            lg={4}
-            style={{ marginTop: '20px', marginLeft: '10px' }}>
-            <Button variant='contained' type='submit' onClick={onSignUp}>
-              Sign Up
-            </Button>
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-        </Grid>
-      </Box>
+      </Grid>
     </>
   )
 }

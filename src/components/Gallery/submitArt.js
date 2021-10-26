@@ -119,7 +119,7 @@ const SubmitArt = ({ msgAlert, user }) => {
             xs={10}
             md={6}
             lg={4}
-            style={{ marginTop: '20px', marginLeft: '10px' }}>
+            style={{ marginTop: '20px', marginLeft: '10px', color: 'white' }}>
             <Typography variant='h5'>Submit Artwork</Typography>
           </Grid>
           <Grid item xs>
@@ -139,7 +139,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={artist}
               onChange={handleChangeArtist}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs={5} md={3} lg={2}>
@@ -151,7 +174,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={title}
               onChange={handleChangeTitle}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs>
@@ -171,7 +217,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={imageUrl}
               onChange={handleChangeImageUrl}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs={5} md={3} lg={2}>
@@ -183,7 +252,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={releaseDate}
               onChange={handleChangeReleaseDate}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs>
@@ -203,7 +295,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={medium}
               onChange={handleChangeMedium}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs={5} md={3} lg={2}>
@@ -215,7 +330,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={artistRoyalty}
               onChange={handleChangeArtistRoyalty}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs>
@@ -235,7 +373,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={curatorRoyalty}
               onChange={handleChangeCuratorRoyalty}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs={5} md={3} lg={2}>
@@ -247,7 +408,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={provenance}
               onChange={handleChangeProvenance}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs>
@@ -266,7 +450,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={exhibitionHistory}
               onChange={handleChangeExhibitionHistory}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs={5} md={3} lg={2}>
@@ -277,7 +484,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={publishingHistory}
               onChange={handleChangePublishingHistory}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs>
@@ -296,7 +526,30 @@ const SubmitArt = ({ msgAlert, user }) => {
               color='primary'
               value={notes}
               onChange={handleChangeNotes}
-              style={{ width: '100%', marginTop: '20px' }}
+              sx={{
+                width: '100%',
+                marginTop: '20px',
+                '& label.Mui-focused': {
+                  color: 'green'
+                },
+                '& label': {
+                  color: 'white'
+                },
+                '&:hover label': {
+                  color: '#5ba7ff'
+                },
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'white'
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#5ba7ff'
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'green'
+                  }
+                }
+              }}
             />{' '}
           </Grid>
           <Grid item xs>
