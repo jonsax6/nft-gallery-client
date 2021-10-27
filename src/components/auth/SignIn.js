@@ -100,9 +100,7 @@ const SignIn = ({ msgAlert, setUser }) => {
                 No account yet?
               </Typography>
               <Typography paragraph style={{ marginBottom: '20px' }}>
-                Get the inside track on upcoming Releases, the newest
-                collaborations and latest events, along with purchasing using
-                Ethereum with the metamask chrome browser extension.
+                Get the inside track on upcoming Releases, the newest collaborations and latest events, along with purchasing any of our works using Ethereum with the metamask chrome browser extension.
               </Typography>
               <NavLink
                 style={{ marginTop: '50px', textDecoration: 'none' }}
