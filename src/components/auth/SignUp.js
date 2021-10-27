@@ -71,7 +71,8 @@ const SignUp = ({ msgAlert, setUser }) => {
                     <InputAdornment position="start">
                       <AccountCircle sx={{ color: 'white' }} />
                     </InputAdornment>
-                  )
+                  ),
+                  style: { color: 'white' }
                 }}
                 variant='outlined'
                 color='primary'
@@ -110,7 +111,8 @@ const SignUp = ({ msgAlert, setUser }) => {
                     <InputAdornment position="start">
                       <LockIcon sx={{ color: 'white' }} />
                     </InputAdornment>
-                  )
+                  ),
+                  style: { color: 'white' }
                 }}
                 type='password'
                 variant='outlined'
@@ -152,7 +154,8 @@ const SignUp = ({ msgAlert, setUser }) => {
                         color: 'white'
                       }} />
                     </InputAdornment>
-                  )
+                  ),
+                  style: { color: 'white' }
                 }}
                 type='password'
                 variant='outlined'

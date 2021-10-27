@@ -68,7 +68,8 @@ const SignIn = ({ msgAlert, setUser }) => {
                         color: 'white'
                       }} />
                     </InputAdornment>
-                  )
+                  ),
+                  style: { color: 'white' }
                 }}
                 variant='outlined'
                 color='primary'
@@ -109,7 +110,8 @@ const SignIn = ({ msgAlert, setUser }) => {
                         color: 'white'
                       }} />
                     </InputAdornment>
-                  )
+                  ),
+                  style: { color: 'white' }
                 }}
                 type='password'
                 variant='outlined'
