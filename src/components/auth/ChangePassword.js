@@ -88,7 +88,7 @@ const ChangePassword = ({ msgAlert, user }) => {
                 onChange={handleChangeNewPassword}
               />
               <Button
-                style={{ marginTop: '20px', marginLeft: '10px' }}
+                style={{ marginTop: '20px' }}
                 variant='contained'
                 type='submit'
                 onClick={onChangePassword}>

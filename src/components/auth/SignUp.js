@@ -126,7 +126,7 @@ const SignUp = ({ msgAlert, setUser }) => {
                 onChange={handleChangePasswordConfirmation}
               />
               <Button
-                style={{ marginTop: '20px', marginLeft: '10px' }}
+                style={{ marginTop: '20px' }}
                 variant='contained'
                 type='submit'
                 onClick={onSignUp}>
