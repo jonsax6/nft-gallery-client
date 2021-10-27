@@ -52,10 +52,10 @@ const Gallery = () => {
         maxWidth='sm'
         sx={{
           padding: '8, 0, 6',
-          marginTop: '50px'
+          marginTop: '0px'
         }}>
         <Typography
-          style={{ fontWeight: '100', color: 'white' }}
+          style={{ fontWeight: '100', color: 'white', marginTop: '75px' }}
           variant='h4'
           align='center'
           gutterBottom>
