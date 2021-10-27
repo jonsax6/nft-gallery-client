@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 // import ColorLensIcon from '@mui/icons-material/ColorLens'
 // import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 // import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import logo from '../../images/zyzygy-logo.png'
+import logo from '../../images/zyzygy_eclipse.png'
 
 const authenticatedOptions = (
   <Fragment>

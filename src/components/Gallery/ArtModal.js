@@ -31,6 +31,7 @@ const ArtModal = ({ card, handleClose, open }) => {
       BackdropProps={{
         timeout: 500
       }}
+      style={{ overflow: 'scroll' }}
     >
       <Fade in={open}>
         <Box sx={style}>
