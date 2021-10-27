@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nft-gallery-client/static/css/main.c2457df2.chunk.css",
-    "main.js": "/nft-gallery-client/static/js/main.bc0cb4aa.chunk.js",
-    "main.js.map": "/nft-gallery-client/static/js/main.bc0cb4aa.chunk.js.map",
+    "main.js": "/nft-gallery-client/static/js/main.9ccaf6e3.chunk.js",
+    "main.js.map": "/nft-gallery-client/static/js/main.9ccaf6e3.chunk.js.map",
     "runtime-main.js": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js",
     "runtime-main.js.map": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js.map",
     "static/css/2.7e165c18.chunk.css": "/nft-gallery-client/static/css/2.7e165c18.chunk.css",
@@ -17,13 +17,13 @@
     "static/media/400.css": "/nft-gallery-client/static/media/roboto-vietnamese-400-normal.c0bec65d.woff2",
     "static/media/500.css": "/nft-gallery-client/static/media/roboto-vietnamese-500-normal.b8e494da.woff2",
     "static/media/700.css": "/nft-gallery-client/static/media/roboto-vietnamese-700-normal.3096f18a.woff2",
-    "static/media/zyzygy_eclipse.afd50f6f.png": "/nft-gallery-client/static/media/zyzygy_eclipse.afd50f6f.png"
+    "static/media/zyzygy_eclipse.dc9c1122.png": "/nft-gallery-client/static/media/zyzygy_eclipse.dc9c1122.png"
   },
   "entrypoints": [
     "static/js/runtime-main.5d4cb4c7.js",
     "static/css/2.7e165c18.chunk.css",
     "static/js/2.3b549796.chunk.js",
     "static/css/main.c2457df2.chunk.css",
-    "static/js/main.bc0cb4aa.chunk.js"
+    "static/js/main.9ccaf6e3.chunk.js"
   ]
 }
