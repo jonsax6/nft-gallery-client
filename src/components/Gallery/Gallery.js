@@ -111,11 +111,9 @@ const Gallery = () => {
                   <Typography gutterBottom variant='h5'>
                     {card.artist}
                   </Typography>
-                  <Typography gutterBottom paragraph>
+                  <Typography>
                     {`'${card.title}'`}
                   </Typography>{' '}
-                  <CardActions>
-                  </CardActions>
                 </CardContent>
               </Card>
             </Grid>
