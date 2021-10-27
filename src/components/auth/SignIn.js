@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid'
 import { CardContent, Typography, InputAdornment, Card, Container } from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import LockIcon from '@mui/icons-material/Lock'
+import TextFieldComponent from '../TextField/TextFieldComponent'
 // import background from '../../images/Jose-Parla-Studio-Yellowtrace-54.jpeg'
 
 const SignIn = ({ msgAlert, setUser }) => {
@@ -57,91 +58,22 @@ const SignIn = ({ msgAlert, setUser }) => {
               <Typography variant="h5">
                 Login
               </Typography>
-              <TextField
-                required
-                id='email'
-                label='Email'
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle sx={{
-                        color: 'white'
-                      }} />
-                    </InputAdornment>
-                  ),
-                  style: { color: 'white' }
-                }}
-                variant='outlined'
-                color='primary'
+              <TextFieldComponent
+                required={true}
+                id={'email'}
+                label={'Email'}
+                icon={<AccountCircle sx={{ color: 'white' }}/>}
+                value={email}
                 onChange={handleChangeEmail}
-                sx={{
-                  width: '100%',
-                  marginTop: '40px',
-                  '& label.Mui-focused': {
-                    color: 'green'
-                  },
-                  '& label': {
-                    color: 'white'
-                  },
-                  '&:hover label': {
-                    color: '#5ba7ff'
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: 'white'
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#5ba7ff'
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'green'
-                    }
-                  }
-                }}
-              />{' '}
-              <TextField
-                required
-                id='password'
-                label='Password'
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LockIcon sx={{
-                        color: 'white'
-                      }} />
-                    </InputAdornment>
-                  ),
-                  style: { color: 'white' }
-                }}
-                type='password'
-                variant='outlined'
-                color='primary'
+              />
+              <TextFieldComponent
+                required={true}
+                id={'password'}
+                label={'Password'}
+                icon={<LockIcon sx={{ color: 'white' }}/>}
+                value={password}
                 onChange={handleChangePassword}
-                sx={{
-                  width: '100%',
-                  marginTop: '20px',
-                  '& label.Mui-focused': {
-                    color: 'green'
-                  },
-                  '& label': {
-                    color: 'white'
-                  },
-                  '&:hover label': {
-                    color: '#5ba7ff'
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: 'white'
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#5ba7ff'
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'green'
-                    }
-                  }
-                }}
-              />{' '}
+              />
               <Button
                 style={{ marginTop: '20px', marginLeft: '10px' }}
                 variant='contained' type='submit'

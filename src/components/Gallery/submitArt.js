@@ -5,9 +5,21 @@ import {
   Typography,
   Grid,
   Button,
-  Box
+  Box,
+  Card,
+  CardContent
 } from '@mui/material'
 import TextField from '@mui/material/TextField'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import ArtTrackIcon from '@mui/icons-material/ArtTrack'
+import HttpIcon from '@mui/icons-material/Http'
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn'
+import PaletteIcon from '@mui/icons-material/Palette'
+import EventIcon from '@mui/icons-material/Event'
+import HistoryIcon from '@mui/icons-material/History'
+import PublishIcon from '@mui/icons-material/Publish'
+import NoteIcon from '@mui/icons-material/Note'
+import TextFieldComponent from '../TextField/TextFieldComponent'
 
 const SubmitArt = ({ msgAlert, user }) => {
   const [artist, setArtist] = useState(null)
@@ -109,472 +121,154 @@ const SubmitArt = ({ msgAlert, user }) => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid
-            item
-            xs={10}
-            md={6}
-            lg={4}
-            style={{ marginTop: '20px', marginLeft: '10px', color: 'white' }}>
-            <Typography variant='h5'>Submit Artwork</Typography>
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
+      <Grid style={{ marginTop: '50px' }} container justify='center'>
+        <Grid item xs>
+          <div></div>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              required
-              id='artist-required'
-              label='Artist'
-              variant='outlined'
-              color='primary'
-              value={artist}
-              onChange={handleChangeArtist}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              required
-              id='title-required'
-              label='Title'
-              variant='outlined'
-              color='primary'
-              value={title}
-              onChange={handleChangeTitle}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
+        <Grid item xs={11} sm={11} md={6}>
+          <Card style={{ backgroundColor: 'gray' }}>
+            <CardContent style={{ color: 'white' }}>
+              <Typography variant='h5'>Submit Artwork</Typography>
+              <Grid container>
+                <Grid item xs={12}>
+                  <TextFieldComponent
+                    required={true}
+                    id={'artist'}
+                    label={'Artist'}
+                    icon={<AccountCircle sx={{ color: 'white' }} />}
+                    value={artist}
+                    onChange={handleChangeArtist}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextFieldComponent
+                    required={true}
+                    id={'title'}
+                    label={'Title'}
+                    icon={<ArtTrackIcon sx={{ color: 'white' }} />}
+                    value={title}
+                    onChange={handleChangeTitle}
+                  />
+                </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'imageUrl'}
+                      label={'Image URL'}
+                      icon={<HttpIcon sx={{ color: 'white' }} />}
+                      value={imageUrl}
+                      onChange={handleChangeImageUrl}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'releaseDate'}
+                      label={'Release Date'}
+                      icon={<EventIcon sx={{ color: 'white' }} />}
+                      value={releaseDate}
+                      onChange={handleChangeReleaseDate}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'medium'}
+                      label={'Medium'}
+                      icon={<PaletteIcon sx={{ color: 'white' }} />}
+                      value={medium}
+                      onChange={handleChangeMedium}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'artistRoyalty'}
+                      label={'Artist Royalty'}
+                      icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      value={artistRoyalty}
+                      onChange={handleChangeArtistRoyalty}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'curatorRoyalty'}
+                      label={'Curator Royalty'}
+                      icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      value={curatorRoyalty}
+                      onChange={handleChangeCuratorRoyalty}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'provenance'}
+                      label={'Provenance'}
+                      icon={<HttpIcon sx={{ color: 'white' }} />}
+                      value={provenance}
+                      onChange={handleChangeProvenance}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      id={'exhibitionHistory'}
+                      label={'Exhibition History'}
+                      icon={<HistoryIcon sx={{ color: 'white' }} />}
+                      value={exhibitionHistory}
+                      onChange={handleChangeExhibitionHistory}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      id={'publishingHistory'}
+                      label={'Publishing History'}
+                      icon={<PublishIcon sx={{ color: 'white' }} />}
+                      value={publishingHistory}
+                      onChange={handleChangePublishingHistory}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <TextFieldComponent
+                      id={'notes'}
+                      label={'Notes'}
+                      icon={<NoteIcon sx={{ color: 'white' }} />}
+                      value={notes}
+                      onChange={handleChangeNotes}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container>
+                  <Grid
+                    item
+                    xs={10}
+                    md={6}
+                    style={{ marginTop: '20px' }}>
+                    <Button
+                      variant='contained'
+                      type='submit'
+                      onClick={onCreateArtwork}>
+                      Submit Artwork
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              required
-              id='imageUrl-required'
-              label='ImageUrl'
-              variant='outlined'
-              color='primary'
-              value={imageUrl}
-              onChange={handleChangeImageUrl}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              required
-              id='releaseDate-required'
-              label='ReleaseDate'
-              variant='outlined'
-              color='primary'
-              value={releaseDate}
-              onChange={handleChangeReleaseDate}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
+        <Grid item xs>
+          <div></div>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              required
-              id='medium-required'
-              label='Medium'
-              variant='outlined'
-              color='primary'
-              value={medium}
-              onChange={handleChangeMedium}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              required
-              id='artistRoyalty-required'
-              label='ArtistRoyalty'
-              variant='outlined'
-              color='primary'
-              value={artistRoyalty}
-              onChange={handleChangeArtistRoyalty}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              required
-              id='curatorRoyalty-required'
-              label='CuratorRoyalty'
-              variant='outlined'
-              color='primary'
-              value={curatorRoyalty}
-              onChange={handleChangeCuratorRoyalty}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              required
-              id='provenance-required'
-              label='Provenance'
-              variant='outlined'
-              color='primary'
-              value={provenance}
-              onChange={handleChangeProvenance}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              id='exhibitionHistory-required'
-              label='ExhibitionHistory'
-              variant='outlined'
-              color='primary'
-              value={exhibitionHistory}
-              onChange={handleChangeExhibitionHistory}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs={5} md={3} lg={2}>
-            <TextField
-              id='publishingHistory-required'
-              label='PublishingHistory'
-              variant='outlined'
-              color='primary'
-              value={publishingHistory}
-              onChange={handleChangePublishingHistory}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid item xs={10} md={6} lg={4}>
-            <TextField
-              id='notes-required'
-              label='Notes'
-              variant='outlined'
-              color='primary'
-              value={notes}
-              onChange={handleChangeNotes}
-              sx={{
-                width: '100%',
-                marginTop: '20px',
-                '& label.Mui-focused': {
-                  color: 'green'
-                },
-                '& label': {
-                  color: 'white'
-                },
-                '&:hover label': {
-                  color: '#5ba7ff'
-                },
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderColor: 'white'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: '#5ba7ff'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: 'green'
-                  }
-                }
-              }}
-            />{' '}
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-          <Grid
-            item
-            xs={10}
-            md={6}
-            lg={4}
-            style={{ marginTop: '20px', marginLeft: '10px' }}>
-            <Button variant='contained' type='submit' onClick={onCreateArtwork}>
-              Submit Artwork
-            </Button>
-          </Grid>
-          <Grid item xs>
-            <div></div>
-          </Grid>
-        </Grid>
-      </Box>
+      </Grid>
     </>
   )
 }
