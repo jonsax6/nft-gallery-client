@@ -48,7 +48,7 @@ class App extends Component {
     const { msgAlerts, user } = this.state
 
     return (
-      <div style={{ backgroundColor: '#424242', height: '100vh' }}>
+      <div style={{ backgroundColor: '#424242', height: '110vh' }}>
         <CssBaseline />
         <Header user={user} />
         {msgAlerts.map((msgAlert) => (
