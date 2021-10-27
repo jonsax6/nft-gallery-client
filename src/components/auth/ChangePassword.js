@@ -1,87 +1,98 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { changePassword } from '../../api/auth'
-import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAlert/messages'
+import {
+  changePasswordSuccess,
+  changePasswordFailure
+} from '../AutoDismissAlert/messages'
+import Button from '@mui/material/Button'
+import Grid from '@mui/material/Grid'
+import {
+  CardContent,
+  Typography,
+  Card
+} from '@mui/material'
+import LockIcon from '@mui/icons-material/Lock'
+import TextFieldComponent from '../TextField/TextFieldComponent'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+const ChangePassword = ({ msgAlert, user }) => {
+  const [oldPassword, setOldPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const history = useHistory()
 
-class ChangePassword extends Component {
-  constructor (props) {
-    super(props)
+  const handleChangeOldPassword = (event) =>
+    setOldPassword(event.target.value)
 
-    this.state = {
-      oldPassword: '',
-      newPassword: ''
-    }
+  const handleChangeNewPassword = (event) =>
+    setNewPassword(event.target.value)
+
+  const onChangePassword = (event) => {
+    event.preventDefault()
+
+    changePassword({ oldPassword, newPassword }, user)
+      .then(() =>
+        msgAlert({
+          heading: 'Change Password Success',
+          message: changePasswordSuccess,
+          variant: 'success'
+        })
+      )
+      .then(() => history.push('/'))
+      .catch((error) => {
+        setOldPassword('')
+        setNewPassword('')
+        msgAlert({
+          heading: 'Change Password Failed with error: ' + error.message,
+          message: changePasswordFailure,
+          variant: 'error'
+        })
+      })
   }
-
-handleChange = (event) =>
-  this.setState({
-    [event.target.name]: event.target.value
-  })
-
-onChangePassword = (event) => {
-  event.preventDefault()
-
-  const { msgAlert, history, user } = this.props
-
-  changePassword(this.state, user)
-    .then(() =>
-      msgAlert({
-        heading: 'Change Password Success',
-        message: changePasswordSuccess,
-        variant: 'success'
-      })
-    )
-    .then(() => history.push('/'))
-    .catch((error) => {
-      this.setState({ oldPassword: '', newPassword: '' })
-      msgAlert({
-        heading: 'Change Password Failed with error: ' + error.message,
-        message: changePasswordFailure,
-        variant: 'error'
-      })
-    })
-}
-
-render () {
-  const { oldPassword, newPassword } = this.state
-
   return (
-    <div className='row'>
-      <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Change Password</h3>
-        <Form onSubmit={this.onChangePassword}>
-          <Form.Group controlId='oldPassword'>
-            <Form.Label>Old password</Form.Label>
-            <Form.Control
-              required
-              name='oldPassword'
-              value={oldPassword}
-              type='password'
-              placeholder='Old Password'
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId='newPassword'>
-            <Form.Label>New Password</Form.Label>
-            <Form.Control
-              required
-              name='newPassword'
-              value={newPassword}
-              type='password'
-              placeholder='New Password'
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Button variant='primary' type='submit'>Submit</Button>
-        </Form>
-      </div>
-    </div>
+    <>
+      <Grid style={{ marginTop: '50px' }} container justify='center'>
+        <Grid item xs>
+          <div></div>
+        </Grid>
+        <Grid item xs={12} sm={12} md={4}>
+          <Card style={{ backgroundColor: 'gray' }}>
+            <CardContent style={{ color: 'white' }}>
+              <Typography variant='h5'>Change Password</Typography>
+              <TextFieldComponent
+                required={true}
+                id={'oldPassword'}
+                label={'Old Password'}
+                icon={<LockIcon sx={{ color: 'white' }} />}
+                value={oldPassword}
+                type={'password'}
+                onChange={handleChangeOldPassword}
+              />
+              <TextFieldComponent
+                required={true}
+                id={'newPassword'}
+                label={'New Password'}
+                icon={<LockIcon sx={{ color: 'white' }} />}
+                value={newPassword}
+                type={'password'}
+                onChange={handleChangeNewPassword}
+              />
+              <Button
+                style={{ marginTop: '20px', marginLeft: '10px' }}
+                variant='contained'
+                type='submit'
+                onClick={onChangePassword}>
+                Update
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs>
+          <div></div>
+        </Grid>
+      </Grid>
+    </>
   )
 }
-}
 
-export default withRouter(ChangePassword)
+export default ChangePassword

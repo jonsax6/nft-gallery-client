@@ -72,6 +72,7 @@ const SignIn = ({ msgAlert, setUser }) => {
                 label={'Password'}
                 icon={<LockIcon sx={{ color: 'white' }}/>}
                 value={password}
+                type={'password'}
                 onChange={handleChangePassword}
               />
               <Button

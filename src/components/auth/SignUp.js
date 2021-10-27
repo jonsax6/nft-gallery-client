@@ -3,12 +3,11 @@ import { useHistory } from 'react-router-dom'
 import { signIn, signUp } from '../../api/auth'
 import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import { Typography, Card, CardContent, InputAdornment } from '@mui/material'
+import { Typography, Card, CardContent } from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import LockIcon from '@mui/icons-material/Lock'
+import TextFieldComponent from '../TextField/TextFieldComponent'
 
 const SignUp = ({ msgAlert, setUser }) => {
   const [email, setEmail] = useState('')
@@ -62,131 +61,30 @@ const SignUp = ({ msgAlert, setUser }) => {
               <Typography variant="h5">
                 Register for an Account
               </Typography>
-              <TextField
-                required
-                id='email'
-                label='Email'
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle sx={{ color: 'white' }} />
-                    </InputAdornment>
-                  ),
-                  style: { color: 'white' }
-                }}
-                variant='outlined'
-                color='primary'
+              <TextFieldComponent
+                required={true}
+                id={'email'}
+                label={'Email'}
+                icon={<AccountCircle sx={{ color: 'white' }} />}
+                variant={'outlined'}
                 onChange={handleChangeEmail}
-                sx={{
-                  width: '100%',
-                  marginTop: '40px',
-                  '& label.Mui-focused': {
-                    color: 'green'
-                  },
-                  '& label': {
-                    color: 'white'
-                  },
-                  '&:hover label': {
-                    color: '#5ba7ff'
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: 'white'
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#5ba7ff'
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'green'
-                    }
-                  }
-                }}
-              />{' '}
-              <TextField
-                required
-                id='password'
-                label='Password'
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LockIcon sx={{ color: 'white' }} />
-                    </InputAdornment>
-                  ),
-                  style: { color: 'white' }
-                }}
-                type='password'
-                variant='outlined'
-                color='primary'
+              />
+              <TextFieldComponent
+                required={true}
+                id={'password'}
+                label={'Password'}
+                icon={<LockIcon sx={{ color: 'white' }} />}
+                variant={'outlined'}
                 onChange={handleChangePassword}
-                sx={{
-                  width: '100%',
-                  marginTop: '20px',
-                  '& label.Mui-focused': {
-                    color: 'green'
-                  },
-                  '& label': {
-                    color: 'white'
-                  },
-                  '&:hover label': {
-                    color: '#5ba7ff'
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: 'white'
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#5ba7ff'
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'green'
-                    }
-                  }
-                }}
-              />{' '}
-              <TextField
-                required
-                id='passwordConfirmation'
-                label='Password Confirmation'
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LockIcon sx={{
-                        color: 'white'
-                      }} />
-                    </InputAdornment>
-                  ),
-                  style: { color: 'white' }
-                }}
-                type='password'
-                variant='outlined'
-                color='primary'
-                autoComplete='new-password'
+              />
+              <TextFieldComponent
+                required={true}
+                id={'passwordConfirmation'}
+                label={'Password Confirmation'}
+                icon={<LockIcon sx={{ color: 'white' }} />}
+                variant={'outlined'}
                 onChange={handleChangePasswordConfirmation}
-                sx={{
-                  width: '100%',
-                  marginTop: '20px',
-                  '& label.Mui-focused': {
-                    color: 'green'
-                  },
-                  '& label': {
-                    color: 'white'
-                  },
-                  '&:hover label': {
-                    color: '#5ba7ff'
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: 'white'
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#5ba7ff'
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'green'
-                    }
-                  }
-                }}
-              />{' '}
+              />
               <Button
                 style={{ marginTop: '20px', marginLeft: '10px' }}
                 variant='contained' type='submit'
