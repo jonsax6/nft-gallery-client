@@ -13,7 +13,7 @@ import Home from './components/Home/Home'
 import ChangePassword from './components/auth/ChangePassword'
 import Gallery from './components/Gallery/Gallery'
 import SubmitArt from './components/Gallery/submitArt'
-import { CssBaseline } from '@mui/material'
+import { CssBaseline, Container } from '@mui/material'
 import './App.css'
 
 class App extends Component {
@@ -61,7 +61,7 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-        <main className='container' style={{ width: '100vw', padding: '0' }}>
+        <Container style={{ width: '100vw', padding: '0', maxWidth: '100%' }}>
           <Route
             exact
             path='/'
@@ -117,7 +117,7 @@ class App extends Component {
               />
             )}
           />
-        </main>
+        </Container>
       </div>
     )
   }

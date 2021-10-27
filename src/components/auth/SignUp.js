@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { signIn, signUp } from '../../api/auth'
-import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
+import {
+  signUpSuccess,
+  signUpFailure,
+  missingEmail,
+  missingPassword,
+  missingPasswordConfirmation
+} from '../AutoDismissAlert/messages'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 import { Typography, Card, CardContent } from '@mui/material'
@@ -27,27 +33,51 @@ const SignUp = ({ msgAlert, setUser }) => {
   const onSignUp = (event) => {
     event.preventDefault()
 
-    signUp({ email, password, passwordConfirmation })
-      .then(() => signIn({ email, password }))
-      .then((res) => setUser(res.data.user))
-      .then(() =>
-        msgAlert({
-          heading: 'Sign Up Success',
-          message: signUpSuccess,
-          variant: 'success'
-        })
-      )
-      .then(() => history.push('/'))
-      .catch((error) => {
-        setEmail('')
-        setPassword('')
-        setPasswordConfirmation('')
-        msgAlert({
-          heading: 'Sign Up Failed with error: ' + error.message,
-          message: signUpFailure,
-          variant: 'error'
-        })
+    msgAlert({
+      heading: 'passwords do not match'
+    })
+
+    if (email === '') {
+      msgAlert({
+        heading: 'email field is required. Cannot be empty',
+        message: missingEmail,
+        variant: 'error'
       })
+    } else if (password === '') {
+      msgAlert({
+        heading: 'password field is required. Cannot be empty',
+        message: missingPassword,
+        variant: 'error'
+      })
+    } else if (passwordConfirmation === '') {
+      msgAlert({
+        heading: 'password confirmation field is required. Cannot be empty',
+        message: missingPasswordConfirmation,
+        variant: 'error'
+      })
+    } else {
+      signUp({ email, password, passwordConfirmation })
+        .then(() => signIn({ email, password }))
+        .then((res) => setUser(res.data.user))
+        .then(() =>
+          msgAlert({
+            heading: 'Sign Up Success',
+            message: signUpSuccess,
+            variant: 'success'
+          })
+        )
+        .then(() => history.push('/'))
+        .catch((error) => {
+          setEmail('')
+          setPassword('')
+          setPasswordConfirmation('')
+          msgAlert({
+            heading: 'Sign Up Failed with error: ' + error.message,
+            message: signUpFailure,
+            variant: 'error'
+          })
+        })
+    }
   }
   return (
     <>
@@ -75,6 +105,7 @@ const SignUp = ({ msgAlert, setUser }) => {
                 label={'Password'}
                 icon={<LockIcon sx={{ color: 'white' }} />}
                 variant={'outlined'}
+                type={'password'}
                 onChange={handleChangePassword}
               />
               <TextFieldComponent
@@ -83,6 +114,7 @@ const SignUp = ({ msgAlert, setUser }) => {
                 label={'Password Confirmation'}
                 icon={<LockIcon sx={{ color: 'white' }} />}
                 variant={'outlined'}
+                type={'password'}
                 onChange={handleChangePasswordConfirmation}
               />
               <Button

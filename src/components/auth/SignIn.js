@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory, NavLink } from 'react-router-dom'
 import { signIn } from '../../api/auth'
-import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
+import { signInSuccess, signInFailure, missingEmail, missingPassword } from '../AutoDismissAlert/messages'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
@@ -26,25 +26,39 @@ const SignIn = ({ msgAlert, setUser }) => {
   const onSignIn = (event) => {
     event.preventDefault()
 
-    signIn({ email, password, history })
-      .then((res) => setUser(res.data.user))
-      .then(() =>
-        msgAlert({
-          heading: 'Sign In Success',
-          message: signInSuccess,
-          variant: 'success'
-        })
-      )
-      .then(() => history.push('/'))
-      .catch((error) => {
-        setEmail('')
-        setPassword('')
-        msgAlert({
-          heading: 'Sign In Failed with error: ' + error.message,
-          message: signInFailure,
-          variant: 'error'
-        })
+    if (email === '') {
+      msgAlert({
+        heading: 'email field is required. Cannot be empty',
+        message: missingEmail,
+        variant: 'error'
       })
+    } else if (password === '') {
+      msgAlert({
+        heading: 'password field is required. Cannot be empty',
+        message: missingPassword,
+        variant: 'error'
+      })
+    } else {
+      signIn({ email, password, history })
+        .then((res) => setUser(res.data.user))
+        .then(() =>
+          msgAlert({
+            heading: 'Sign In Success',
+            message: signInSuccess,
+            variant: 'success'
+          })
+        )
+        .then(() => history.push('/'))
+        .catch((error) => {
+          setEmail('')
+          setPassword('')
+          msgAlert({
+            heading: 'Sign In Failed with error: ' + error.message,
+            message: signInFailure,
+            variant: 'error'
+          })
+        })
+    }
   }
   return (
     <>
@@ -74,7 +88,7 @@ const SignIn = ({ msgAlert, setUser }) => {
                 onChange={handleChangePassword}
               />
               <Button
-                style={{ marginTop: '20px', marginLeft: '10px' }}
+                style={{ marginTop: '20px' }}
                 variant='contained'
                 type='submit'
                 onClick={onSignIn}>
