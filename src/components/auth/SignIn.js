@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
 import Button from '@mui/material/Button'
@@ -55,14 +55,12 @@ const SignIn = ({ msgAlert, setUser }) => {
         <Grid item xs={12} sm={12} md={4}>
           <Card style={{ backgroundColor: 'gray' }}>
             <CardContent style={{ color: 'white' }}>
-              <Typography variant="h5">
-                Login
-              </Typography>
+              <Typography variant='h5'>Login</Typography>
               <TextFieldComponent
                 required={true}
                 id={'email'}
                 label={'Email'}
-                icon={<AccountCircle sx={{ color: 'white' }}/>}
+                icon={<AccountCircle sx={{ color: 'white' }} />}
                 value={email}
                 onChange={handleChangeEmail}
               />
@@ -70,17 +68,34 @@ const SignIn = ({ msgAlert, setUser }) => {
                 required={true}
                 id={'password'}
                 label={'Password'}
-                icon={<LockIcon sx={{ color: 'white' }}/>}
+                icon={<LockIcon sx={{ color: 'white' }} />}
                 value={password}
                 type={'password'}
                 onChange={handleChangePassword}
               />
               <Button
                 style={{ marginTop: '20px', marginLeft: '10px' }}
-                variant='contained' type='submit'
+                variant='contained'
+                type='submit'
                 onClick={onSignIn}>
                 Sign In
               </Button>
+              <Typography
+                variant='h6'
+                style={{ marginTop: '20px', marginBottom: '10px' }}>
+                No account yet?
+              </Typography>
+              <Typography paragraph style={{ marginBottom: '20px' }}>
+                Get the inside track on upcoming Releases, the newest
+                collaborations and latest events, along with purchasing using
+                Ethereum with the metamask chrome browser extension.
+              </Typography>
+              <NavLink
+                style={{ marginTop: '50px', textDecoration: 'none' }}
+                to='/sign-up'
+                className='nav-link'>
+                <Button color='warning' variant='outlined'>Join Zyzygy studios</Button>
+              </NavLink>
             </CardContent>
           </Card>
         </Grid>
