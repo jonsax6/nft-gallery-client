@@ -15,6 +15,7 @@ import {
 } from '@mui/material'
 import LockIcon from '@mui/icons-material/Lock'
 import TextFieldComponent from '../TextField/TextFieldComponent'
+import VpnKeyIcon from '@mui/icons-material/VpnKey'
 
 const ChangePassword = ({ msgAlert, user }) => {
   const [oldPassword, setOldPassword] = useState('')
@@ -58,7 +59,16 @@ const ChangePassword = ({ msgAlert, user }) => {
         <Grid item xs={12} sm={12} md={4}>
           <Card style={{ backgroundColor: 'gray' }}>
             <CardContent style={{ color: 'white' }}>
-              <Typography variant='h5'>Change Password</Typography>
+              <Grid container>
+                <Grid item>
+                  <VpnKeyIcon
+                    sx={{ color: 'white', marginRight: '10px', height: '30px' }}
+                  />
+                </Grid>
+                <Grid item>
+                  <Typography variant='h5'>Change Password</Typography>
+                </Grid>
+              </Grid>{' '}
               <TextFieldComponent
                 required={true}
                 id={'oldPassword'}

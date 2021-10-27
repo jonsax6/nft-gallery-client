@@ -10,6 +10,7 @@ import { CardContent, Typography, InputAdornment, Card, Container } from '@mui/m
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import LockIcon from '@mui/icons-material/Lock'
 import TextFieldComponent from '../TextField/TextFieldComponent'
+import LoginIcon from '@mui/icons-material/Login'
 // import background from '../../images/Jose-Parla-Studio-Yellowtrace-54.jpeg'
 
 const SignIn = ({ msgAlert, setUser }) => {
@@ -69,7 +70,16 @@ const SignIn = ({ msgAlert, setUser }) => {
         <Grid item xs={12} sm={12} md={4}>
           <Card style={{ backgroundColor: 'gray' }}>
             <CardContent style={{ color: 'white' }}>
-              <Typography variant='h5'>Login</Typography>
+              <Grid container>
+                <Grid item>
+                  <LoginIcon
+                    sx={{ color: 'white', marginRight: '10px', height: '30px' }}
+                  />
+                </Grid>
+                <Grid item>
+                  <Typography variant='h5'>Login to Your Account</Typography>
+                </Grid>
+              </Grid>{' '}
               <TextFieldComponent
                 required={true}
                 id={'email'}
@@ -100,13 +110,18 @@ const SignIn = ({ msgAlert, setUser }) => {
                 No account yet?
               </Typography>
               <Typography paragraph style={{ marginBottom: '20px' }}>
-                Get the inside track on upcoming Releases, the newest collaborations and latest events, along with purchasing any of our works using Ethereum with the metamask chrome browser extension.
+                Get the inside track on upcoming Releases, the newest
+                collaborations and latest events, along with purchasing any of
+                our works using Ethereum with the metamask chrome browser
+                extension.
               </Typography>
               <NavLink
                 style={{ marginTop: '50px', textDecoration: 'none' }}
                 to='/sign-up'
                 className='nav-link'>
-                <Button color='success' variant='contained'>Join Zyzygy studios</Button>
+                <Button color='success' variant='contained'>
+                  Join Zyzygy studios
+                </Button>
               </NavLink>
             </CardContent>
           </Card>

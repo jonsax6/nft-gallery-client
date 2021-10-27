@@ -83,7 +83,7 @@ const Gallery = () => {
         }}>
         <Grid container spacing={4}>
           {cards.map((card, i) => (
-            <Grid item key={i} xs={12} sm={6} md={4} lg={3}>
+            <Grid item key={i} xs={12} sm={6} md={4}>
               <Card
                 sx={{
                   height: '100%',

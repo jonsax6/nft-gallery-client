@@ -14,6 +14,7 @@ import { Typography, Card, CardContent } from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import LockIcon from '@mui/icons-material/Lock'
 import TextFieldComponent from '../TextField/TextFieldComponent'
+import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder'
 
 const SignUp = ({ msgAlert, setUser }) => {
   const [email, setEmail] = useState('')
@@ -88,9 +89,16 @@ const SignUp = ({ msgAlert, setUser }) => {
         <Grid item xs={12} sm={12} md={4}>
           <Card style={{ backgroundColor: 'gray' }}>
             <CardContent style={{ color: 'white' }}>
-              <Typography variant="h5">
-                Register for an Account
-              </Typography>
+              <Grid container>
+                <Grid item>
+                  <CreateNewFolderIcon
+                    sx={{ color: 'white', marginRight: '10px', height: '30px' }}
+                  />
+                </Grid>
+                <Grid item>
+                  <Typography variant='h5'>Register for an Account</Typography>
+                </Grid>
+              </Grid>{' '}
               <TextFieldComponent
                 required={true}
                 id={'email'}
@@ -119,7 +127,8 @@ const SignUp = ({ msgAlert, setUser }) => {
               />
               <Button
                 style={{ marginTop: '20px', marginLeft: '10px' }}
-                variant='contained' type='submit'
+                variant='contained'
+                type='submit'
                 onClick={onSignUp}>
                 Register
               </Button>

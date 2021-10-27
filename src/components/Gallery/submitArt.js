@@ -128,7 +128,16 @@ const SubmitArt = ({ msgAlert, user }) => {
         <Grid item xs={11} sm={11} md={6}>
           <Card style={{ backgroundColor: 'gray' }}>
             <CardContent style={{ color: 'white' }}>
-              <Typography variant='h5'>Submit Your Artwork</Typography>
+              <Grid container>
+                <Grid item>
+                  <PublishIcon
+                    sx={{ color: 'white', marginRight: '10px', height: '30px' }}
+                  />
+                </Grid>
+                <Grid item>
+                  <Typography variant='h5'>Submit Your Artwork</Typography>
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid item xs={12}>
                   <TextFieldComponent
@@ -248,11 +257,7 @@ const SubmitArt = ({ msgAlert, user }) => {
                   </Grid>
                 </Grid>
                 <Grid container>
-                  <Grid
-                    item
-                    xs={10}
-                    md={6}
-                    style={{ marginTop: '20px' }}>
+                  <Grid item xs={10} md={6} style={{ marginTop: '20px' }}>
                     <Button
                       variant='contained'
                       type='submit'
