@@ -128,7 +128,7 @@ const SubmitArt = ({ msgAlert, user }) => {
         <Grid item xs={11} sm={11} md={6}>
           <Card style={{ backgroundColor: 'gray' }}>
             <CardContent style={{ color: 'white' }}>
-              <Typography variant='h5'>Submit Artwork</Typography>
+              <Typography variant='h5'>Submit Your Artwork</Typography>
               <Grid container>
                 <Grid item xs={12}>
                   <TextFieldComponent

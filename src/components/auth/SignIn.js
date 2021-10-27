@@ -108,7 +108,7 @@ const SignIn = ({ msgAlert, setUser }) => {
                 style={{ marginTop: '50px', textDecoration: 'none' }}
                 to='/sign-up'
                 className='nav-link'>
-                <Button color='warning' variant='outlined'>Join Zyzygy studios</Button>
+                <Button color='success' variant='contained'>Join Zyzygy studios</Button>
               </NavLink>
             </CardContent>
           </Card>

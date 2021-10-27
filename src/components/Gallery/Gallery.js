@@ -47,7 +47,7 @@ const Gallery = () => {
   const handleClose = () => setOpen(false)
 
   return (
-    <div style={{ backgroundColor: '#424242' }}>
+    <div style={{ backgroundColor: '#202020' }}>
       <Container
         maxWidth='sm'
         sx={{
