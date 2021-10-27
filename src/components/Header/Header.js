@@ -40,14 +40,14 @@ const Header = ({ user }) => (
     <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
       <AppBar style={{ backgroundColor: '#424242' }} position='static'>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size='large'
             edge='start'
             color='inherit'
             aria-label='menu'
             sx={{ mr: 2 }}>
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Link
             to='/'
             style={{
