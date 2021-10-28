@@ -38,7 +38,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <>
     <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
-      <AppBar style={{ backgroundColor: '#424242' }} position='static'>
+      <AppBar style={{ backgroundColor: '#424242' }} position='fixed'>
         <Toolbar>
           {/* <IconButton
             size='large'

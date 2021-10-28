@@ -29,7 +29,9 @@ const ChangePassword = ({ msgAlert, user }) => {
     setNewPassword(event.target.value)
 
   const onChangePassword = (event) => {
-    event.preventDefault()
+    if (event) {
+      event.preventDefault()
+    }
 
     changePassword({ oldPassword, newPassword }, user)
       .then(() =>
@@ -50,9 +52,17 @@ const ChangePassword = ({ msgAlert, user }) => {
         })
       })
   }
+
+  const handleKeypress = (event) => {
+    // it triggers by pressing the enter key
+    if (event.keyCode === 13 || event.which === 13) {
+      onChangePassword()
+    }
+  }
+
   return (
     <>
-      <Grid style={{ marginTop: '50px' }} container justify='center'>
+      <Grid style={{ paddingTop: '150px' }} container justify='center'>
         <Grid item xs>
           <div></div>
         </Grid>
@@ -86,6 +96,7 @@ const ChangePassword = ({ msgAlert, user }) => {
                 value={newPassword}
                 type={'password'}
                 onChange={handleChangeNewPassword}
+                keyPress={handleKeypress}
               />
               <Button
                 style={{ marginTop: '20px' }}

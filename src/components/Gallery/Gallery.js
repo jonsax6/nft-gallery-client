@@ -52,7 +52,7 @@ const Gallery = () => {
         maxWidth='sm'
         sx={{
           padding: '8, 0, 6',
-          marginTop: '0px'
+          paddingTop: '100px'
         }}>
         <Typography
           style={{ fontWeight: '100', color: 'white', marginTop: '75px' }}

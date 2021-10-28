@@ -25,7 +25,9 @@ const SignIn = ({ msgAlert, setUser }) => {
     setPassword(event.target.value)
 
   const onSignIn = (event) => {
-    event.preventDefault()
+    if (event) {
+      event.preventDefault()
+    }
 
     if (email === '') {
       msgAlert({
@@ -61,9 +63,17 @@ const SignIn = ({ msgAlert, setUser }) => {
         })
     }
   }
+
+  const handleKeypress = (event) => {
+    // it triggers by pressing the enter key
+    if (event.keyCode === 13 || event.which === 13) {
+      onSignIn()
+    }
+  }
+
   return (
     <>
-      <Grid style={{ marginTop: '50px' }} container justify='center'>
+      <Grid style={{ paddingTop: '150px' }} container justify='center'>
         <Grid item xs>
           <div></div>
         </Grid>
@@ -96,6 +106,7 @@ const SignIn = ({ msgAlert, setUser }) => {
                 value={password}
                 type={'password'}
                 onChange={handleChangePassword}
+                keyPress={handleKeypress}
               />
               <Button
                 style={{ marginTop: '20px' }}

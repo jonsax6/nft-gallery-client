@@ -32,7 +32,9 @@ const SignUp = ({ msgAlert, setUser }) => {
     setPasswordConfirmation(event.target.value)
 
   const onSignUp = (event) => {
-    event.preventDefault()
+    if (event) {
+      event.preventDefault()
+    }
 
     msgAlert({
       heading: 'passwords do not match'
@@ -80,9 +82,17 @@ const SignUp = ({ msgAlert, setUser }) => {
         })
     }
   }
+
+  const handleKeypress = (event) => {
+    // it triggers by pressing the enter key
+    if (event.keyCode === 13 || event.which === 13) {
+      onSignUp()
+    }
+  }
+
   return (
     <>
-      <Grid style={{ marginTop: '50px' }} container justify='center'>
+      <Grid style={{ paddingTop: '150px' }} container justify='center'>
         <Grid item xs>
           <div></div>
         </Grid>
@@ -124,6 +134,7 @@ const SignUp = ({ msgAlert, setUser }) => {
                 variant={'outlined'}
                 type={'password'}
                 onChange={handleChangePasswordConfirmation}
+                keyPress={handleKeypress}
               />
               <Button
                 style={{ marginTop: '20px' }}

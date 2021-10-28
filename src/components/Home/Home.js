@@ -11,7 +11,8 @@ const Home = () => {
       backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
-      maxWidth: '100%'
+      maxWidth: '100%',
+      paddingTop: '100px'
     }}>
       <Typography
         style={{ fontWeight: '100', padding: '50px' }}

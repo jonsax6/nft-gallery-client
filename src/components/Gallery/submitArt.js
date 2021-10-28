@@ -83,7 +83,10 @@ const SubmitArt = ({ msgAlert, user }) => {
     setNotes(event.target.value)
 
   const onCreateArtwork = (event) => {
-    event.preventDefault()
+    if (event) {
+      event.preventDefault()
+    }
+
     console.log(art)
     console.log(success)
 
@@ -119,9 +122,16 @@ const SubmitArt = ({ msgAlert, user }) => {
       })
   }
 
+  const handleKeypress = (event) => {
+    // it triggers by pressing the enter key
+    if (event.keyCode === 13 || event.which === 13) {
+      onCreateArtwork()
+    }
+  }
+
   return (
     <>
-      <Grid style={{ marginTop: '50px' }} container justify='center'>
+      <Grid style={{ paddingTop: '150px' }} container justify='center'>
         <Grid item xs>
           <div></div>
         </Grid>
@@ -253,6 +263,7 @@ const SubmitArt = ({ msgAlert, user }) => {
                       icon={<NoteIcon sx={{ color: 'white' }} />}
                       value={notes}
                       onChange={handleChangeNotes}
+                      keyPress={handleKeypress}
                     />
                   </Grid>
                 </Grid>

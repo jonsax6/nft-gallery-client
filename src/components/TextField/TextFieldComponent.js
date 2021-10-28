@@ -4,7 +4,7 @@ import {
   InputAdornment
 } from '@mui/material'
 
-const TextFieldComponent = ({ id, label, icon, value, onChange, type, required }) => {
+const TextFieldComponent = ({ id, label, icon, value, onChange, type, required, keyPress }) => {
   return (
     <TextField
       required={required}
@@ -23,6 +23,7 @@ const TextFieldComponent = ({ id, label, icon, value, onChange, type, required }
       value={value}
       type={type}
       onChange={onChange}
+      onKeyPress={keyPress}
       sx={{
         width: '100%',
         marginTop: '20px',
