@@ -135,7 +135,7 @@ const SubmitArt = ({ msgAlert, user }) => {
         <Grid item xs>
           <div></div>
         </Grid>
-        <Grid item xs={11} sm={11} md={6}>
+        <Grid item xs={11} sm={9} md={8} lg={6} xl={4}>
           <Card style={{ backgroundColor: 'gray' }}>
             <CardContent style={{ color: 'white' }}>
               <Grid container>

@@ -96,7 +96,7 @@ const SignUp = ({ msgAlert, setUser }) => {
         <Grid item xs>
           <div></div>
         </Grid>
-        <Grid item xs={12} sm={12} md={4}>
+        <Grid item xs={11} sm={9} md={8} lg={6} xl={4}>
           <Card style={{ backgroundColor: 'gray' }}>
             <CardContent style={{ color: 'white' }}>
               <Grid container>
