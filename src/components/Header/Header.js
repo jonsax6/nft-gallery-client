@@ -1,16 +1,15 @@
 import React, { Fragment } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-// import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
-// import ColorLensIcon from '@mui/icons-material/ColorLens'
-// import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-// import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  IconButton,
+  MenuIcon,
+  CssBaseline
+} from '@mui/material'
 import logo from '../../images/zyzygy_eclipse1.png'
 
 const authenticatedOptions = (
@@ -39,6 +38,7 @@ const Header = ({ user }) => (
   <>
     <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
       <AppBar style={{ backgroundColor: '#424242' }} position='fixed'>
+        <CssBaseline />
         <Toolbar>
           {/* <IconButton
             size='large'
@@ -64,9 +64,6 @@ const Header = ({ user }) => (
                 marginTop: 10
               }}
             />
-            {/* <ChevronLeftIcon />
-            <ColorLensIcon />
-            <ChevronRightIcon style={{ marginRight: '10px' }} /> */}
           </Link>
           {user && (
             <span className='navbar-text mr-2'>Welcome, {user.email}</span>
