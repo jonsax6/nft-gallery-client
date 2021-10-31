@@ -21,23 +21,21 @@ const App = () => {
   const [msgAlerts, setMessageAlerts] = useState([])
   const [openDrawer, setOpenDrawer] = useState(false)
 
-
-
   const setUserAccount = (user) => setUser({ user })
 
-  clearUser = () => this.setState({ user: null })
+  const clearUser = () => setUser(null)
 
-  deleteAlert = (id) => {
-    this.setState((state) => {
-      return { msgAlerts: state.msgAlerts.filter((msg) => msg.id !== id) }
+  const deleteAlert = (id) => {
+    setMessageAlerts(() => {
+      return { msgAlerts: msgAlerts.filter((msg) => msg.id !== id) }
     })
   }
 
-  msgAlert = ({ heading, message, variant }) => {
+  const msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
     setMessageAlerts(() => {
       return {
-        msgAlerts: [...msgAlerts, { heading, message, variant, id }],
+        msgAlerts: [...msgAlerts, { heading, message, variant, id }]
       }
     })
   }
@@ -53,7 +51,7 @@ const App = () => {
           variant={msgAlert.variant}
           message={msgAlert.message}
           id={msgAlert.id}
-          deleteAlert={this.deleteAlert}
+          deleteAlert={deleteAlert}
         />
       ))}
       <Container style={{ width: '100vw', padding: '0', maxWidth: '100%' }}>
@@ -88,8 +86,8 @@ const App = () => {
           render={() => (
             <SignOut
               style={{ backgroundColor: 'black' }}
-              msgAlert={this.msgAlert}
-              clearUser={this.clearUser}
+              msgAlert={msgAlert}
+              clearUser={clearUser}
               user={user}
             />
           )}
@@ -98,7 +96,7 @@ const App = () => {
           user={user}
           path='/change-password'
           render={() => (
-            <ChangePassword msgAlert={this.msgAlert} user={user} />
+            <ChangePassword msgAlert={msgAlert} user={user} />
           )}
         />
         <AuthenticatedRoute
@@ -107,7 +105,7 @@ const App = () => {
           render={() => (
             <SubmitArt
               style={{ backgroundColor: 'black' }}
-              msgAlert={this.msgAlert}
+              msgAlert={msgAlert}
               user={user}
             />
           )}
