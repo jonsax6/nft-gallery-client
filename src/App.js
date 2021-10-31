@@ -21,7 +21,7 @@ const App = () => {
   const [msgAlerts, setMessageAlerts] = useState([])
   const [openDrawer, setOpenDrawer] = useState(false)
 
-  const setUserAccount = (user) => setUser({ user })
+  const setUserAccount = (user) => setUser(user)
 
   const clearUser = () => setUser(null)
 
