@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // import Alert from 'react-bootstrap/Alert'
 // import Alert from '@mui/material/Alert'
 // import Snackbar from '@mui/material/Snackbar'
@@ -6,46 +6,37 @@ import { Alert, Snackbar, Typography } from '@mui/material'
 
 import './AutoDismissAlert.scss'
 
-class AutoDismissAlert extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      show: true
+const AutoDismissAlert = ({ heading, variant, message, id, deleteAlert }) => {
+  const [show, setShow] = useState(true)
+  const [timeoutId, setTimeoutId] = useState(null)
+
+  useEffect(() => {
+    if (!show) {
+      setTimeout(() => {
+        deleteAlert(id)
+      }, 300)
     }
-    this.timeoutId = null
-  }
+    setTimeout(handleClose, 5000)
+    // Specify how to clean up after this effect: componentWillUnmount
+    return function cleanup () {
+      clearTimeout(timeoutId)
+    }
+  })
 
-  componentDidMount () {
-    this.timeoutId = setTimeout(this.handleClose, 5000)
-  }
-
-  componentWillUnmount () {
-    clearTimeout(this.timeoutId)
-  }
-
-handleClose = () => this.setState({ show: false })
-
-render () {
-  const { variant, heading, message, deleteAlert, id } = this.props
-
-  // Delete this alert after the fade animation time (300 ms by default)
-  if (!this.state.show) {
-    setTimeout(() => {
-      deleteAlert(id)
-    }, 300)
-  }
+  const handleClose = () => setShow(false)
 
   return (
-    <Snackbar open={open} autoHideDuration={6000} onClose={this.handleClose}>
-      <Alert variant='filled' severity={variant} onClose={this.handleClose}>
-        <div className='container'>
-          <Typography variant='h6'>{heading}</Typography>
-          <p className='alert-body'>{message}</p>
-        </div>
-      </Alert>
-    </Snackbar>
+    <>
+      <Snackbar open={true} autoHideDuration={6000} onClose={handleClose}>
+        <Alert variant="filled" severity={variant} onClose={handleClose}>
+          <div className="container">
+            <Typography variant="h6">{heading}</Typography>
+            <p className="alert-body">{message}</p>
+          </div>
+        </Alert>
+      </Snackbar>
+    </>
   )
-}
 }
 
 export default AutoDismissAlert

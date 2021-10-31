@@ -1,5 +1,5 @@
 /* eslint-disable no-tabs */
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
@@ -16,38 +16,20 @@ import SubmitArt from './components/Gallery/submitArt'
 import { CssBaseline, Container } from '@mui/material'
 import './App.css'
 
-class App extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      user: null,
-      msgAlerts: []
-    }
+const App = () => {
+  const [user, setUser] = useState(null)
+  const [msgAlerts, setMsgAlerts] = useState([])
+
+  const clearUser = () => setUser(null)
+  const deleteAlert = (id) => {
+    setMsgAlerts(msgAlerts.filter((msg) => msg.id !== id))
   }
-
-  setUser = (user) => this.setState({ user })
-
-  clearUser = () => this.setState({ user: null })
-
-  deleteAlert = (id) => {
-    this.setState((state) => {
-      return { msgAlerts: state.msgAlerts.filter((msg) => msg.id !== id) }
-    })
-  }
-
-  msgAlert = ({ heading, message, variant }) => {
+  const msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
-    this.setState((state) => {
-      return {
-        msgAlerts: [...state.msgAlerts, { heading, message, variant, id }]
-      }
-    })
+    setMsgAlerts([...msgAlerts, { heading, message, variant, id }])
   }
-
-  render () {
-    const { msgAlerts, user } = this.state
-
-    return (
+  return (
+    <>
       <div style={{ backgroundColor: '#202020', height: '100vh' }}>
         <CssBaseline />
         <Header user={user} />
@@ -58,69 +40,69 @@ class App extends Component {
             variant={msgAlert.variant}
             message={msgAlert.message}
             id={msgAlert.id}
-            deleteAlert={this.deleteAlert}
+            deleteAlert={deleteAlert}
           />
         ))}
         <Container style={{ width: '100vw', padding: '0', maxWidth: '100%' }}>
           <Route
             exact
-            path='/'
+            path="/"
             render={() => <Home style={{ backgroundColor: '#202020' }} />}
           />
           <Route
-            path='/sign-up'
+            path="/sign-up"
             render={() => (
               <SignUp
                 style={{ backgroundColor: 'black' }}
-                msgAlert={this.msgAlert}
-                setUser={this.setUser}
+                msgAlert={msgAlert}
+                setUser={setUser}
               />
             )}
           />
           <Route
-            path='/sign-in'
+            path="/sign-in"
             render={() => (
-              <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+              <SignIn msgAlert={msgAlert} setUser={setUser} />
             )}
           />
           <Route
-            path='/gallery'
+            path="/gallery"
             render={() => <Gallery style={{ backgroundColor: '#202020' }} />}
           />
           <AuthenticatedRoute
             user={user}
-            path='/sign-out'
+            path="/sign-out"
             render={() => (
               <SignOut
                 style={{ backgroundColor: 'black' }}
-                msgAlert={this.msgAlert}
-                clearUser={this.clearUser}
+                msgAlert={msgAlert}
+                clearUser={clearUser}
                 user={user}
               />
             )}
           />
           <AuthenticatedRoute
             user={user}
-            path='/change-password'
+            path="/change-password"
             render={() => (
-              <ChangePassword msgAlert={this.msgAlert} user={user} />
+              <ChangePassword msgAlert={msgAlert} user={user} />
             )}
           />
           <AuthenticatedRoute
             user={user}
-            path='/submit-art'
+            path="/submit-art"
             render={() => (
               <SubmitArt
                 style={{ backgroundColor: 'black' }}
-                msgAlert={this.msgAlert}
+                msgAlert={msgAlert}
                 user={user}
               />
             )}
           />
         </Container>
       </div>
-    )
-  }
+    </>
+  )
 }
 
 export default App
