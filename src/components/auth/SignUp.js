@@ -16,7 +16,7 @@ import LockIcon from '@mui/icons-material/Lock'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder'
 
-const SignUp = ({ msgAlert, setUser }) => {
+const SignUp = ({ msgAlert, setUserAccount }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -61,7 +61,7 @@ const SignUp = ({ msgAlert, setUser }) => {
     } else {
       signUp({ email, password, passwordConfirmation })
         .then(() => signIn({ email, password }))
-        .then((res) => setUser(res.data.user))
+        .then((res) => setUserAccount(res.data.user))
         .then(() =>
           msgAlert({
             heading: 'Sign Up Success',

@@ -33,7 +33,7 @@ const App = () => {
 
   const msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
-    setMessageAlerts(() => {
+    setMessageAlerts((msgAlerts) => {
       return {
         msgAlerts: [...msgAlerts, { heading, message, variant, id }]
       }
@@ -66,14 +66,17 @@ const App = () => {
             <SignUp
               style={{ backgroundColor: 'black' }}
               msgAlert={msgAlert}
-              setUser={setUser}
+              setUserAccount={setUserAccount}
             />
           )}
         />
         <Route
           path='/sign-in'
           render={() => (
-            <SignIn msgAlert={msgAlert} setUser={setUser} />
+            <SignIn
+              msgAlert={msgAlert}
+              setUserAccount={setUserAccount}
+            />
           )}
         />
         <Route

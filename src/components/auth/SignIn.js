@@ -13,7 +13,7 @@ import TextFieldComponent from '../TextField/TextFieldComponent'
 import LoginIcon from '@mui/icons-material/Login'
 // import background from '../../images/Jose-Parla-Studio-Yellowtrace-54.jpeg'
 
-const SignIn = ({ msgAlert, setUser }) => {
+const SignIn = ({ msgAlert, setUserAccount }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const history = useHistory()
@@ -43,7 +43,7 @@ const SignIn = ({ msgAlert, setUser }) => {
       })
     } else {
       signIn({ email, password, history })
-        .then((res) => setUser(res.data.user))
+        .then((res) => setUserAccount(res.data.user))
         .then(() =>
           msgAlert({
             heading: 'Sign In Success',
