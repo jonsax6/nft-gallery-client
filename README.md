@@ -13,11 +13,14 @@ If it's also coded into the smart contract, Zyzygy studios can receive a small r
 
 There are however a few technical issues that need to be solved in order to prevent counterfeiting. There is nothing stopping someone from creating a copy of the art, and placing the same QR code on the counterfeit art piece. So the authenticity of the artwork will still need to be verified by 3rd parties.  Until a foolproof system for this can be created, authenticity will either be on an honor code system, or need to be verified by an expert.  In the example of real estate or land rights, this is not an issue because physical land or a house, cannot be "faked" in any way, so the ownership rights, or deeds, will simply be the NFT that stores all the ownership rights, which itself, cannot be altered or faked.  But small-scale artwork can be faked, so this could present an opportunity for counterfeiting. Bad actors will be bad actors, so for now, authenticity will still be in question, in the same way that it is now, without the NFT ownership rights.  The NFT will simply protect the artist's royalty rights by enforcing the contract automatically.  If the sale of the art takes place, the royalties will be paid, no matter what. 
 
-Website URL: https://jonsax6.github.io/nft-gallery-client/
+### Website URL: 
+https://jonsax6.github.io/nft-gallery-client/
 
-API URL: https://rocky-ocean-73265.herokuapp.com
+### API URL:
+https://rocky-ocean-73265.herokuapp.com
 
-API Repo: https://github.com/jonsax6/nft-gallery-api
+### API Repo: 
+https://github.com/jonsax6/nft-gallery-api
 
 ## About our website:
 
@@ -27,7 +30,7 @@ Zyzygy Studios is an art gallery site where you can view all artist's works, and
 The website was created using React.js, Express and MongoDB as part of an educational final project for General Assembly's Software Engineering Intensive in October 2021 by Jonathan Cole.
 
 ---
-Specific Technologies Used:
+## Specific Technologies Used:
 
 JavaScript
 
@@ -42,7 +45,7 @@ Express
 MongoDB
 
 ---
-User Story:
+## User Story:
 
 In V1 of the website (November 1, 2021):
 As an unregistered user, I can sign up with email and password.
@@ -55,7 +58,7 @@ As a signed in user, I can add new artwork to the gallery catalog.  The Gallery 
 In V2 of the website (mid to late November 2021):
 As a registered user, I can purchase a work of art using the metamask chrome browser plug in and buy art using Ethereum.
 
-Wireframes
+## Wireframes
 ![LEAN2](https://i.ibb.co/yQ95nKX/camp-io-pg-1.png)
 
 ![LEAN2](https://i.ibb.co/db72XdY/camp-io-pg-2.png)
