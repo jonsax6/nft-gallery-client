@@ -10,7 +10,7 @@ There are however a few technical issues that need to be solved in order to prev
 
 
 
-<img src="https://i.imgur.com/kRFUEvE.png" alt="zyzygy-logo" width="100"/>
+<img src="https://i.imgur.com/kRFUEvE.png" alt="zyzygy-logo" width="600"/>
 
 Website URL: https://jonsax6.github.io/nft-gallery-client/
 
