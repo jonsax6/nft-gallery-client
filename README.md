@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/kRFUEvE.png" alt="zyzygy-logo" width="700"/>
+<img src="https://i.imgur.com/7MoUwiX.png" alt="zyzygy-logo" width="700"/>
 
 
 What is a zyzygy? It is a rare fleeting moment in a gravitational system where 3 celestial bodies come into perfect alignment.  The best known examples of a zyzygy are the solar and lunar eclipses. Why are we calling our gallery Zyzygy?  We believe we are at the intersection point where two worlds are coming into alignment.  The digital world of blockchain technology, and more specifically the digital scarcity we can achieve through non-fungible tokens (NFTs), and the real world of tangible touchable things like art, real estate, and property. 
