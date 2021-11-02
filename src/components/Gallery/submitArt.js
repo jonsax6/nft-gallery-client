@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { createArtwork, showArtwork } from '../../api/artwork'
+import { useHistory } from 'react-router-dom'
 import { submitArtworkSuccess, submitArtworkFailure } from '../AutoDismissAlert/messages'
 import {
   Typography,
   Grid,
   Button,
-  Box,
   Card,
   CardContent
 } from '@mui/material'
@@ -33,7 +33,7 @@ const SubmitArt = ({ msgAlert, user }) => {
   const [exhibitionHistory, setExhibitionHistory] = useState('')
   const [publishingHistory, setPublishingHistory] = useState('')
   const [notes, setNotes] = useState('')
-  const [success, setSuccess] = useState(false)
+  const history = useHistory()
 
   const art = {
     artist: artist,
@@ -88,14 +88,15 @@ const SubmitArt = ({ msgAlert, user }) => {
     }
 
     createArtwork(user, art)
-      .then((res) => {
-      })
+      .then((res) => {})
       .then(() =>
         msgAlert({
           heading: 'Submit Artwork Success',
           message: submitArtworkSuccess,
           variant: 'success'
-        }))
+        })
+      )
+      .then(() => history.push('/gallery'))
       .catch((error) => {
         msgAlert({
           heading: 'Submit Art Failed with error: ' + error.message,

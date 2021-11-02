@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Redirect } from 'react-router'
+import { useHistory } from 'react-router'
 import { updateArtwork, showArtwork } from '../../api/artwork'
 import {
   updateArtworkFailure,
@@ -40,7 +40,7 @@ const UpdateArt = ({ msgAlert, user }) => {
   const [exhibitionHistory, setExhibitionHistory] = useState(card ? card.exhibitionHistory : '')
   const [publishingHistory, setPublishingHistory] = useState(card ? card.publishingHistory : '')
   const [notes, setNotes] = useState(card ? card.notes : '')
-  const [success, setSuccess] = useState(false)
+  const history = useHistory()
 
   const art = {
     artist: artist,
@@ -113,8 +113,7 @@ const UpdateArt = ({ msgAlert, user }) => {
     }
 
     updateArtwork(id, art, user)
-      .then((res) => {
-      })
+      .then((res) => {})
       .then(() =>
         msgAlert({
           heading: 'Update Artwork Success',
@@ -122,6 +121,7 @@ const UpdateArt = ({ msgAlert, user }) => {
           variant: 'success'
         })
       )
+      .then(() => history.push('/gallery'))
       .catch((error) => {
         msgAlert({
           heading: 'Update Art Failed with error: ' + error.message,

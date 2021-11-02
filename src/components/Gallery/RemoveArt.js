@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { removeArtwork, showArtwork } from '../../api/artwork'
 import {
   removeArtworkFailure,
@@ -30,7 +30,7 @@ const RemoveArt = ({ msgAlert, user }) => {
     card ? card.publishingHistory : ''
   )
   const [notes, setNotes] = useState(card ? card.notes : '')
-  const [success, setSuccess] = useState(false)
+  const history = useHistory()
 
   const art = {
     artist: artist,
@@ -75,6 +75,7 @@ const RemoveArt = ({ msgAlert, user }) => {
           variant: 'success'
         })
       )
+      .then(() => history.push('/'))
       .catch((error) => {
         msgAlert({
           heading: 'Remove Art Failed with error: ' + error.message,
