@@ -61,6 +61,7 @@ export const updateArtwork = (id, data, user) => {
         provenance: data.provenance,
         exhibitionHistory: data.exhibitionHistory,
         publishingHistory: data.publishingHistory,
+        catalogId: data.catalogId,
         notes: data.notes,
         owner: data.owner
       }

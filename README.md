@@ -29,6 +29,8 @@ Zyzygy Studios is an art gallery site where you can view all artist's works, and
 ---
 The website was created using React.js, Express and MongoDB as part of an educational final project for General Assembly's Software Engineering Intensive in October 2021 by Jonathan Cole.
 
+The planning process involved creating wire-frames for the homepage and gallery views using Figma. The login, logout, change password and art submittal forms were straightforward as far as layout and didn't need any preplanning. A third-party npm package called react-responsive-carousel was used to create the homepage carousel.
+
 ---
 ## Specific Technologies Used:
 
@@ -47,25 +49,31 @@ MongoDB
 ---
 ## User Story:
 
-In V1 of the website (November 1, 2021):
+### In V1 of the website (November 1, 2021):
+
 As an unregistered user, I can sign up with email and password.
+
 As a registered user, I can sign in with email and password.
+
 As a signed in user, I can change password.
+
 As a signed in user, I can sign out.
+
 As an unregistered user, I can see all of the artist's works.
+
 As a signed in user, I can add new artwork to the gallery catalog.  The Gallery can remove these art submissions at their discretion.
 
-In V2 of the website (mid to late November 2021):
+### In V2 of the website (mid to late November 2021):
 As a registered user, I can purchase a work of art using the metamask chrome browser plug in and buy art using Ethereum.
 
-## Wireframes
-![LEAN2](https://i.ibb.co/yQ95nKX/camp-io-pg-1.png)
+## Wireframes (created using Figma)
+![HOMEPAGE LOGGED OUT](https://i.imgur.com/EFcAVz3.png)
 
-![LEAN2](https://i.ibb.co/db72XdY/camp-io-pg-2.png)
+![HOMEPAGE LOGGED IN](https://i.imgur.com/rzeILFf.png)
 
-![LEAN2](https://i.ibb.co/55SZh5h/camp-io-pg-3.png)
+![GALLERY VIEW](https://i.imgur.com/uKC6zqt.png)
 ---
 
 Current implementation is V1.
 
-V2 implementation will include artist profiles, featured artists, and specific artist catalogs.
+V2 implementation will include blockchain integration, artist profiles, featured artists, and specific artist catalogs.

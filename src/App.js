@@ -13,6 +13,9 @@ import Home from './components/Home/Home'
 import ChangePassword from './components/auth/ChangePassword'
 import Gallery from './components/Gallery/Gallery'
 import SubmitArt from './components/Gallery/submitArt'
+import UpdateArt from './components/Gallery/UpdateArt'
+import RemoveArt from './components/Gallery/RemoveArt'
+import About from './components/About/About'
 import { CssBaseline, Container } from '@mui/material'
 import './App.css'
 
@@ -28,6 +31,7 @@ const App = () => {
     const id = uuid()
     setMsgAlerts([...msgAlerts, { heading, message, variant, id }])
   }
+
   return (
     <>
       <div style={{ backgroundColor: '#202020', height: '100vh' }}>
@@ -66,8 +70,16 @@ const App = () => {
             )}
           />
           <Route
+            path="/about"
+            render={() => (
+              <About
+                style={{ backgroundColor: 'black' }}
+              />
+            )}
+          />
+          <Route
             path="/gallery"
-            render={() => <Gallery style={{ backgroundColor: '#202020' }} />}
+            render={() => <Gallery user={user} style={{ backgroundColor: '#202020' }} />}
           />
           <AuthenticatedRoute
             user={user}
@@ -93,6 +105,28 @@ const App = () => {
             path="/submit-art"
             render={() => (
               <SubmitArt
+                style={{ backgroundColor: 'black' }}
+                msgAlert={msgAlert}
+                user={user}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path="/update/:id"
+            render={() => (
+              <UpdateArt
+                style={{ backgroundColor: 'black' }}
+                msgAlert={msgAlert}
+                user={user}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path="/remove/:id"
+            render={() => (
+              <RemoveArt
                 style={{ backgroundColor: 'black' }}
                 msgAlert={msgAlert}
                 user={user}

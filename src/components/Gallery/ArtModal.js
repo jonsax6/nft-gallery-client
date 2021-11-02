@@ -52,9 +52,9 @@ const ArtModal = ({ card, handleClose, open }) => {
             <Typography gutterBottom paragraph>{card.notes}</Typography>{' '}
             <Typography variant="h5">Medium</Typography>
             <Typography>{card.medium}</Typography>{' '}
-            <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
+            {/* <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
               Inquire
-            </Button>
+            </Button> */}
           </div>
         </Box>
       </Fade>

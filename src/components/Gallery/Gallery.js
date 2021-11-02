@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import {
   Typography,
   Container,
@@ -19,10 +20,11 @@ import ArtModal from './ArtModal'
 
 // import { withRouter } from 'react-router-dom'
 
-const Gallery = () => {
+const Gallery = ({ user }) => {
   const [cards, setCards] = useState([])
   const [index, setIndex] = useState(0)
   const [hovered, setHovered] = useState(false)
+  const history = useHistory()
 
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
@@ -32,19 +34,26 @@ const Gallery = () => {
     indexArtwork()
       .then((res) => {
         setCards(res.data.artwork)
-        console.log(cards)
       })
   }, [])
 
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const handleOpen = (i) => {
-    console.log(index)
     setIndex(i)
-    console.log(i)
     setOpen(true)
   }
 
   const handleClose = () => setOpen(false)
+
+  const onUpdate = (i) => {
+    const card = cards[i]
+    history.push(`/update/${card._id}`)
+  }
+
+  const onRemove = (i) => {
+    const card = cards[i]
+    history.push(`/remove/${card._id}`)
+  }
 
   return (
     <div style={{ backgroundColor: '#202020' }}>
@@ -112,8 +121,19 @@ const Gallery = () => {
                     {card.artist}
                   </Typography>
                   <Typography>
-                    {`'${card.title}'`}
+                    {`'${card.title}'`} CID:00{card.catalogId}
                   </Typography>{' '}
+                  {user && user._id === card.owner
+                    ? <>
+                      <Button style={{ marginTop: '10px', marginRight: '10px' }} size='small' color='info' variant='outlined' onClick={(e) => onUpdate(i)}>
+                        Update
+                      </Button>
+                      <Button style={{ marginTop: '10px' }} size='small' color='error' variant='outlined' onClick={(e) => onRemove(i)}>
+                        Delete
+                      </Button>
+                    </>
+
+                    : <></>}
                 </CardContent>
               </Card>
             </Grid>

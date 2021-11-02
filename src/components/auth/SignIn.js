@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useHistory, NavLink } from 'react-router-dom'
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure, missingEmail, missingPassword } from '../AutoDismissAlert/messages'
+import DOMPurify from 'dompurify'
+import { useForm, Controller } from 'react-hook-form'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
@@ -28,7 +30,8 @@ const SignIn = ({ msgAlert, setUser }) => {
     if (event) {
       event.preventDefault()
     }
-
+    const sanitizedEmail = DOMPurify.sanitize(email)
+    console.log(email, sanitizedEmail)
     if (email === '') {
       msgAlert({
         heading: 'email field is required. Cannot be empty',
@@ -96,6 +99,7 @@ const SignIn = ({ msgAlert, setUser }) => {
                 label={'Email'}
                 icon={<AccountCircle sx={{ color: 'white' }} />}
                 value={email}
+                type={'email'}
                 onChange={handleChangeEmail}
               />
               <TextFieldComponent

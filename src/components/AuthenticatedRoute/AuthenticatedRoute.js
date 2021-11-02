@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 
 // props will include a `user` object or empty object
 // props will include a `component` as `Component` or a `render`
-// all other props that may be passed in are `..rest`
+// all other props that may be passed in are `...rest`
 const AuthenticatedRoute = ({
   user,
   component: Component,

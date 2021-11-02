@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { createArtwork, showArtwork } from '../../api/artwork'
-import { submitArtworkSuccess, submitArtworkFailure } from '../AutoDismissAlert/messages'
+import { useParams } from 'react-router-dom'
+import { updateArtwork, showArtwork } from '../../api/artwork'
+import {
+  updateArtworkFailure,
+  updateArtworkSuccess
+} from '../AutoDismissAlert/messages'
 import {
   Typography,
   Grid,
@@ -21,18 +25,21 @@ import PublishIcon from '@mui/icons-material/Publish'
 import NoteIcon from '@mui/icons-material/Note'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 
-const SubmitArt = ({ msgAlert, user }) => {
-  const [artist, setArtist] = useState(null)
-  const [title, setTitle] = useState(null)
-  const [imageUrl, setImageUrl] = useState(null)
-  const [releaseDate, setReleaseDate] = useState(null)
-  const [medium, setMedium] = useState(null)
-  const [artistRoyalty, setArtistRoyalty] = useState(null)
-  const [curatorRoyalty, setCuratorRoyalty] = useState(null)
-  const [provenance, setProvenance] = useState(null)
-  const [exhibitionHistory, setExhibitionHistory] = useState(null)
-  const [publishingHistory, setPublishingHistory] = useState(null)
-  const [notes, setNotes] = useState(null)
+const UpdateArt = ({ msgAlert, user }) => {
+  console.log(user)
+  const { id } = useParams()
+  const [card, setCard] = useState(null)
+  const [artist, setArtist] = useState(card ? card.artist : '')
+  const [title, setTitle] = useState(card ? card.title : '')
+  const [imageUrl, setImageUrl] = useState(card ? card.imageUrl : '')
+  const [releaseDate, setReleaseDate] = useState(card ? card.releaseDate : '')
+  const [medium, setMedium] = useState(card ? card.medium : '')
+  const [artistRoyalty, setArtistRoyalty] = useState(card ? card.artistRoyalty : '')
+  const [curatorRoyalty, setCuratorRoyalty] = useState(card ? card.curatorRoyalty : '')
+  const [provenance, setProvenance] = useState(card ? card.provenance : '')
+  const [exhibitionHistory, setExhibitionHistory] = useState(card ? card.exhibitionHistory : '')
+  const [publishingHistory, setPublishingHistory] = useState(card ? card.publishingHistory : '')
+  const [notes, setNotes] = useState(card ? card.notes : '')
   const [success, setSuccess] = useState(false)
 
   const art = {
@@ -82,25 +89,44 @@ const SubmitArt = ({ msgAlert, user }) => {
   const handleChangeNotes = (event) =>
     setNotes(event.target.value)
 
-  const onCreateArtwork = (event) => {
+  useEffect(() => {
+    showArtwork(id)
+      .then((res) => {
+        // setCard(res.data.artwork)
+        const art = res.data.artwork
+        setArtist(art.artist)
+        setTitle(art.title)
+        setImageUrl(art.imageUrl)
+        setReleaseDate(art.releaseDate)
+        setMedium(art.medium)
+        setArtistRoyalty(art.artistRoyalty)
+        setCuratorRoyalty(art.curatorRoyalty)
+        setProvenance(art.provenance)
+        setExhibitionHistory(art.exhibitionHistory)
+        setNotes(art.notes)
+        console.log('show card', artist)
+      })
+  }, [id])
+
+  const onUpdateArtwork = (event) => {
     if (event) {
       event.preventDefault()
     }
 
-    createArtwork(user, art)
+    updateArtwork(id, art, user)
       .then((res) => {
         console.log(res.data.artwork)
       })
       .then(() =>
         msgAlert({
-          heading: 'Submit Artwork Success',
-          message: submitArtworkSuccess,
+          heading: 'Update Artwork Success',
+          message: updateArtworkSuccess,
           variant: 'success'
         }))
       .catch((error) => {
         msgAlert({
-          heading: 'Submit Art Failed with error: ' + error.message,
-          message: submitArtworkFailure,
+          heading: 'Update Art Failed with error: ' + error.message,
+          message: updateArtworkFailure,
           variant: 'error'
         })
       })
@@ -122,7 +148,7 @@ const SubmitArt = ({ msgAlert, user }) => {
   const handleKeypress = (event) => {
     // it triggers by pressing the enter key
     if (event.keyCode === 13 || event.which === 13) {
-      onCreateArtwork()
+      onUpdateArtwork()
     }
   }
 
@@ -269,8 +295,8 @@ const SubmitArt = ({ msgAlert, user }) => {
                     <Button
                       variant='contained'
                       type='submit'
-                      onClick={onCreateArtwork}>
-                      Submit Artwork
+                      onClick={onUpdateArtwork}>
+                      Update Artwork
                     </Button>
                   </Grid>
                 </Grid>
@@ -286,4 +312,4 @@ const SubmitArt = ({ msgAlert, user }) => {
   )
 }
 
-export default SubmitArt
+export default UpdateArt
