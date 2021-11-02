@@ -13,8 +13,7 @@ const About = () => {
       style={{
         height: '100vh',
         width: '100vw',
-        paddingTop: '150px',
-        padding: '150px',
+        paddingTop: '100px',
         backgroundColor: 'white'
       }}>
       <div style={{ marginBottom: '20px' }}>

@@ -4,15 +4,9 @@ import { Link, NavLink } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
-import { useTheme, useMediaQuery } from '@mui/material'
 import logo from '../../images/zyzygy_eclipse1.png'
-import About from '../About/About'
-import { ClassNames } from '@emotion/react'
 import DrawerComponent from './Drawer'
-// import DrawerComponent from './Drawer'
+import { useMediaQuery } from 'react-responsive'
 
 const authenticatedOptions = (
   <Fragment>
@@ -38,38 +32,62 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => {
-  const isMobile = false
+  const isMobile = useMediaQuery({
+    query: '(max-width: 1000px)'
+  })
+
   return (
     <>
       <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
         <AppBar style={{ backgroundColor: '#424242' }} position='fixed'>
           <Toolbar>
-            <Link
-              to='/'
-              style={{
-                paddingLeft: '20px',
-                color: '#FFF',
-                textDecoration: 'none',
-                fontWeight: '100',
-                flexGrow: 1
-              }}>
-              <img
-                src={logo}
+            {isMobile ? <>
+              <DrawerComponent user={user} />
+              <Link
+                to='/'
                 style={{
-                  width: '200px',
-                  marginTop: 10
+                  paddingLeft: '20px',
+                  color: '#000',
+                  textDecoration: 'none',
+                  fontWeight: '100',
+                  flexGrow: 1
+                }}>
+                <img
+                  src={logo}
+                  style={{
+                    width: '200px',
+                    marginTop: 10
+                  }}
+                />
+              </Link>
+            </> : <>
+              <Link
+                to='/'
+                style={{
+                  paddingLeft: '20px',
+                  color: '#000',
+                  textDecoration: 'none',
+                  fontWeight: '100',
+                  flexGrow: 1
                 }}
-              />
-            </Link>
-            {isMobile ? (
-              <DrawerComponent />
-            ) : (
+              >
+                <img
+                  src={logo}
+                  style={{
+                    width: '200px',
+                    marginTop: 10
+                  }}
+                />
+              </Link>
               <div sx={{ marginLeft: '10px', display: 'flex' }}>
-                {user && <span className='navbar-text mr-2'>{user.email}</span>}
+                {user && (
+                  <span className='navbar-text mr-2'>{user.email}</span>
+                )}
                 {alwaysOptions}
                 {user ? authenticatedOptions : unauthenticatedOptions}
               </div>
-            )}
+            </>
+            }
           </Toolbar>
         </AppBar>
       </Box>

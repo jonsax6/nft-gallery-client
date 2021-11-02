@@ -10,24 +10,13 @@ import {
 import MenuIcon from '@mui/icons-material/Menu'
 import { NavLink } from 'react-router-dom'
 
-// const useStyles = makeStyles(() => ({
-//   link: {
-//     TextDecoration: 'none',
-//     color: 'blue',
-//     fontSize: '20px'
-//   },
-//   icon: {
-//     color: 'white'
-//   }
-// }))
-
 const DrawerComponent = ({ user }) => {
   const authenticatedOptions = (
     <Fragment>
       <ListItem onClick={() => setOpenDrawer(false)}>
         <ListItemText>
           <NavLink
-            style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+            style={{ color: 'black', textDecoration: 'none' }}
             to='/submit-art'
             className='nav-link'>
             Submit Art
@@ -37,7 +26,7 @@ const DrawerComponent = ({ user }) => {
       <ListItem onClick={() => setOpenDrawer(false)}>
         <ListItemText>
           <NavLink
-            style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+            style={{ color: 'black', textDecoration: 'none' }}
             to='/change-password'
             className='nav-link'>
             Change Password
@@ -47,7 +36,7 @@ const DrawerComponent = ({ user }) => {
       <ListItem onClick={() => setOpenDrawer(false)}>
         <ListItemText>
           <NavLink
-            style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+            style={{ color: 'black', textDecoration: 'none' }}
             to='/sign-out'
             className='nav-link'>
             Logout
@@ -62,7 +51,7 @@ const DrawerComponent = ({ user }) => {
       <ListItem onClick={() => setOpenDrawer(false)}>
         <ListItemText>
           <NavLink
-            style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+            style={{ color: 'black', textDecoration: 'none' }}
             to='/sign-up'
             className='nav-link'>
             Register
@@ -72,7 +61,7 @@ const DrawerComponent = ({ user }) => {
       <ListItem onClick={() => setOpenDrawer(false)}>
         <ListItemText>
           <NavLink
-            style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+            style={{ color: 'black', textDecoration: 'none' }}
             to='/sign-in'
             className='nav-link'>
             Login
@@ -87,7 +76,7 @@ const DrawerComponent = ({ user }) => {
       <ListItem onClick={() => setOpenDrawer(false)}>
         <ListItemText>
           <NavLink
-            style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+            style={{ color: 'black', textDecoration: 'none' }}
             exact
             to='/'
             className='nav-link'>
@@ -98,7 +87,18 @@ const DrawerComponent = ({ user }) => {
       <ListItem onClick={() => setOpenDrawer(false)}>
         <ListItemText>
           <NavLink
-            style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+            style={{ color: 'black', textDecoration: 'none' }}
+            exact
+            to='/about'
+            className='nav-link'>
+            About
+          </NavLink>
+        </ListItemText>
+      </ListItem>
+      <ListItem onClick={() => setOpenDrawer(false)}>
+        <ListItemText>
+          <NavLink
+            style={{ color: 'black', textDecoration: 'none' }}
             exact
             to='/gallery'
             className='nav-link'>
@@ -113,15 +113,31 @@ const DrawerComponent = ({ user }) => {
 
   return (
     <>
-      <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
+      <Drawer
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}>
         <List>
-          {user && <span className='navbar-text mr-2'>{user.email}</span>}
+          {user && (
+            <NavLink
+              style={{
+                color: 'black',
+                margin: '15px',
+                textDecoration: 'none'
+              }}
+              exact
+              to='/change-password'
+              className='nav-link'>
+              {user.email}
+            </NavLink>
+          )}
           {alwaysOptions}
           {user ? authenticatedOptions : unauthenticatedOptions}
         </List>
       </Drawer>
       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
-        <MenuIcon />
+        <MenuIcon
+          sx={{ color: 'white', marginRight: '10px', height: '30px' }}
+        />
       </IconButton>
     </>
   )
