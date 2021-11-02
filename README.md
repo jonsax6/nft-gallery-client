@@ -62,6 +62,12 @@ As a signed in user, I can change password.
 
 As a signed in user, I can sign out.
 
+As a signed in user, I can add artwork to the catalog
+
+As a signed in user, I can update artwork that I own
+
+As a signed in user, I can remove artwork that I own
+
 As an unregistered user, I can see all of the artist's works.
 
 ### In V2 of the website (mid to late November 2021):
