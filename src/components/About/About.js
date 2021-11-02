@@ -1,24 +1,46 @@
 import React from 'react'
 import {
-  Modal,
-  Fade,
-  Box,
   Typography,
   Container
 } from '@mui/material'
+import { useMediaQuery } from 'react-responsive'
+
+const desktop = '200px'
+const tablet = '100px'
+const phone = '30px'
 
 const About = () => {
+  const isPhone = useMediaQuery({
+    query: '(max-width: 600px)'
+  })
+
+  const isTablet = useMediaQuery({
+    query: '(max-width: 1000px)'
+  })
+
+  let mobileStyle
+
+  if (isPhone) {
+    mobileStyle = phone
+  } else if (isTablet) {
+    mobileStyle = tablet
+  } else {
+    mobileStyle = desktop
+  }
+
   return (
     <Container
       style={{
         height: '100vh',
         width: '100vw',
         paddingTop: '100px',
+        paddingLeft: mobileStyle,
+        paddingRight: mobileStyle,
         backgroundColor: 'white'
       }}>
       <div style={{ marginBottom: '20px' }}>
         <Typography
-          style={{ fontWeight: '100', marginBottom: '25kpx' }}
+          style={{ fontWeight: '100', marginBottom: '25px' }}
           variant='h5'
           align='center'
           color='black'
