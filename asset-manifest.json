@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/nft-gallery-client/static/css/main.c2457df2.chunk.css",
-    "main.js": "/nft-gallery-client/static/js/main.8d03e963.chunk.js",
-    "main.js.map": "/nft-gallery-client/static/js/main.8d03e963.chunk.js.map",
+    "main.js": "/nft-gallery-client/static/js/main.5e8979ab.chunk.js",
+    "main.js.map": "/nft-gallery-client/static/js/main.5e8979ab.chunk.js.map",
     "runtime-main.js": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js",
     "runtime-main.js.map": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js.map",
-    "static/css/2.7e165c18.chunk.css": "/nft-gallery-client/static/css/2.7e165c18.chunk.css",
-    "static/js/2.947c3196.chunk.js": "/nft-gallery-client/static/js/2.947c3196.chunk.js",
-    "static/js/2.947c3196.chunk.js.map": "/nft-gallery-client/static/js/2.947c3196.chunk.js.map",
+    "static/css/2.e2521d37.chunk.css": "/nft-gallery-client/static/css/2.e2521d37.chunk.css",
+    "static/js/2.1bdca736.chunk.js": "/nft-gallery-client/static/js/2.1bdca736.chunk.js",
+    "static/js/2.1bdca736.chunk.js.map": "/nft-gallery-client/static/js/2.1bdca736.chunk.js.map",
     "index.html": "/nft-gallery-client/index.html",
-    "static/css/2.7e165c18.chunk.css.map": "/nft-gallery-client/static/css/2.7e165c18.chunk.css.map",
+    "static/css/2.e2521d37.chunk.css.map": "/nft-gallery-client/static/css/2.e2521d37.chunk.css.map",
     "static/css/main.c2457df2.chunk.css.map": "/nft-gallery-client/static/css/main.c2457df2.chunk.css.map",
-    "static/js/2.947c3196.chunk.js.LICENSE.txt": "/nft-gallery-client/static/js/2.947c3196.chunk.js.LICENSE.txt",
+    "static/js/2.1bdca736.chunk.js.LICENSE.txt": "/nft-gallery-client/static/js/2.1bdca736.chunk.js.LICENSE.txt",
     "static/media/Jose-Parla-Studio-Yellowtrace-54.a71ab207.jpeg": "/nft-gallery-client/static/media/Jose-Parla-Studio-Yellowtrace-54.a71ab207.jpeg",
     "static/media/300.css": "/nft-gallery-client/static/media/roboto-vietnamese-300-normal.af9afdc1.woff2",
     "static/media/400.css": "/nft-gallery-client/static/media/roboto-vietnamese-400-normal.c0bec65d.woff2",
@@ -21,9 +21,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.5d4cb4c7.js",
-    "static/css/2.7e165c18.chunk.css",
-    "static/js/2.947c3196.chunk.js",
+    "static/css/2.e2521d37.chunk.css",
+    "static/js/2.1bdca736.chunk.js",
     "static/css/main.c2457df2.chunk.css",
-    "static/js/main.8d03e963.chunk.js"
+    "static/js/main.5e8979ab.chunk.js"
   ]
 }
