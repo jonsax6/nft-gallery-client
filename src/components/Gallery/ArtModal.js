@@ -6,6 +6,7 @@ import {
   Typography,
   Backdrop
 } from '@mui/material'
+import { useMediaQuery } from 'react-responsive'
 
 const style = {
   position: 'absolute',
@@ -18,47 +19,108 @@ const style = {
   p: 1
 }
 
+const mobileStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '90%',
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 1
+}
+
 const ArtModal = ({ card, handleClose, open }) => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 1000px)'
+  })
+
   return (
-    <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
-      open={open}
-      onClose={handleClose}
-      closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 500
-      }}
-      style={{ overflow: 'scroll' }}
-    >
-      <Fade in={open}>
-        <Box sx={style}>
-          <div style={{ padding: '0px' }}>
-            <img
-              style={{ maxWidth: '100%' }}
-              src={card.imageUrl}
-              alt={card.artist}
-            />
-          </div>
-          <div style={{ padding: '20px' }}>
-            <Typography gutterBottom variant='h4'>
-              {card.artist}
-            </Typography>
-            <Typography gutterBottom variant='h5'>
-              Title: {`'${card.title}'`}
-            </Typography>
-            <Typography gutterBottom paragraph>{card.notes}</Typography>{' '}
-            <Typography variant="h5">Medium</Typography>
-            <Typography>{card.medium}</Typography>{' '}
-            {/* This button will eventually open the metamask browser extension (web3)
-            <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
-              Inquire
-            </Button> */}
-          </div>
-        </Box>
-      </Fade>
-    </Modal>
+    <>
+      {isMobile ? (
+        <Modal
+          aria-labelledby='transition-modal-title'
+          aria-describedby='transition-modal-description'
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500
+          }}
+          style={{ overflow: 'scroll' }}>
+          <Fade in={open}>
+            <Box sx={mobileStyle}>
+              <div style={{ padding: '0px' }}>
+                <img
+                  style={{ maxWidth: '100%' }}
+                  src={card.imageUrl}
+                  alt={card.artist}
+                />
+              </div>
+              <div style={{ padding: '20px' }}>
+                <Typography gutterBottom variant='h4'>
+                  {card.artist}
+                </Typography>
+                <Typography gutterBottom variant='h5'>
+                  Title: {`'${card.title}'`}
+                </Typography>
+                <Typography gutterBottom paragraph>
+                  {card.notes}
+                </Typography>{' '}
+                <Typography variant='h5'>Medium</Typography>
+                <Typography>{card.medium}</Typography>{' '}
+                {/* This button will eventually open the metamask browser extension (web3)
+              <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
+                Inquire
+              </Button> */}
+              </div>
+            </Box>
+          </Fade>
+        </Modal>
+      ) : (
+        <Modal
+          aria-labelledby='transition-modal-title'
+          aria-describedby='transition-modal-description'
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500
+          }}
+          style={{ overflow: 'scroll' }}>
+          <Fade in={open}>
+            <Box sx={style}>
+              <div style={{ padding: '0px' }}>
+                <img
+                  style={{ maxWidth: '100%' }}
+                  src={card.imageUrl}
+                  alt={card.artist}
+                />
+              </div>
+              <div style={{ padding: '20px' }}>
+                <Typography gutterBottom variant='h4'>
+                  {card.artist}
+                </Typography>
+                <Typography gutterBottom variant='h5'>
+                  Title: {`'${card.title}'`}
+                </Typography>
+                <Typography gutterBottom paragraph>
+                  {card.notes}
+                </Typography>{' '}
+                <Typography variant='h5'>Medium</Typography>
+                <Typography>{card.medium}</Typography>{' '}
+                {/* This button will eventually open the metamask browser extension (web3)
+              <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
+                Inquire
+              </Button> */}
+              </div>
+            </Box>
+          </Fade>
+        </Modal>
+      )}
+    </>
   )
 }
 
