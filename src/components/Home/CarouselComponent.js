@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { indexArtwork } from '../../api/artwork'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
-// import styles from './CarouselStyles.css'
 
 const CarouselComp = () => {
   const [cards, setCards] = useState([])
@@ -26,7 +25,7 @@ const CarouselComp = () => {
         {cards.map((card) => {
           return (
             <div key={card._id}>
-              <img style={{ maxWidth: '70%' }} src={`${card.imageUrl}`} />
+              <img style={{ maxWidth: '60%' }} src={`${card.imageUrl}`} />
               {/* <p style={{ width: '300px', margin: 'auto', color: 'white', paddingTop: '30px' }}>{card.title}</p> */}
             </div>
           )
