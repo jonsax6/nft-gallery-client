@@ -11,6 +11,7 @@ import { useTheme, useMediaQuery } from '@mui/material'
 import logo from '../../images/zyzygy_eclipse1.png'
 import About from '../About/About'
 import { ClassNames } from '@emotion/react'
+import DrawerComponent from './Drawer'
 // import DrawerComponent from './Drawer'
 
 const authenticatedOptions = (
@@ -58,11 +59,13 @@ const Header = ({ user }) => (
               }}
             />
           </Link>
-          <div sx={{ marginLeft: '10px', display: 'flex' }}>
-            {user && <span className='navbar-text mr-2'>{user.email}</span>}
-            {alwaysOptions}
-            {user ? authenticatedOptions : unauthenticatedOptions}
-          </div>
+          {isMobile
+            ? (<DrawerComponent />)
+            : (<div sx={{ marginLeft: '10px', display: 'flex' }}>
+              {user && <span className='navbar-text mr-2'>{user.email}</span>}
+              {alwaysOptions}
+              {user ? authenticatedOptions : unauthenticatedOptions}
+            </div>)}
         </Toolbar>
       </AppBar>
     </Box>

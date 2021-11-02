@@ -6,20 +6,20 @@ import {
   ListItem,
   ListItemText
 } from '@mui/material'
-import makeStyles from '@mui/styles'
+// import makeStyles from '@mui/styles'
 import MenuIcon from '@mui/icons-material/Menu'
 import { NavLink } from 'react-router-dom'
 
-const useStyles = makeStyles(() => ({
-  link: {
-    TextDecoration: 'none',
-    color: 'blue',
-    fontSize: '20px'
-  },
-  icon: {
-    color: 'white'
-  }
-}))
+// const useStyles = makeStyles(() => ({
+//   link: {
+//     TextDecoration: 'none',
+//     color: 'blue',
+//     fontSize: '20px'
+//   },
+//   icon: {
+//     color: 'white'
+//   }
+// }))
 
 const DrawerComponent = ({ user }) => {
   const authenticatedOptions = (
@@ -109,7 +109,6 @@ const DrawerComponent = ({ user }) => {
     </Fragment>
   )
 
-  const classes = useStyles()
   const [openDrawer, setOpenDrawer] = useState(false)
 
   return (

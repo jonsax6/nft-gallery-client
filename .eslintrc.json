@@ -49,6 +49,7 @@
   },
   "rules": {
     "no-unused-vars": 0,
+    "multiline-ternary": 0,
     "eol-last": 0,
     "prefer-const": "error",
     "no-var": "error",
