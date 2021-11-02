@@ -125,11 +125,11 @@ const Gallery = ({ user }) => {
                   </Typography>{' '}
                   {user && user._id === card.owner
                     ? <>
-                      <Button style={{ marginTop: '10px', marginRight: '10px' }} size='small' color='info' variant='outlined' onClick={(e) => onUpdate(i)}>
-                        Update
+                      <Button style={{ marginTop: '10px', marginRight: '20px' }} size='small' color='info' variant='outlined' onClick={(e) => onUpdate(i)}>
+                        Update Artwork
                       </Button>
                       <Button style={{ marginTop: '10px' }} size='small' color='error' variant='outlined' onClick={(e) => onRemove(i)}>
-                        Delete
+                        Remove Artwork
                       </Button>
                     </>
 
