@@ -36,10 +36,6 @@ const SignUp = ({ msgAlert, setUser }) => {
       event.preventDefault()
     }
 
-    msgAlert({
-      heading: 'passwords do not match'
-    })
-
     if (email === '') {
       msgAlert({
         heading: 'email field is required. Cannot be empty',
@@ -56,6 +52,12 @@ const SignUp = ({ msgAlert, setUser }) => {
       msgAlert({
         heading: 'password confirmation field is required. Cannot be empty',
         message: missingPasswordConfirmation,
+        variant: 'error'
+      })
+    } else if (passwordConfirmation !== password) {
+      msgAlert({
+        heading: 'passwords do not match',
+        message: 'please try again with matching passwords',
         variant: 'error'
       })
     } else {
