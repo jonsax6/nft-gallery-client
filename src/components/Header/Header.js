@@ -37,39 +37,44 @@ const alwaysOptions = (
   </Fragment>
 )
 
-const Header = ({ user }) => (
-  <>
-    <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
-      <AppBar style={{ backgroundColor: '#424242' }} position='fixed'>
-        <Toolbar>
-          <Link
-            to='/'
-            style={{
-              paddingLeft: '20px',
-              color: '#FFF',
-              textDecoration: 'none',
-              fontWeight: '100',
-              flexGrow: 1
-            }}>
-            <img
-              src={logo}
+const Header = ({ user }) => {
+  const isMobile = false
+  return (
+    <>
+      <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
+        <AppBar style={{ backgroundColor: '#424242' }} position='fixed'>
+          <Toolbar>
+            <Link
+              to='/'
               style={{
-                width: '200px',
-                marginTop: 10
-              }}
-            />
-          </Link>
-          {isMobile
-            ? (<DrawerComponent />)
-            : (<div sx={{ marginLeft: '10px', display: 'flex' }}>
-              {user && <span className='navbar-text mr-2'>{user.email}</span>}
-              {alwaysOptions}
-              {user ? authenticatedOptions : unauthenticatedOptions}
-            </div>)}
-        </Toolbar>
-      </AppBar>
-    </Box>
-  </>
-)
+                paddingLeft: '20px',
+                color: '#FFF',
+                textDecoration: 'none',
+                fontWeight: '100',
+                flexGrow: 1
+              }}>
+              <img
+                src={logo}
+                style={{
+                  width: '200px',
+                  marginTop: 10
+                }}
+              />
+            </Link>
+            {isMobile ? (
+              <DrawerComponent />
+            ) : (
+              <div sx={{ marginLeft: '10px', display: 'flex' }}>
+                {user && <span className='navbar-text mr-2'>{user.email}</span>}
+                {alwaysOptions}
+                {user ? authenticatedOptions : unauthenticatedOptions}
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </>
+  )
+}
 
 export default Header
