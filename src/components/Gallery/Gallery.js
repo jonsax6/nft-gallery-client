@@ -64,7 +64,7 @@ const Gallery = ({ user }) => {
           paddingTop: '100px'
         }}>
         <Typography
-          style={{ fontWeight: '100', color: 'white', marginTop: '75px' }}
+          style={{ fontWeight: '100', color: 'white', marginTop: '15px' }}
           variant='h4'
           align='center'
           gutterBottom>
@@ -121,7 +121,7 @@ const Gallery = ({ user }) => {
                     {card.artist}
                   </Typography>
                   <Typography>
-                    {`'${card.title}'`} CID:00{card.catalogId}
+                    {`'${card.title}'`}
                   </Typography>{' '}
                   {user && user._id === card.owner
                     ? <>

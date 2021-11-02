@@ -168,7 +168,7 @@ const UpdateArt = ({ msgAlert, user }) => {
                   />
                 </Grid>
                 <Grid item>
-                  <Typography variant='h5'>Submit Your Artwork</Typography>
+                  <Typography variant='h5'>Update Your Artwork</Typography>
                 </Grid>
               </Grid>
               <Grid container>
