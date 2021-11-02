@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/nft-gallery-client/static/css/main.c2457df2.chunk.css",
-    "main.js": "/nft-gallery-client/static/js/main.3056c612.chunk.js",
-    "main.js.map": "/nft-gallery-client/static/js/main.3056c612.chunk.js.map",
+    "main.js": "/nft-gallery-client/static/js/main.1f1caca5.chunk.js",
+    "main.js.map": "/nft-gallery-client/static/js/main.1f1caca5.chunk.js.map",
     "runtime-main.js": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js",
     "runtime-main.js.map": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js.map",
     "static/css/2.e2521d37.chunk.css": "/nft-gallery-client/static/css/2.e2521d37.chunk.css",
-    "static/js/2.caf3dcb1.chunk.js": "/nft-gallery-client/static/js/2.caf3dcb1.chunk.js",
-    "static/js/2.caf3dcb1.chunk.js.map": "/nft-gallery-client/static/js/2.caf3dcb1.chunk.js.map",
+    "static/js/2.e01ee6ae.chunk.js": "/nft-gallery-client/static/js/2.e01ee6ae.chunk.js",
+    "static/js/2.e01ee6ae.chunk.js.map": "/nft-gallery-client/static/js/2.e01ee6ae.chunk.js.map",
     "index.html": "/nft-gallery-client/index.html",
     "static/css/2.e2521d37.chunk.css.map": "/nft-gallery-client/static/css/2.e2521d37.chunk.css.map",
     "static/css/main.c2457df2.chunk.css.map": "/nft-gallery-client/static/css/main.c2457df2.chunk.css.map",
-    "static/js/2.caf3dcb1.chunk.js.LICENSE.txt": "/nft-gallery-client/static/js/2.caf3dcb1.chunk.js.LICENSE.txt",
+    "static/js/2.e01ee6ae.chunk.js.LICENSE.txt": "/nft-gallery-client/static/js/2.e01ee6ae.chunk.js.LICENSE.txt",
     "static/media/Jose-Parla-Studio-Yellowtrace-54.a71ab207.jpeg": "/nft-gallery-client/static/media/Jose-Parla-Studio-Yellowtrace-54.a71ab207.jpeg",
     "static/media/300.css": "/nft-gallery-client/static/media/roboto-vietnamese-300-normal.af9afdc1.woff2",
     "static/media/400.css": "/nft-gallery-client/static/media/roboto-vietnamese-400-normal.c0bec65d.woff2",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.5d4cb4c7.js",
     "static/css/2.e2521d37.chunk.css",
-    "static/js/2.caf3dcb1.chunk.js",
+    "static/js/2.e01ee6ae.chunk.js",
     "static/css/main.c2457df2.chunk.css",
-    "static/js/main.3056c612.chunk.js"
+    "static/js/main.1f1caca5.chunk.js"
   ]
 }
