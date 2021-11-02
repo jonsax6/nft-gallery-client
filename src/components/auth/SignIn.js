@@ -7,7 +7,6 @@ import AccountCircle from '@mui/icons-material/AccountCircle'
 import LockIcon from '@mui/icons-material/Lock'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 import LoginIcon from '@mui/icons-material/Login'
-// import background from '../../images/Jose-Parla-Studio-Yellowtrace-54.jpeg'
 
 const SignIn = ({ msgAlert, setUser }) => {
   const [email, setEmail] = useState('')

@@ -4,8 +4,7 @@ import {
   Fade,
   Box,
   Typography,
-  Backdrop,
-  Button
+  Backdrop
 } from '@mui/material'
 
 const style = {
@@ -52,7 +51,8 @@ const ArtModal = ({ card, handleClose, open }) => {
             <Typography gutterBottom paragraph>{card.notes}</Typography>{' '}
             <Typography variant="h5">Medium</Typography>
             <Typography>{card.medium}</Typography>{' '}
-            {/* <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
+            {/* This button will eventually open the metamask browser extension (web3)
+            <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
               Inquire
             </Button> */}
           </div>

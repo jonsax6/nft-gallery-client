@@ -5,7 +5,7 @@ import {
   removeArtworkFailure,
   removeArtworkSuccess
 } from '../AutoDismissAlert/messages'
-import { Typography, Grid, Button, Box, Card, CardContent } from '@mui/material'
+import { Typography, Grid, Button, Card, CardContent } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 const RemoveArt = ({ msgAlert, user }) => {

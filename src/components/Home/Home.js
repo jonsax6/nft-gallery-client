@@ -1,5 +1,4 @@
 import { Typography, Container } from '@mui/material'
-import { maxWidth } from '@mui/system'
 import React from 'react'
 import background from '../../images/Jose-Parla-Studio-Yellowtrace-54.jpeg'
 import CarouselComp from './CarouselComponent'

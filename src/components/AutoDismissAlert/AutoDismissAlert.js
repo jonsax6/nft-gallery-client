@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import Alert from 'react-bootstrap/Alert'
-// import Alert from '@mui/material/Alert'
-// import Snackbar from '@mui/material/Snackbar'
 import { Alert, Snackbar, Typography } from '@mui/material'
-
 import './AutoDismissAlert.scss'
 
 const AutoDismissAlert = ({ heading, variant, message, id, deleteAlert }) => {

@@ -7,12 +7,7 @@ import {
   Button,
   Card,
   CardMedia,
-  CardContent,
-  CardActions,
-  Modal,
-  Fade,
-  Backdrop,
-  Box
+  CardContent
 } from '@mui/material'
 import '../../App.css'
 import { indexArtwork } from '../../api/artwork'
