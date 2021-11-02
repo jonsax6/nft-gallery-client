@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nft-gallery-client/static/css/main.c2457df2.chunk.css",
-    "main.js": "/nft-gallery-client/static/js/main.5e8979ab.chunk.js",
-    "main.js.map": "/nft-gallery-client/static/js/main.5e8979ab.chunk.js.map",
+    "main.js": "/nft-gallery-client/static/js/main.0affea53.chunk.js",
+    "main.js.map": "/nft-gallery-client/static/js/main.0affea53.chunk.js.map",
     "runtime-main.js": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js",
     "runtime-main.js.map": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js.map",
     "static/css/2.e2521d37.chunk.css": "/nft-gallery-client/static/css/2.e2521d37.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.e2521d37.chunk.css",
     "static/js/2.1bdca736.chunk.js",
     "static/css/main.c2457df2.chunk.css",
-    "static/js/main.5e8979ab.chunk.js"
+    "static/js/main.0affea53.chunk.js"
   ]
 }
