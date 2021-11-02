@@ -22,6 +22,9 @@ https://rocky-ocean-73265.herokuapp.com
 ### API Repo: 
 https://github.com/jonsax6/nft-gallery-api
 
+### Website Homepage:
+![HOMEPAGE](https://i.imgur.com/7mbTKpF.png)
+
 ## About our website:
 
 Zyzygy Studios is an art gallery site where you can view all artist's works, and then arrange for the purchase of that art. In V1 for the site, patrons will only be able to view the art. The next update for the website will integrate with the blockchain, and patrons will have the ability to directly purchase the art from the studio using the metamask browser extension. This feature is currently under development and will be available in mid to late November 2021. So stay tuned!  
@@ -29,7 +32,7 @@ Zyzygy Studios is an art gallery site where you can view all artist's works, and
 ---
 The website was created using React.js, Express and MongoDB as part of an educational final project for General Assembly's Software Engineering Intensive in October 2021 by Jonathan Cole.
 
-The planning process involved creating wire-frames for the homepage and gallery views using Figma. The login, logout, change password and art submittal forms were straightforward as far as layout and didn't need any preplanning. A third-party npm package called react-responsive-carousel was used to create the homepage carousel.
+The planning process involved creating wire-frames for the homepage and gallery views using Figma, as well as an ERD diagram for the api linked above. The login, logout, change password and art submittal forms were straightforward as far as layout and didn't need any pre-planning. A third-party npm package called react-responsive-carousel was used to create the homepage carousel. Problems and bugs were strategically fixed using console.log's.  Any third-party npm package docs were closely followed.
 
 ---
 ## Specific Technologies Used:

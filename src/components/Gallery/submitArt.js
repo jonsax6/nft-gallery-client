@@ -22,17 +22,17 @@ import NoteIcon from '@mui/icons-material/Note'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 
 const SubmitArt = ({ msgAlert, user }) => {
-  const [artist, setArtist] = useState(null)
-  const [title, setTitle] = useState(null)
-  const [imageUrl, setImageUrl] = useState(null)
-  const [releaseDate, setReleaseDate] = useState(null)
-  const [medium, setMedium] = useState(null)
-  const [artistRoyalty, setArtistRoyalty] = useState(null)
-  const [curatorRoyalty, setCuratorRoyalty] = useState(null)
-  const [provenance, setProvenance] = useState(null)
-  const [exhibitionHistory, setExhibitionHistory] = useState(null)
-  const [publishingHistory, setPublishingHistory] = useState(null)
-  const [notes, setNotes] = useState(null)
+  const [artist, setArtist] = useState('')
+  const [title, setTitle] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
+  const [releaseDate, setReleaseDate] = useState('')
+  const [medium, setMedium] = useState('')
+  const [artistRoyalty, setArtistRoyalty] = useState('')
+  const [curatorRoyalty, setCuratorRoyalty] = useState('')
+  const [provenance, setProvenance] = useState('')
+  const [exhibitionHistory, setExhibitionHistory] = useState('')
+  const [publishingHistory, setPublishingHistory] = useState('')
+  const [notes, setNotes] = useState('')
   const [success, setSuccess] = useState(false)
 
   const art = {
@@ -89,7 +89,6 @@ const SubmitArt = ({ msgAlert, user }) => {
 
     createArtwork(user, art)
       .then((res) => {
-        console.log(res.data.artwork)
       })
       .then(() =>
         msgAlert({

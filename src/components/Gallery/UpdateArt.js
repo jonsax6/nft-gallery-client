@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { Redirect } from 'react-router'
 import { updateArtwork, showArtwork } from '../../api/artwork'
 import {
   updateArtworkFailure,
@@ -26,7 +27,6 @@ import NoteIcon from '@mui/icons-material/Note'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 
 const UpdateArt = ({ msgAlert, user }) => {
-  console.log(user)
   const { id } = useParams()
   const [card, setCard] = useState(null)
   const [artist, setArtist] = useState(card ? card.artist : '')
@@ -104,7 +104,6 @@ const UpdateArt = ({ msgAlert, user }) => {
         setProvenance(art.provenance)
         setExhibitionHistory(art.exhibitionHistory)
         setNotes(art.notes)
-        console.log('show card', artist)
       })
   }, [id])
 
@@ -115,14 +114,14 @@ const UpdateArt = ({ msgAlert, user }) => {
 
     updateArtwork(id, art, user)
       .then((res) => {
-        console.log(res.data.artwork)
       })
       .then(() =>
         msgAlert({
           heading: 'Update Artwork Success',
           message: updateArtworkSuccess,
           variant: 'success'
-        }))
+        })
+      )
       .catch((error) => {
         msgAlert({
           heading: 'Update Art Failed with error: ' + error.message,

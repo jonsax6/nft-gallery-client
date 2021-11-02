@@ -6,20 +6,9 @@ import {
   removeArtworkSuccess
 } from '../AutoDismissAlert/messages'
 import { Typography, Grid, Button, Box, Card, CardContent } from '@mui/material'
-import TextField from '@mui/material/TextField'
-import AccountCircle from '@mui/icons-material/AccountCircle'
-import ArtTrackIcon from '@mui/icons-material/ArtTrack'
-import HttpIcon from '@mui/icons-material/Http'
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn'
-import PaletteIcon from '@mui/icons-material/Palette'
-import EventIcon from '@mui/icons-material/Event'
-import HistoryIcon from '@mui/icons-material/History'
 import DeleteIcon from '@mui/icons-material/Delete'
-import NoteIcon from '@mui/icons-material/Note'
-import TextFieldComponent from '../TextField/TextFieldComponent'
 
 const RemoveArt = ({ msgAlert, user }) => {
-  console.log(user)
   const { id } = useParams()
   const [card, setCard] = useState(null)
   const [artist, setArtist] = useState(card ? card.artist : '')
@@ -57,35 +46,8 @@ const RemoveArt = ({ msgAlert, user }) => {
     notes: notes
   }
 
-  const handleChangeArtist = (event) => setArtist(event.target.value)
-
-  const handleChangeTitle = (event) => setTitle(event.target.value)
-
-  const handleChangeImageUrl = (event) => setImageUrl(event.target.value)
-
-  const handleChangeReleaseDate = (event) => setReleaseDate(event.target.value)
-
-  const handleChangeMedium = (event) => setMedium(event.target.value)
-
-  const handleChangeArtistRoyalty = (event) =>
-    setArtistRoyalty(event.target.value)
-
-  const handleChangeCuratorRoyalty = (event) =>
-    setCuratorRoyalty(event.target.value)
-
-  const handleChangeProvenance = (event) => setProvenance(event.target.value)
-
-  const handleChangeExhibitionHistory = (event) =>
-    setExhibitionHistory(event.target.value)
-
-  const handleChangePublishingHistory = (event) =>
-    setPublishingHistory(event.target.value)
-
-  const handleChangeNotes = (event) => setNotes(event.target.value)
-
   useEffect(() => {
     showArtwork(id).then((res) => {
-      // setCard(res.data.artwork)
       const art = res.data.artwork
       setArtist(art.artist)
       setTitle(art.title)
@@ -97,7 +59,6 @@ const RemoveArt = ({ msgAlert, user }) => {
       setProvenance(art.provenance)
       setExhibitionHistory(art.exhibitionHistory)
       setNotes(art.notes)
-      console.log('show card', artist)
     })
   }, [id])
 

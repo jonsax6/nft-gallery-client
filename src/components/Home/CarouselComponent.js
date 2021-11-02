@@ -9,7 +9,6 @@ const CarouselComp = () => {
   useEffect(() => {
     indexArtwork().then((res) => {
       setCards(res.data.artwork)
-      console.log(cards)
     })
   }, [])
 

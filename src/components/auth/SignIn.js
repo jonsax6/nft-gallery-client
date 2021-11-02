@@ -2,13 +2,7 @@ import React, { useState } from 'react'
 import { useHistory, NavLink } from 'react-router-dom'
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure, missingEmail, missingPassword } from '../AutoDismissAlert/messages'
-import DOMPurify from 'dompurify'
-import { useForm, Controller } from 'react-hook-form'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import { CardContent, Typography, InputAdornment, Card, Container } from '@mui/material'
+import { CardContent, Typography, Grid, Card, Button } from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import LockIcon from '@mui/icons-material/Lock'
 import TextFieldComponent from '../TextField/TextFieldComponent'
@@ -30,8 +24,7 @@ const SignIn = ({ msgAlert, setUser }) => {
     if (event) {
       event.preventDefault()
     }
-    const sanitizedEmail = DOMPurify.sanitize(email)
-    console.log(email, sanitizedEmail)
+
     if (email === '') {
       msgAlert({
         heading: 'email field is required. Cannot be empty',
