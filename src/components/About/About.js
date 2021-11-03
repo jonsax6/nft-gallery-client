@@ -4,6 +4,7 @@ import {
   Container
 } from '@mui/material'
 import { useMediaQuery } from 'react-responsive'
+import eclipse from '../../images/Eclipse1.jpeg'
 
 const desktop = '200px'
 const tablet = '100px'
@@ -48,9 +49,9 @@ const About = () => {
           What is a Zyzygy?
         </Typography>
       </div>
-      <div style={{ marginBottom: '20px' }}>
+      <div style={{ marginBottom: '35px' }}>
         <Typography
-          style={{ fontWeight: '100', marginBottom: '25kpx' }}
+          style={{ fontWeight: '100' }}
           variant='p'
           align='center'
           color='black'
@@ -64,6 +65,17 @@ const About = () => {
           we can achieve through non-fungible tokens (NFTs), and the real world
           of tangible touchable things like art, real estate, and property.
         </Typography>
+      </div>
+      <div>
+        <img
+          src={eclipse}
+          style={{
+            width: '100%',
+            marginBottom: '35px',
+            paddingLeft: '15px',
+            paddingRight: '20px'
+          }}
+        />
       </div>
       <div style={{ marginBottom: '20px' }}>
         <Typography

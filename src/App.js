@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <>
-      <div style={{ backgroundColor: '#202020', height: '100vh' }}>
+      <div style={{ backgroundColor: 'white', height: '100vh' }}>
         <CssBaseline />
         <Header user={user} />
         {msgAlerts.map((msgAlert) => (
@@ -72,7 +72,7 @@ const App = () => {
             path="/about"
             render={() => (
               <About
-                style={{ backgroundColor: 'black' }}
+                style={{ backgroundColor: 'white' }}
               />
             )}
           />
