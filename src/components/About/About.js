@@ -71,9 +71,7 @@ const About = () => {
           src={eclipse}
           style={{
             width: '100%',
-            marginBottom: '35px',
-            paddingLeft: '15px',
-            paddingRight: '20px'
+            marginBottom: '35px'
           }}
         />
       </div>
