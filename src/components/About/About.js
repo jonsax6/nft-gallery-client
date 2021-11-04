@@ -4,7 +4,7 @@ import {
   Container
 } from '@mui/material'
 import { useMediaQuery } from 'react-responsive'
-import eclipse from '../../images/Eclipse3.jpeg'
+import eclipse from '../../images/Eclipse3.jpg'
 
 const desktop = '200px'
 const tablet = '100px'
