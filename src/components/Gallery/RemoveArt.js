@@ -141,10 +141,10 @@ const RemoveArt = ({ msgAlert, user }) => {
                   <Typography>Medium: {medium}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography>Artist Royalty: {artistRoyalty}</Typography>
+                  <Typography>Artist Royalty: {artistRoyalty}%</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography>Curator Royalty: {curatorRoyalty}</Typography>
+                  <Typography>Curator Royalty: {curatorRoyalty}%</Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <Typography>Provenance: {provenance}</Typography>
