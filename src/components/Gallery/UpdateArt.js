@@ -102,6 +102,7 @@ const UpdateArt = ({ msgAlert, user }) => {
         setCuratorRoyalty(art.curatorRoyalty)
         setProvenance(art.provenance)
         setExhibitionHistory(art.exhibitionHistory)
+        setPublishingHistory(art.publishingHistory)
         setNotes(art.notes)
       })
   }, [id])
