@@ -117,7 +117,7 @@ const DrawerComponent = ({ user }) => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}>
         <List>
-          {user && (
+          {/* {user && (
             <NavLink
               style={{
                 color: 'black',
@@ -129,7 +129,7 @@ const DrawerComponent = ({ user }) => {
               className='nav-link'>
               {user.email}
             </NavLink>
-          )}
+          )} */}
           {alwaysOptions}
           {user ? authenticatedOptions : unauthenticatedOptions}
         </List>

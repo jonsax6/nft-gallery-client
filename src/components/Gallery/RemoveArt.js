@@ -11,24 +11,24 @@ import DeleteIcon from '@mui/icons-material/Delete'
 const RemoveArt = ({ msgAlert, user }) => {
   const { id } = useParams()
   const [card, setCard] = useState(null)
-  const [artist, setArtist] = useState(card ? card.artist : '')
-  const [title, setTitle] = useState(card ? card.title : '')
-  const [imageUrl, setImageUrl] = useState(card ? card.imageUrl : '')
+  const [artist, setArtist] = useState(
+    card ? card.artist : '')
+  const [title, setTitle] = useState(
+    card ? card.title : '')
+  const [imageUrl, setImageUrl] = useState(
+    card ? card.imageUrl : '')
   const [releaseDate, setReleaseDate] = useState(card ? card.releaseDate : '')
-  const [medium, setMedium] = useState(card ? card.medium : '')
+  const [medium, setMedium] = useState(
+    card ? card.medium : '')
   const [artistRoyalty, setArtistRoyalty] = useState(
-    card ? card.artistRoyalty : ''
-  )
+    card ? card.artistRoyalty : '')
   const [curatorRoyalty, setCuratorRoyalty] = useState(
-    card ? card.curatorRoyalty : ''
-  )
+    card ? card.curatorRoyalty : '')
   const [provenance, setProvenance] = useState(card ? card.provenance : '')
   const [exhibitionHistory, setExhibitionHistory] = useState(
-    card ? card.exhibitionHistory : ''
-  )
+    card ? card.exhibitionHistory : '')
   const [publishingHistory, setPublishingHistory] = useState(
-    card ? card.publishingHistory : ''
-  )
+    card ? card.publishingHistory : '')
   const [notes, setNotes] = useState(card ? card.notes : '')
   const history = useHistory()
 
@@ -47,19 +47,20 @@ const RemoveArt = ({ msgAlert, user }) => {
   }
 
   useEffect(() => {
-    showArtwork(id).then((res) => {
-      const art = res.data.artwork
-      setArtist(art.artist)
-      setTitle(art.title)
-      setImageUrl(art.imageUrl)
-      setReleaseDate(art.releaseDate)
-      setMedium(art.medium)
-      setArtistRoyalty(art.artistRoyalty)
-      setCuratorRoyalty(art.curatorRoyalty)
-      setProvenance(art.provenance)
-      setExhibitionHistory(art.exhibitionHistory)
-      setNotes(art.notes)
-    })
+    showArtwork(id)
+      .then((res) => {
+        const art = res.data.artwork
+        setArtist(art.artist)
+        setTitle(art.title)
+        setImageUrl(art.imageUrl)
+        setReleaseDate(art.releaseDate)
+        setMedium(art.medium)
+        setArtistRoyalty(art.artistRoyalty)
+        setCuratorRoyalty(art.curatorRoyalty)
+        setProvenance(art.provenance)
+        setExhibitionHistory(art.exhibitionHistory)
+        setNotes(art.notes)
+      })
   }, [id])
 
   const onRemoveArtwork = (event) => {
@@ -132,7 +133,13 @@ const RemoveArt = ({ msgAlert, user }) => {
                   <Typography>Title: {title}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography>ImageUrl: {imageUrl}</Typography>
+                  <div style={{ padding: '0px' }}>
+                    <img
+                      style={{ maxWidth: '35%' }}
+                      src={imageUrl}
+                      alt={title}
+                    />
+                  </div>
                 </Grid>
                 <Grid item xs={12}>
                   <Typography>release Date: {releaseDate}</Typography>
@@ -147,7 +154,14 @@ const RemoveArt = ({ msgAlert, user }) => {
                   <Typography>Curator Royalty: {curatorRoyalty}%</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography>Provenance: {provenance}</Typography>
+                  <Typography>Certificate of Provenance:</Typography>
+                  <div style={{ padding: '0px' }}>
+                    <img
+                      style={{ maxWidth: '35%' }}
+                      src={provenance}
+                      alt={title}
+                    />
+                  </div>{' '}
                 </Grid>
                 <Grid item xs={12}>
                   <Typography>

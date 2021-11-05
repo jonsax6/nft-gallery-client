@@ -80,11 +80,11 @@ const Header = ({ user }) => {
                 />
               </Link>
               <div sx={{ marginLeft: '10px', display: 'flex' }}>
+                {alwaysOptions}
+                {user ? authenticatedOptions : unauthenticatedOptions}
                 {user && (
                   <span className='navbar-text mr-2'>{user.email}</span>
                 )}
-                {alwaysOptions}
-                {user ? authenticatedOptions : unauthenticatedOptions}
               </div>
             </>
             }
