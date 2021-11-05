@@ -82,12 +82,13 @@ const Gallery = ({ user }) => {
       </Container>
       <Container
         maxWidth='flex'
+        style={{ paddingRight: 0 }}
         sx={{
           padding: '20px 0'
         }}>
         <Grid container spacing={4}>
           {cards.map((card, i) => (
-            <Grid item key={i} xs={12} sm={6} md={4}>
+            <Grid item style={{ paddingLeft: '10px', paddingTop: '10px' }} key={i} xs={12} sm={6} md={4}>
               <Card
                 sx={{
                   height: '100%',
@@ -115,25 +116,42 @@ const Gallery = ({ user }) => {
                   <Typography gutterBottom variant='h5'>
                     {card.artist}
                   </Typography>
-                  <Typography>
-                    {`'${card.title}'`}
-                  </Typography>{' '}
-                  {user && user._id === card.owner
-                    ? <>
-                      <Button style={{ marginTop: '10px', marginRight: '20px' }} size='small' color='info' variant='outlined' onClick={(e) => onUpdate(i)}>
+                  <Typography>{`'${card.title}'`}</Typography>{' '}
+                  {user && user._id === card.owner ? (
+                    <>
+                      <Button
+                        style={{ marginTop: '10px', marginRight: '20px' }}
+                        size='small'
+                        color='info'
+                        variant='outlined'
+                        onClick={(e) => onUpdate(i)}>
                         Update Artwork
                       </Button>
-                      <Button style={{ marginTop: '10px' }} size='small' color='error' variant='outlined' onClick={(e) => onRemove(i)}>
+                      <Button
+                        style={{ marginTop: '10px' }}
+                        size='small'
+                        color='error'
+                        variant='outlined'
+                        onClick={(e) => onRemove(i)}>
                         Remove Artwork
                       </Button>
                     </>
-
-                    : <></>}
+                  ) : (
+                    <></>
+                  )}
                 </CardContent>
               </Card>
             </Grid>
           ))}
-          {cards.length > 0 ? <ArtModal card={cards[index]} handleClose={handleClose} open={open}/> : <></>}
+          {cards.length > 0 ? (
+            <ArtModal
+              card={cards[index]}
+              handleClose={handleClose}
+              open={open}
+            />
+          ) : (
+            <></>
+          )}
         </Grid>
       </Container>
     </div>
