@@ -12,14 +12,32 @@ import {
 import '../../App.css'
 import { indexArtwork } from '../../api/artwork'
 import ArtModal from './ArtModal'
+import { useMediaQuery } from 'react-responsive'
 
 // import { withRouter } from 'react-router-dom'
+
+// we need a specific padding for xs screen size to avoid left side cutoff, so using media query
+// these are the variables which will be selected by 'isPhone' in the below control flow statements
+const phone = '32px'
+const desktop = '8px'
 
 const Gallery = ({ user }) => {
   const [cards, setCards] = useState([])
   const [index, setIndex] = useState(0)
   const [hovered, setHovered] = useState(false)
   const history = useHistory()
+
+  const isPhone = useMediaQuery({
+    query: '(max-width: 600px)'
+  })
+
+  let mobileStyle
+
+  if (isPhone) {
+    mobileStyle = phone
+  } else {
+    mobileStyle = desktop
+  }
 
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto'
@@ -88,7 +106,7 @@ const Gallery = ({ user }) => {
         }}>
         <Grid container spacing={4}>
           {cards.map((card, i) => (
-            <Grid item style={{ paddingLeft: '10px', paddingTop: '10px' }} key={i} xs={12} sm={6} md={4}>
+            <Grid item style={{ paddingLeft: mobileStyle, paddingTop: '10px' }} key={i} xs={12} sm={6} md={4}>
               <Card
                 sx={{
                   height: '100%',
