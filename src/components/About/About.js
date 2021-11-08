@@ -60,8 +60,8 @@ const About = () => {
           celestial bodies come into perfect alignment. The best known examples
           of a zyzygy are the solar and lunar eclipses. Zyzygy Studios is an art
           gallery. Why are we naming our art gallery Zyzygy? We believe we are
-          at the intersection point where two worlds are coming into alignment.
-          The digital world of blockchain technology, with the digital scarcity
+          at the intersection point where two worlds are coming into alignment
+          - the digital world of blockchain technology, with the digital scarcity
           we can achieve through non-fungible tokens (NFTs), and the real world
           of tangible scarcity like art, real estate, and property rights.
         </Typography>
