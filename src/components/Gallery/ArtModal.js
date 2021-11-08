@@ -103,7 +103,7 @@ const ArtModal = ({ card, handleClose, open }) => {
               </Typography>
               <Typography style={{ marginBottom: '10px' }}>...scroll for more</Typography>
               <Typography variant='h5'>Medium</Typography>
-              <Typography style={{ marginBottom: '20px' }}>
+              <Typography>
                 {card.medium}
               </Typography>{' '}
               {/* <Accordion style={{ width: '100%' }}>
