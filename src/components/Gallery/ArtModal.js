@@ -93,9 +93,15 @@ const ArtModal = ({ card, handleClose, open }) => {
               <Typography gutterBottom variant='h5'>
                 Title: {`'${card.title}'`}
               </Typography>
-              <Typography style={{ overflow: 'scroll', height: '100px', marginBottom: '10px' }}>
+              <Typography
+                style={{
+                  overflow: 'scroll',
+                  height: '75px',
+                  marginBottom: '6px'
+                }}>
                 {card.notes}
               </Typography>
+              <Typography style={{ marginBottom: '10px' }}>...scroll for more</Typography>
               <Typography variant='h5'>Medium</Typography>
               <Typography style={{ marginBottom: '20px' }}>
                 {card.medium}
