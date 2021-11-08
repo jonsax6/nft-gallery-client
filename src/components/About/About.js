@@ -63,7 +63,7 @@ const About = () => {
           at the intersection point where two worlds are coming into alignment.
           The digital world of blockchain technology, with the digital scarcity
           we can achieve through non-fungible tokens (NFTs), and the real world
-          of tangible touchable things like art, real estate, and property.
+          of tangible scarcity like art, real estate, and property rights.
         </Typography>
       </div>
       <div>
