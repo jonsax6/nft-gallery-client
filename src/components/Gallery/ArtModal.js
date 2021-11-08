@@ -4,8 +4,12 @@ import {
   Fade,
   Box,
   Typography,
-  Backdrop
+  Backdrop,
+  AccordionSummary,
+  AccordionDetails,
+  Accordion
 } from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useMediaQuery } from 'react-responsive'
 
 const desktop = {
@@ -89,11 +93,26 @@ const ArtModal = ({ card, handleClose, open }) => {
               <Typography gutterBottom variant='h5'>
                 Title: {`'${card.title}'`}
               </Typography>
-              <Typography gutterBottom paragraph>
+              <Typography style={{ overflow: 'scroll', height: '100px', marginBottom: '10px' }}>
                 {card.notes}
-              </Typography>{' '}
+              </Typography>
               <Typography variant='h5'>Medium</Typography>
-              <Typography>{card.medium}</Typography>{' '}
+              <Typography style={{ marginBottom: '20px' }}>
+                {card.medium}
+              </Typography>{' '}
+              {/* <Accordion style={{ width: '100%' }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls='panel1a-content'
+                  id='panel1a-header'>
+                  <Typography>Notes</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography gutterBottom paragraph>
+                    {card.notes}
+                  </Typography>{' '}
+                </AccordionDetails>
+              </Accordion> */}
               {/* This button will eventually open the metamask browser extension (web3)
             <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
               Inquire
