@@ -1,16 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Modal,
   Fade,
   Box,
   Typography,
-  Backdrop,
-  AccordionSummary,
-  AccordionDetails,
-  Accordion
+  Backdrop
 } from '@mui/material'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useMediaQuery } from 'react-responsive'
+import CloseIcon from '@mui/icons-material/Close'
 
 const desktop = {
   position: 'absolute',
@@ -46,9 +43,14 @@ const phone = {
 }
 
 const ArtModal = ({ card, handleClose, open }) => {
+  const [hovered, setHovered] = useState(false)
   const isPhone = useMediaQuery({
     query: '(max-width: 600px)'
   })
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
 
   const isTablet = useMediaQuery({
     query: '(max-width: 1200px)'
@@ -79,6 +81,13 @@ const ArtModal = ({ card, handleClose, open }) => {
         style={{ overflow: 'scroll' }}>
         <Fade in={open}>
           <Box sx={mobileStyle}>
+            <div>
+              <CloseIcon
+                onClick={handleClose}
+                onPointerOver={() => setHovered(true)}
+                onPointerOut={() => setHovered(false)}
+              />
+            </div>
             <div style={{ padding: '0px' }}>
               <img
                 style={{ maxWidth: '100%' }}
@@ -101,28 +110,11 @@ const ArtModal = ({ card, handleClose, open }) => {
                 }}>
                 {card.notes}
               </Typography>
-              <Typography style={{ marginBottom: '10px' }}>...scroll for more</Typography>
+              <Typography style={{ marginBottom: '10px' }}>
+                ...scroll for more
+              </Typography>
               <Typography variant='h5'>Medium</Typography>
-              <Typography>
-                {card.medium}
-              </Typography>{' '}
-              {/* <Accordion style={{ width: '100%' }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls='panel1a-content'
-                  id='panel1a-header'>
-                  <Typography>Notes</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography gutterBottom paragraph>
-                    {card.notes}
-                  </Typography>{' '}
-                </AccordionDetails>
-              </Accordion> */}
-              {/* This button will eventually open the metamask browser extension (web3)
-            <Button style={{ marginTop: '10px' }} variant='outlined' size='small' color='warning'>
-              Inquire
-            </Button> */}
+              <Typography>{card.medium}</Typography>{' '}
             </div>
           </Box>
         </Fade>
