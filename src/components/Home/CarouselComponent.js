@@ -4,7 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import { useMediaQuery } from 'react-responsive'
 
-const desktop = '60%'
+const desktop = '800px'
 const tablet = '75%'
 const phone = '90%'
 
