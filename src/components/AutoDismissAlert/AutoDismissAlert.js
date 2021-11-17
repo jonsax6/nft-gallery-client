@@ -27,7 +27,7 @@ const AutoDismissAlert = ({ heading, variant, message, id, deleteAlert }) => {
         <Alert variant="filled" severity={variant} onClose={handleClose}>
           <div className="container">
             <Typography variant="h6">{heading}</Typography>
-            <p className="alert-body">{message}</p>
+            {/* <p className="alert-body">{message}</p> */}
           </div>
         </Alert>
       </Snackbar>
