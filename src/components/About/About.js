@@ -60,8 +60,8 @@ const About = () => {
           celestial bodies come into perfect alignment. The best known examples
           of a zyzygy are the solar and lunar eclipses. Zyzygy Studios is an art
           gallery. Why are we naming our art gallery Zyzygy? We believe we are
-          at the intersection point where two worlds are coming into alignment
-          - the digital world of blockchain technology, with the digital scarcity
+          at the intersection point where two worlds are coming into alignment -
+          the digital world of blockchain technology, with the digital scarcity
           we can achieve through non-fungible tokens (NFTs), and the real world
           of tangible scarcity like art, real estate, and property rights.
         </Typography>
@@ -146,17 +146,19 @@ const About = () => {
           counterfeit art piece. So the authenticity of the artwork will still
           need to be verified by 3rd parties. Until a foolproof system for this
           can be created, authenticity will either be on an honor code system,
-          or need to be verified by an expert. In the example of real estate or
-          land rights, this is not an issue because physical land or a house,
-          cannot be &ldquo;faked&ldquo; in any way, so the ownership rights, or
-          deeds, will simply be the NFT that stores all the ownership rights,
-          which itself, cannot be altered or faked. But small-scale artwork can
-          be faked, so this could present an opportunity for counterfeiting. Bad
-          actors will be bad actors, so for now, authenticity will still be in
-          question, in the same way that it is now, without the NFT ownership
-          rights. The NFT will simply protect the artist&apos;s royalty rights
-          by enforcing the contract automatically. If the sale of the art takes
-          place, the royalties will be paid, no matter what.
+          or need to be verified by an expert. However, it would be impossible
+          for the counterfeiter to sell that art using the blockchain because they
+          will not have access to the ownership NFT. In order to game the
+          system, they would have to hack the ethereum network, which is virtually
+          impossible to do. So it really is almost foolproof and cannot be
+          &quot;gamed&quot;. If the economics remain on the blockchain, then
+          ownership cannot be faked by a 3rd party. The blockchain will have an
+          immutable ownership record, and only the current owner&apos;s ethereum
+          wallet will be able to transfer ownership to a buyer. If the artist is
+          well known, and their work has value and notoriety, then it should
+          also be common knowledge in the art world that ownership is controlled
+          by the NFT, so selling the counterfeit art for regular &apos;ol dollars
+          won&apos;t really work out very well for the counterfeiter.
         </Typography>
       </div>
       <div style={{ height: '100x', color: 'white' }}>content</div>
