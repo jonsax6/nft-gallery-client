@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { createArtwork, showArtwork } from '../../api/artwork'
 import { useHistory } from 'react-router-dom'
-import { submitArtworkSuccess, submitArtworkFailure } from '../AutoDismissAlert/messages'
+import { submitArtworkSuccess } from '../AutoDismissAlert/messages'
 import {
   Typography,
   Grid,
@@ -98,8 +98,8 @@ const SubmitArt = ({ msgAlert, user }) => {
       .then(() => history.push('/gallery'))
       .catch((error) => {
         msgAlert({
-          heading: 'Submit Art Failed with error: ' + error.message,
-          message: submitArtworkFailure,
+          heading: 'Submit Art Failed',
+          message: error.message,
           variant: 'error'
         })
       })

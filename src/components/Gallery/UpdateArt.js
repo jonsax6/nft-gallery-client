@@ -124,8 +124,8 @@ const UpdateArt = ({ msgAlert, user }) => {
       .then(() => history.push('/gallery'))
       .catch((error) => {
         msgAlert({
-          heading: 'Update Art Failed with error: ' + error.message,
-          message: updateArtworkFailure,
+          heading: 'Update Art Failed',
+          message: error.message,
           variant: 'error'
         })
       })

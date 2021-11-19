@@ -45,8 +45,8 @@ const ChangePassword = ({ msgAlert, user }) => {
         setOldPassword('')
         setNewPassword('')
         msgAlert({
-          heading: 'Change Password Failed with error: ' + error.message,
-          message: changePasswordFailure,
+          heading: 'Change Password Failed',
+          message: error.message,
           variant: 'error'
         })
       })

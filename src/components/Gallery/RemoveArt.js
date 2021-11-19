@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { removeArtwork, showArtwork } from '../../api/artwork'
 import {
-  removeArtworkFailure,
   removeArtworkSuccess
 } from '../AutoDismissAlert/messages'
 import { Typography, Grid, Button, Card, CardContent } from '@mui/material'
@@ -79,8 +78,8 @@ const RemoveArt = ({ msgAlert, user }) => {
       .then(() => history.push('/'))
       .catch((error) => {
         msgAlert({
-          heading: 'Remove Art Failed with error: ' + error.message,
-          message: removeArtworkFailure,
+          heading: 'Remove Art Failed',
+          message: error.message,
           variant: 'error'
         })
       })
