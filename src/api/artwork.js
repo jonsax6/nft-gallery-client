@@ -42,6 +42,10 @@ export const createArtwork = (user, data) => {
   })
 }
 
+export const mintNFT = (data) => {
+  return axios()
+}
+
 export const updateArtwork = (id, data, user) => {
   return axios({
     method: 'PATCH',

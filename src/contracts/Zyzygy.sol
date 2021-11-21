@@ -576,8 +576,7 @@ interface IERC721 is IERC165 {
         address to,
         uint256 tokenId,
         string memory Name,
-        uint64 phoneNumber,
-        string memory date
+        uint64 phoneNumber
     ) external payable;
 
     /**
@@ -599,8 +598,7 @@ interface IERC721 is IERC165 {
         address to,
         uint256 tokenId,
         string memory Name,
-        uint64 phoneNumber,
-        string memory date
+        uint64 phoneNumber
     ) external payable;
 
     /**
@@ -720,6 +718,9 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     // Token name
     string private _name;
 
+    // blocktime timestamp
+    uint256 timestamp = block.timestamp;
+
     // Token symbol
     string private _symbol;
 
@@ -736,7 +737,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     mapping(address => mapping(address => bool)) private _operatorApprovals;
     
        
-     event buyer(string indexed name,uint64 phoneNumber, string indexed date);
+     event buyer(string indexed name,uint64 phoneNumber, uint256 date);
          /**
      * @dev Returns the name, phone number and date of selling.
      */
@@ -858,15 +859,14 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
         address to,
         uint256 tokenId,  
         string memory Name,
-        uint64 phoneNumber,
-        string memory date
+        uint64 phoneNumber
     ) public virtual payable override {
         //solhint-disable-next-line max-line-length
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
         // require(msg.value == getTokenPrice(tokenId));
         
         _transfer(from, to, tokenId);
-        emit buyer(Name,phoneNumber,date);
+        emit buyer(Name, phoneNumber, timestamp);
     }
 
     /**
@@ -877,11 +877,10 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
         address to,
         uint256 tokenId,
         string memory Name,
-        uint64 phoneNumber,
-        string memory date
+        uint64 phoneNumber
     ) public virtual payable override {
         safeTransferFrom(from, to, tokenId, "");
-        emit buyer(Name,phoneNumber,date);
+        emit buyer(Name, phoneNumber, timestamp);
     }
 
     /**
@@ -1192,14 +1191,11 @@ abstract contract ERC721URIStorage is ERC721 {
     }
 }
 
+
+
 // File: testing_contract.sol
 
-
 pragma solidity ^0.8.2;
-
-
-
-
 
 contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
@@ -1249,8 +1245,7 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
         address to,
         uint256 tokenId,  
         string memory Name,
-        uint64 phoneNumber,
-        string memory date
+        uint64 phoneNumber
     ) public virtual payable override {
         //solhint-disable-next-line max-line-length
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
@@ -1258,7 +1253,7 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
         payable(address(ownerOf(tokenId))).transfer(msg.value);
 
         _transfer(from, to, tokenId);
-        emit buyer(Name,phoneNumber,date);
+        emit buyer(Name, phoneNumber, timestamp);
     }
 
     /**
@@ -1269,12 +1264,11 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
         address to,
         uint256 tokenId,
         string memory Name,
-        uint64 phoneNumber,
-        string memory date
+        uint64 phoneNumber
     ) public virtual payable override {
         require(msg.value == getTokenPrice(tokenId));
         safeTransferFrom(from, to, tokenId, "");
-        emit buyer(Name,phoneNumber,date);
+        emit buyer(Name, phoneNumber, timestamp);
     }
 
     /**
@@ -1291,4 +1285,6 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
         _safeTransfer(from, to, tokenId, _data);
        
     }
+    // still needed in contract: 
+    // 'buyer' event needs date to be block-time time stamp.
 }
