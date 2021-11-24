@@ -34,7 +34,7 @@ const FAQ = () => {
         paddingTop: '100px',
         paddingLeft: mobileStyle,
         paddingRight: mobileStyle,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       }}>
       <div style={{ marginBottom: '20px' }}>
         <Typography
@@ -105,7 +105,9 @@ const FAQ = () => {
           been changed. Due to the very secure cryptography that MUST BE exactly
           the same as all the other copies on the network, the blockchain
           ensures that it&apos;s historical record is fully immutable and
-          trustless.
+          trustless. This makes blockchains resistant to government censorship,
+          or manipulation, because it is impossible to shut it down, or to
+          change it&apos;s history.
         </Typography>
       </div>
       <div>
@@ -123,7 +125,7 @@ const FAQ = () => {
           src={TxProcess}
           style={{
             width: '100%',
-            marginBottom: '35px'
+            marginBottom: '35px',
           }}
         />
       </div>
@@ -197,7 +199,7 @@ const FAQ = () => {
           width: '100%',
           height: '0',
           paddingBottom: '56.25%',
-          marginBottom: '20px'
+          marginBottom: '20px',
         }}>
         <iframe
           style={{
@@ -205,7 +207,7 @@ const FAQ = () => {
             top: '0',
             left: '0',
             width: '100%',
-            height: '100%'
+            height: '100%',
           }}
           src='https://www.youtube.com/embed/ZE2HxTmxfrI'
           title='YouTube video player'
@@ -522,13 +524,15 @@ const FAQ = () => {
           align='center'
           color='black'
           gutterBottom>
-          *Investopedia. What Is A Blockchain, 2021. Accessed Nov 23, 2021.&nbsp;
+          *Investopedia. What Is A Blockchain, 2021. Accessed Nov 23,
+          2021.&nbsp;
           <a
-            target="_blank"
-            rel="noreferrer"
+            target='_blank'
+            rel='noreferrer'
             href='https://www.investopedia.com/terms/b/blockchain.asp'
-            style={{ textDecoration: 'none', color: 'black' }}
-          >www.investopedia.com</a>
+            style={{ textDecoration: 'none', color: 'black' }}>
+            www.investopedia.com
+          </a>
         </Typography>
       </div>{' '}
       <div>
@@ -540,11 +544,12 @@ const FAQ = () => {
           gutterBottom>
           **Investopedia. Smart Contracts, 2021. Accessed Nov 23, 2021.&nbsp;
           <a
-            target="_blank"
-            rel="noreferrer"
+            target='_blank'
+            rel='noreferrer'
             href='https://www.investopedia.com/terms/s/smart-contracts.asp'
-            style={{ textDecoration: 'none', color: 'black' }}
-          >www.investopedia.com</a>
+            style={{ textDecoration: 'none', color: 'black' }}>
+            www.investopedia.com
+          </a>
         </Typography>
       </div>{' '}
       <div style={{ marginBottom: '20px' }}>
@@ -554,13 +559,15 @@ const FAQ = () => {
           align='center'
           color='black'
           gutterBottom>
-          ***Investopedia. Non-Fungible Token (NFT) Definition, 2021. Accessed Nov 23, 2021.&nbsp;
+          ***Investopedia. Non-Fungible Token (NFT) Definition, 2021. Accessed
+          Nov 23, 2021.&nbsp;
           <a
-            target="_blank"
-            rel="noreferrer"
+            target='_blank'
+            rel='noreferrer'
             href='https://www.investopedia.com/non-fungible-tokens-nft-5115211'
-            style={{ textDecoration: 'none', color: 'black' }}
-          >www.investopedia.com</a>
+            style={{ textDecoration: 'none', color: 'black' }}>
+            www.investopedia.com
+          </a>
         </Typography>
       </div>{' '}
     </Container>
