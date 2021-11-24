@@ -34,7 +34,7 @@ const FAQ = () => {
         paddingTop: '100px',
         paddingLeft: mobileStyle,
         paddingRight: mobileStyle,
-        backgroundColor: 'white',
+        backgroundColor: 'white'
       }}>
       <div style={{ marginBottom: '20px' }}>
         <Typography
@@ -125,7 +125,7 @@ const FAQ = () => {
           src={TxProcess}
           style={{
             width: '100%',
-            marginBottom: '35px',
+            marginBottom: '35px'
           }}
         />
       </div>
@@ -199,7 +199,7 @@ const FAQ = () => {
           width: '100%',
           height: '0',
           paddingBottom: '56.25%',
-          marginBottom: '20px',
+          marginBottom: '20px'
         }}>
         <iframe
           style={{
@@ -207,7 +207,7 @@ const FAQ = () => {
             top: '0',
             left: '0',
             width: '100%',
-            height: '100%',
+            height: '100%'
           }}
           src='https://www.youtube.com/embed/ZE2HxTmxfrI'
           title='YouTube video player'
