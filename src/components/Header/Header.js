@@ -110,7 +110,7 @@ const Header = ({ user }) => {
                     variant='contained'
                     type='submit'
                     onClick={console.log('clicked')}>
-                    CONNECT WALLET
+                    CONNECT
                   </Button>
                 ) : (
                   <></>
