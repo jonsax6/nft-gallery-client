@@ -10,54 +10,42 @@ import logo from '../../images/zyzygy_eclipse1.png'
 import DrawerComponent from './Drawer'
 import { useMediaQuery } from 'react-responsive'
 import { Button } from '@mui/material'
-import getWeb3 from './getWeb3'
-import detectEthereumProvider from '@metamask/detect-provider'
-
+// import getWeb3 from './getWeb3'
+// import detectEthereumProvider from '@metamask/detect-provider'
 
 const Header = ({ user }) => {
-  const [accounts, setAccounts] = useState(undefined)
-  const [web3, setWeb3] = useState(undefined)
-  const [contract, setContract] = useState(undefined)
+  // const [accounts, setAccounts] = useState(undefined)
+  // const [web3, setWeb3] = useState(undefined)
+  // const [contract, setContract] = useState(undefined)
 
-  useEffect(() => {
-    const init = async() => {
-      const web3 = await getWeb3()
+  // useEffect(() => {
+  //   const init = async() => {
+  //     const web3 = await getWeb3()
 
-      const accounts = await web3.eth.getAccounts()
-      const networkId = await web3.eth.net.getId()
-      const deployedNetwork = SimpleStorageContract.networks[networkId]
-      const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS)
-      setWeb3(web3)
-      setAccounts(accounts)
-      setContract(contract)
-    }
-    init()
-  }, [])
+  //     const accounts = await web3.eth.getAccounts()
+  //     const networkId = await web3.eth.net.getId()
+  //     const deployedNetwork = SimpleStorageContract.networks[networkId]
+  //     const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS)
+  //     setWeb3(web3)
+  //     setAccounts(accounts)
+  //     setContract(contract)
+  //   }
+  //   init()
+  // }, [])
 
+  // const loadWeb3 = () => {
+  //   const web3 = new Web3(window.ethereum)
+  //   setWeb3(web3)
+  // }
 
-  const loadWeb3 = () => {
-    const web3 = new Web3(window.ethereum)
-    setWeb3(web3)
-  }
-
-  const loadBlockChain = async (web3) => {
-    // const web3 = new Web3(Web3.givenProvider || 'http://localhost:8080')
-    const network = await web3.eth.net.getNetworkType()
-    console.log(network) // should give you main if you're connected to the main network via metamask...
-    const accounts = await web3.eth.getAccounts()
-    setAccount(accounts[0])
-    console.log(account)
-
-    // This function detects most providers injected at window.ethereum
-    // const provider = await detectEthereumProvider()
-
-    // const web3 = new Web3(provider || 'http://localhost:7545')
-    // const network = await web3.eth.net.getNetworkType()
-    // console.log(network) // should give you main if you're connected to the main network via metamask..
-    // const accounts = await Window.ethereum.request({ method: 'eth_requestAccounts' })
-    // setAccount(accounts[0])
-    // console.log(account)
-  }
+  // const loadBlockChain = async () => {
+  //   // const web3 = new Web3(Web3.givenProvider || 'http://localhost:8080')
+  //   const network = await web3.eth.net.getNetworkType()
+  //   console.log(network) // should give you main if you're connected to the main network via metamask...
+  //   const accounts = await web3.eth.getAccounts()
+  //   setAccount(accounts[0])
+  //   console.log(account)
+  // }
 
   const authenticatedOptions = (
     <Fragment>
@@ -67,7 +55,7 @@ const Header = ({ user }) => {
       <Button
         variant='contained'
         type='submit'
-        onClick={loadBlockChain}>
+        onClick={console.log('clicked')}>
       CONNECT</Button>
     </Fragment>
   )
@@ -84,6 +72,7 @@ const Header = ({ user }) => {
       <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} exact to='/' className='nav-link'>Home</NavLink>
       <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} exact to='/about' className='nav-link'>About</NavLink>
       <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} exact to='/gallery' className='nav-link'>View Gallery</NavLink>
+      <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} exact to='/faq' className='nav-link'>FAQ</NavLink>
     </Fragment>
   )
 
@@ -137,9 +126,9 @@ const Header = ({ user }) => {
               <div sx={{ marginLeft: '10px', display: 'flex' }}>
                 {alwaysOptions}
                 {user ? authenticatedOptions : unauthenticatedOptions}
-                {user && (
+                {/* {user && (
                   <span className='navbar-text mr-2'>{user.email}</span>
-                )}
+                )} */}
               </div>
             </>
             }

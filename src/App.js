@@ -15,6 +15,7 @@ import SubmitArt from './components/Gallery/submitArt'
 import UpdateArt from './components/Gallery/UpdateArt'
 import RemoveArt from './components/Gallery/RemoveArt'
 import About from './components/About/About'
+import FAQ from './components/FAQ/FAQ'
 import { CssBaseline, Container } from '@mui/material'
 import './App.css'
 
@@ -79,6 +80,10 @@ const App = () => {
           <Route
             path="/gallery"
             render={() => <Gallery user={user} style={{ backgroundColor: '#202020' }} />}
+          />
+          <Route
+            path="/faq"
+            render={() => <FAQ user={user} style={{ backgroundColor: '#202020' }} />}
           />
           <AuthenticatedRoute
             user={user}

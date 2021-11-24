@@ -42,7 +42,7 @@ const About = () => {
       <div style={{ marginBottom: '20px' }}>
         <Typography
           style={{ fontWeight: '100', marginBottom: '25px' }}
-          variant='h5'
+          variant='h4'
           align='center'
           color='black'
           gutterBottom={true}>

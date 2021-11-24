@@ -4,7 +4,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import { useMediaQuery } from 'react-responsive'
 
-const desktop = '800px'
+const desktop = '700px'
 const tablet = '75%'
 const phone = '90%'
 
@@ -36,7 +36,7 @@ const CarouselComp = () => {
   }
 
   return (
-    <div style={{ marginTop: '50px' }} className={'demo-carousel'}>
+    <div style={{ marginTop: '10px' }} className={'demo-carousel'}>
       <Carousel
         showArrows={true}
         autoPlay={true}

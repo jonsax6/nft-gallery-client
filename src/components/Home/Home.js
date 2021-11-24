@@ -15,7 +15,7 @@ const Home = () => {
       paddingTop: '100px'
     }}>
       <Typography
-        style={{ fontWeight: '100', padding: '50px' }}
+        style={{ fontWeight: '100', padding: '20px' }}
         variant='h4'
         align='center'
         color='white'
