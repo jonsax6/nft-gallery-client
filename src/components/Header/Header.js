@@ -56,7 +56,7 @@ const Header = ({ user }) => {
         variant='contained'
         type='submit'
         onClick={console.log('clicked')}>
-      CONNECT</Button>
+      CONNECT WALLET</Button>
     </Fragment>
   )
 
