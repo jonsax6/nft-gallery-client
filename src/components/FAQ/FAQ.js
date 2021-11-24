@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography, Container } from '@mui/material'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
-import TxProcess from '../../images/Transaction_Process.png'
+import TxProcess from '../../images/Transactions.png'
 
 const desktop = '200px'
 const tablet = '100px'
