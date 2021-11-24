@@ -164,7 +164,7 @@ const FAQ = () => {
           agreement between buyer and seller being directly written into lines
           of code. The code and the agreements contained therein exist across a
           distributed, decentralized blockchain network. The code controls the
-          execution, and transactions are trackable and irreversible.**
+          execution, and transactions are trackable and irreversible.
         </Typography>
       </div>
       <div style={{ marginBottom: '20px' }}>
@@ -176,7 +176,7 @@ const FAQ = () => {
           gutterBottom>
           Smart contracts permit trusted transactions and agreements to be
           carried out among disparate, anonymous parties without the need for a
-          central authority, legal system, or external enforcement mechanism.**
+          central authority, legal system, or external enforcement mechanism.
         </Typography>
       </div>
       <div style={{ marginBottom: '20px' }}>

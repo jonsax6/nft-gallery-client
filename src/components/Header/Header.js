@@ -77,7 +77,7 @@ const Header = ({ user }) => {
   )
 
   const isMobile = useMediaQuery({
-    query: '(max-width: 1000px)'
+    query: '(max-width: 1100px)'
   })
 
   return (
@@ -85,53 +85,65 @@ const Header = ({ user }) => {
       <Box sx={{ flexGrow: 1, fontWeight: '100' }}>
         <AppBar style={{ backgroundColor: '#424242' }} position='fixed'>
           <Toolbar>
-            {isMobile ? <>
-              <DrawerComponent user={user} />
-              <Link
-                to='/'
-                style={{
-                  paddingLeft: '20px',
-                  color: '#000',
-                  textDecoration: 'none',
-                  fontWeight: '100',
-                  flexGrow: 1
-                }}>
-                <img
-                  src={logo}
+            {isMobile ? (
+              <>
+                <DrawerComponent user={user} />
+                <Link
+                  to='/'
                   style={{
-                    width: '200px',
-                    marginTop: 10
-                  }}
-                />
-              </Link>
-            </> : <>
-              <Link
-                to='/'
-                style={{
-                  paddingLeft: '20px',
-                  color: '#000',
-                  textDecoration: 'none',
-                  fontWeight: '100',
-                  flexGrow: 1
-                }}
-              >
-                <img
-                  src={logo}
+                    paddingLeft: '20px',
+                    color: '#000',
+                    textDecoration: 'none',
+                    fontWeight: '100',
+                    flexGrow: 1
+                  }}>
+                  <img
+                    src={logo}
+                    style={{
+                      width: '200px',
+                      marginTop: 10
+                    }}
+                  />
+                </Link>
+                {user ? (
+                  <Button
+                    variant='contained'
+                    type='submit'
+                    onClick={console.log('clicked')}>
+                    CONNECT WALLET
+                  </Button>
+                ) : (
+                  <></>
+                )}
+              </>
+            ) : (
+              <>
+                <Link
+                  to='/'
                   style={{
-                    width: '200px',
-                    marginTop: 10
-                  }}
-                />
-              </Link>
-              <div sx={{ marginLeft: '10px', display: 'flex' }}>
-                {alwaysOptions}
-                {user ? authenticatedOptions : unauthenticatedOptions}
-                {/* {user && (
+                    paddingLeft: '20px',
+                    color: '#000',
+                    textDecoration: 'none',
+                    fontWeight: '100',
+                    flexGrow: 1
+                  }}>
+                  <img
+                    src={logo}
+                    style={{
+                      width: '200px',
+                      marginTop: 10
+                    }}
+                  />
+                </Link>
+                <div sx={{ marginLeft: '10px', display: 'flex' }}>
+                  {alwaysOptions}
+                  {user ? authenticatedOptions : unauthenticatedOptions}
+                  {/* {user && (
                   <span className='navbar-text mr-2'>{user.email}</span>
                 )} */}
-              </div>
-            </>
-            }
+                </div>
+              </>
+            )}
           </Toolbar>
         </AppBar>
       </Box>
