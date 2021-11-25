@@ -25,6 +25,7 @@ const Gallery = ({ user }) => {
   const [cards, setCards] = useState([])
   const [index, setIndex] = useState(0)
   const [hovered, setHovered] = useState(false)
+  const [open, setOpen] = useState(false)
   const history = useHistory()
 
   const isPhone = useMediaQuery({
@@ -50,7 +51,6 @@ const Gallery = ({ user }) => {
       })
   }, [])
 
-  const [open, setOpen] = useState(false)
   const handleOpen = (i) => {
     setIndex(i)
     setOpen(true)

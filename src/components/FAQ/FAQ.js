@@ -519,11 +519,10 @@ const FAQ = () => {
       </div>{' '}
       <div>
         <Typography
-          style={{ fontWeight: '100', paddingBottom: '35px' }}
+          style={{ fontWeight: '100', paddingBottom: '35px', fontSize: '13px' }}
           variant='p'
           align='center'
-          color='black'
-          gutterBottom>
+          color='black'>
           *Investopedia. What Is A Blockchain, 2021. Accessed Nov 23,
           2021.&nbsp;
           <a
@@ -537,11 +536,10 @@ const FAQ = () => {
       </div>{' '}
       <div>
         <Typography
-          style={{ fontWeight: '100', paddingBottom: '35px' }}
+          style={{ fontWeight: '100', paddingBottom: '35px', fontSize: '13px' }}
           variant='p'
           align='center'
-          color='black'
-          gutterBottom>
+          color='black'>
           **Investopedia. Smart Contracts, 2021. Accessed Nov 23, 2021.&nbsp;
           <a
             target='_blank'
@@ -552,9 +550,9 @@ const FAQ = () => {
           </a>
         </Typography>
       </div>{' '}
-      <div style={{ marginBottom: '20px' }}>
+      <div style={{ marginBottom: '15px' }}>
         <Typography
-          style={{ fontWeight: '100', paddingBottom: '35px' }}
+          style={{ fontWeight: '100', paddingBottom: '35px', fontSize: '13px' }}
           variant='p'
           align='center'
           color='black'

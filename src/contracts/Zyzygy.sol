@@ -1,8 +1,9 @@
-
 // SPDX-License-Identifier: MIT
 
 
 pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 /**
  * @title Counters
@@ -1199,12 +1200,18 @@ pragma solidity ^0.8.2;
 
 contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
+    using SafeMath for uint256;
 
     mapping (uint256 => uint256) private price;
+    mapping (uint256 => address) public artists;
+    address public gallery;
+    mapping (uint256 => uint256) public royalty;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("Zyzygy", "ZYZ") {}
+    constructor() ERC721("Zyzygy", "ZYZ") {
+        gallery = msg.sender;
+    }
     
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
@@ -1219,6 +1226,28 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
         price[_tokenId] = amount;
     }
     
+    function setArtist(uint256 _tokenId, address _artist) public {
+        require (msg.sender == gallery);
+        artists[_tokenId] = _artist;
+    }
+
+    function getArtist(uint256 _tokenId) public view returns (address) {
+        return artists[_tokenId];
+    }
+    
+    function getGallery() public view returns (address) {
+        return gallery;
+    }
+
+    function setRoyalty(uint256 tokenId, uint256 _royalty) public {
+        require(msg.sender == gallery);
+        royalty[tokenId] = (price[tokenId] * _royalty) / 100;
+    }
+
+    function getRoyalty(uint256 tokenId) public view returns (uint256) {
+        return royalty[tokenId];
+    }
+
     function getTokenPrice(uint256 _tokenId) public view returns (uint256) {
         return price[_tokenId];
     } 
@@ -1250,7 +1279,9 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
         //solhint-disable-next-line max-line-length
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
         require(msg.value == getTokenPrice(tokenId));
-        payable(address(ownerOf(tokenId))).transfer(msg.value);
+        uint256 _balance = msg.value - royalty[tokenId];
+        payable(address(ownerOf(tokenId))).transfer(_balance);
+        payable(address(artists[tokenId])).transfer(royalty[tokenId]);
 
         _transfer(from, to, tokenId);
         emit buyer(Name, phoneNumber, timestamp);
@@ -1267,6 +1298,10 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
         uint64 phoneNumber
     ) public virtual payable override {
         require(msg.value == getTokenPrice(tokenId));
+        uint256 _balance = msg.value - royalty[tokenId];
+        payable(address(ownerOf(tokenId))).transfer(_balance);
+        payable(address(artists[tokenId])).transfer(royalty[tokenId]);
+
         safeTransferFrom(from, to, tokenId, "");
         emit buyer(Name, phoneNumber, timestamp);
     }
@@ -1282,6 +1317,10 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
     ) public virtual payable override {
         require(msg.value == getTokenPrice(tokenId));
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
+        uint256 _balance = msg.value - royalty[tokenId];
+        payable(address(ownerOf(tokenId))).transfer(_balance);
+        payable(address(artists[tokenId])).transfer(royalty[tokenId]);
+
         _safeTransfer(from, to, tokenId, _data);
        
     }

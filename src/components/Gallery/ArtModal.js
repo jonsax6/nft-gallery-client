@@ -48,13 +48,13 @@ const ArtModal = ({ card, handleClose, open }) => {
     query: '(max-width: 600px)'
   })
 
-  useEffect(() => {
-    document.body.style.cursor = hovered ? 'pointer' : 'auto'
-  }, [hovered])
-
   const isTablet = useMediaQuery({
     query: '(max-width: 1200px)'
   })
+
+  useEffect(() => {
+    document.body.style.cursor = hovered ? 'pointer' : 'auto'
+  }, [hovered])
 
   let mobileStyle
 
@@ -78,7 +78,7 @@ const ArtModal = ({ card, handleClose, open }) => {
         BackdropProps={{
           timeout: 500
         }}
-        style={{ overflow: 'scroll' }}>
+        style={{ overflow: 'auto' }}>
         <Fade in={open}>
           <Box sx={mobileStyle}>
             <div>
@@ -104,7 +104,7 @@ const ArtModal = ({ card, handleClose, open }) => {
               </Typography>
               <Typography
                 style={{
-                  overflow: 'scroll',
+                  overflow: 'auto',
                   height: '75px',
                   marginBottom: '6px'
                 }}>
