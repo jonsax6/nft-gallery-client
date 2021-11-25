@@ -1,7 +1,6 @@
 import React from 'react'
 import { Typography, Container } from '@mui/material'
 import { useMediaQuery } from 'react-responsive'
-import { Link } from 'react-router-dom'
 import TxProcess from '../../images/Transactions2.png'
 
 const desktop = '200px'
