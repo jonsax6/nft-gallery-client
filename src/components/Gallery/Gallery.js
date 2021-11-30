@@ -146,10 +146,14 @@ const Gallery = ({ user, account }) => {
                     {card.artist}
                   </Typography>
                   <Typography>
-                    {`'${card.title}'`}&nbsp;&nbsp;&nbsp;Price:
-                    <Icon icon='teenyicons:ethereum-solid' width='13' />
-                    {card.price}
-                  </Typography>{' '}
+                    {`'${card.title}'`}&nbsp;&nbsp;&nbsp;
+                    {account
+                      ? <> Price:
+                        <Icon icon='teenyicons:ethereum-solid' width='13' />
+                        {card.price}</>
+                      : <></>
+                    }
+                  </Typography>
                   {user && user._id === card.owner ? (
                     <>
                       <Button
