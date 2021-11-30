@@ -14,6 +14,8 @@ const RemoveArt = ({ msgAlert, user }) => {
     card ? card.artist : '')
   const [title, setTitle] = useState(
     card ? card.title : '')
+  const [price, setPrice] = useState(
+    card ? card.price : '')
   const [imageUrl, setImageUrl] = useState(
     card ? card.imageUrl : '')
   const [releaseDate, setReleaseDate] = useState(card ? card.releaseDate : '')
@@ -34,6 +36,7 @@ const RemoveArt = ({ msgAlert, user }) => {
   const art = {
     artist: artist,
     title: title,
+    price: price,
     imageUrl: imageUrl,
     releaseDate: releaseDate,
     medium: medium,
@@ -51,6 +54,7 @@ const RemoveArt = ({ msgAlert, user }) => {
         const art = res.data.artwork
         setArtist(art.artist)
         setTitle(art.title)
+        setPrice(art.price)
         setImageUrl(art.imageUrl)
         setReleaseDate(art.releaseDate)
         setMedium(art.medium)
@@ -86,6 +90,7 @@ const RemoveArt = ({ msgAlert, user }) => {
       .finally(() => {
         setArtist('')
         setTitle('')
+        setPrice('')
         setImageUrl('')
         setReleaseDate('')
         setMedium('')
@@ -96,13 +101,6 @@ const RemoveArt = ({ msgAlert, user }) => {
         setProvenance('')
         setNotes('')
       })
-  }
-
-  const handleKeypress = (event) => {
-    // it triggers by pressing the enter key
-    if (event.keyCode === 13 || event.which === 13) {
-      onRemoveArtwork()
-    }
   }
 
   return (
@@ -130,6 +128,9 @@ const RemoveArt = ({ msgAlert, user }) => {
                 </Grid>
                 <Grid item xs={12}>
                   <Typography>Title: {title}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography>Price: {price} ETH</Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <div style={{ padding: '0px' }}>

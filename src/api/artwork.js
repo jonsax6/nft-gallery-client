@@ -27,6 +27,7 @@ export const createArtwork = (user, data) => {
       artwork: {
         artist: data.artist,
         title: data.title,
+        price: data.price,
         imageUrl: data.imageUrl,
         releaseDate: data.releaseDate,
         medium: data.medium,
@@ -57,6 +58,7 @@ export const updateArtwork = (id, data, user) => {
       artwork: {
         artist: data.artist,
         title: data.title,
+        price: data.price,
         imageUrl: data.imageUrl,
         releaseDate: data.releaseDate,
         medium: data.medium,

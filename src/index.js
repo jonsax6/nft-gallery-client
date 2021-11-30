@@ -4,18 +4,23 @@ import './index.scss'
 
 import App from './App'
 import { BrowserRouter } from 'react-router-dom'
-import { MetaMaskProvider } from 'metamask-react'
+import { Web3ReactProvider } from '@web3-react/core'
 
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
+import Web3 from 'web3'
+
+const getLibrary = (provider) => {
+  return new Web3(provider)
+}
 
 const appJsx = (
   <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <MetaMaskProvider>
+    <Web3ReactProvider getLibrary={getLibrary}>
       <App />
-    </MetaMaskProvider>
+    </Web3ReactProvider>
   </BrowserRouter>
 )
 

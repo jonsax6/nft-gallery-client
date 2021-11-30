@@ -23,6 +23,7 @@ import TextFieldComponent from '../TextField/TextFieldComponent'
 const SubmitArt = ({ msgAlert, user }) => {
   const [artist, setArtist] = useState(null)
   const [title, setTitle] = useState(null)
+  const [price, setPrice] = useState(null)
   const [imageUrl, setImageUrl] = useState(null)
   const [releaseDate, setReleaseDate] = useState(null)
   const [medium, setMedium] = useState(null)
@@ -37,6 +38,7 @@ const SubmitArt = ({ msgAlert, user }) => {
   const art = {
     artist: artist,
     title: title,
+    price: price,
     imageUrl: imageUrl,
     releaseDate: releaseDate,
     medium: medium,
@@ -53,6 +55,9 @@ const SubmitArt = ({ msgAlert, user }) => {
 
   const handleChangeTitle = (event) =>
     setTitle(event.target.value)
+
+  const handleChangePrice = (event) =>
+    setPrice(event.target.value)
 
   const handleChangeImageUrl = (event) =>
     setImageUrl(event.target.value)
@@ -155,15 +160,27 @@ const SubmitArt = ({ msgAlert, user }) => {
                     onChange={handleChangeArtist}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <TextFieldComponent
-                    required={true}
-                    id={'title'}
-                    label={'Title'}
-                    icon={<ArtTrackIcon sx={{ color: 'white' }} />}
-                    value={title}
-                    onChange={handleChangeTitle}
-                  />
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'title'}
+                      label={'Title'}
+                      icon={<ArtTrackIcon sx={{ color: 'white' }} />}
+                      value={title}
+                      onChange={handleChangeTitle}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={false}
+                      id={'price'}
+                      label={'Price (eth)'}
+                      icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      value={price}
+                      onChange={handleChangePrice}
+                    />
+                  </Grid>
                 </Grid>
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>

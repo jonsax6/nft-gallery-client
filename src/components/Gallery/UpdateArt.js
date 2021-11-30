@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { updateArtwork, showArtwork } from '../../api/artwork'
 import {
-  updateArtworkFailure,
   updateArtworkSuccess
 } from '../AutoDismissAlert/messages'
 import {
@@ -29,6 +28,7 @@ const UpdateArt = ({ msgAlert, user }) => {
   const { id } = useParams()
   const [card, setCard] = useState(null)
   const [artist, setArtist] = useState(card ? card.artist : '')
+  const [price, setPrice] = useState(card ? card.price : '')
   const [title, setTitle] = useState(card ? card.title : '')
   const [imageUrl, setImageUrl] = useState(card ? card.imageUrl : '')
   const [releaseDate, setReleaseDate] = useState(card ? card.releaseDate : '')
@@ -44,6 +44,7 @@ const UpdateArt = ({ msgAlert, user }) => {
   const art = {
     artist: artist,
     title: title,
+    price: price,
     imageUrl: imageUrl,
     releaseDate: releaseDate,
     medium: medium,
@@ -60,6 +61,9 @@ const UpdateArt = ({ msgAlert, user }) => {
 
   const handleChangeTitle = (event) =>
     setTitle(event.target.value)
+
+  const handleChangePrice = (event) =>
+    setPrice(event.target.value)
 
   const handleChangeImageUrl = (event) =>
     setImageUrl(event.target.value)
@@ -95,6 +99,7 @@ const UpdateArt = ({ msgAlert, user }) => {
         const art = res.data.artwork
         setArtist(art.artist)
         setTitle(art.title)
+        setPrice(art.price)
         setImageUrl(art.imageUrl)
         setReleaseDate(art.releaseDate)
         setMedium(art.medium)
@@ -132,6 +137,7 @@ const UpdateArt = ({ msgAlert, user }) => {
       .finally(() => {
         setArtist('')
         setTitle('')
+        setPrice('')
         setImageUrl('')
         setReleaseDate('')
         setMedium('')
@@ -181,15 +187,27 @@ const UpdateArt = ({ msgAlert, user }) => {
                     onChange={handleChangeArtist}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <TextFieldComponent
-                    required={true}
-                    id={'title'}
-                    label={'Title'}
-                    icon={<ArtTrackIcon sx={{ color: 'white' }} />}
-                    value={title}
-                    onChange={handleChangeTitle}
-                  />
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'title'}
+                      label={'Title'}
+                      icon={<ArtTrackIcon sx={{ color: 'white' }} />}
+                      value={title}
+                      onChange={handleChangeTitle}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={false}
+                      id={'price'}
+                      label={'Price (eth)'}
+                      icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      value={price}
+                      onChange={handleChangePrice}
+                    />
+                  </Grid>
                 </Grid>
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>

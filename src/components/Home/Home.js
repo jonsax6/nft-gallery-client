@@ -3,7 +3,7 @@ import React from 'react'
 import background from '../../images/Jose-Parla-Studio-Yellowtrace-54.jpeg'
 import CarouselComp from './CarouselComponent'
 
-const Home = () => {
+const Home = ({ account }) => {
   return (
     <Container style={{
       height: '100vh',
@@ -12,7 +12,7 @@ const Home = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       maxWidth: '100%',
-      paddingTop: '100px'
+      paddingTop: '70px'
     }}>
       <Typography
         style={{ fontWeight: '100', padding: '20px' }}

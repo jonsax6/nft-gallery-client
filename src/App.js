@@ -18,10 +18,30 @@ import About from './components/About/About'
 import FAQ from './components/FAQ/FAQ'
 import { CssBaseline, Container } from '@mui/material'
 import './App.css'
+import { useWeb3React } from '@web3-react/core'
+import { injected } from './components/Wallet/Connectors'
 
 const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
+  const { active, account, library, connector, activate, deactivate } =
+    useWeb3React()
+
+  const connect = async () => {
+    try {
+      await activate(injected)
+    } catch (ex) {
+      console.log(ex)
+    }
+  }
+
+  const disconnect = async () => {
+    try {
+      deactivate()
+    } catch (ex) {
+      console.log(ex)
+    }
+  }
 
   const clearUser = () => setUser(null)
   const deleteAlert = (id) => {
@@ -36,7 +56,13 @@ const App = () => {
     <>
       <div style={{ backgroundColor: 'white', height: '100vh' }}>
         <CssBaseline />
-        <Header user={user} />
+        <Header
+          user={user}
+          active={active}
+          account={account}
+          connect={connect}
+          disconnect={disconnect}
+        />
         {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
@@ -51,7 +77,10 @@ const App = () => {
           <Route
             exact
             path="/"
-            render={() => <Home style={{ backgroundColor: '#202020' }} />}
+            render={() => <Home
+              style={{ backgroundColor: '#202020' }}
+              account={account}
+            />}
           />
           <Route
             path="/sign-up"
@@ -79,7 +108,11 @@ const App = () => {
           />
           <Route
             path="/gallery"
-            render={() => <Gallery user={user} style={{ backgroundColor: '#202020' }} />}
+            render={() => <Gallery
+              user={user}
+              account={account}
+              style={{ backgroundColor: '#202020' }}
+            />}
           />
           <Route
             path="/faq"
@@ -93,6 +126,7 @@ const App = () => {
                 style={{ backgroundColor: 'black' }}
                 msgAlert={msgAlert}
                 clearUser={clearUser}
+                disconnect={disconnect}
                 user={user}
               />
             )}

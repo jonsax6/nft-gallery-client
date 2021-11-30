@@ -1,4 +1,3 @@
-import React, { Fragment, useState, useEffect } from 'react'
 import { InjectedConnector } from '@web3-react/injected-connector'
 
 export const injected = new InjectedConnector({

@@ -8,59 +8,57 @@ import Toolbar from '@mui/material/Toolbar'
 import logo from '../../images/zyzygy_eclipse1.png'
 import DrawerComponent from './Drawer'
 import { useMediaQuery } from 'react-responsive'
-import { Button } from '@mui/material'
-import { useMetaMask } from 'metamask-react'
+import { Button, Typography } from '@mui/material'
 
-// import getWeb3 from './getWeb3'
-// import detectEthereumProvider from '@metamask/detect-provider'
-
-const Header = ({ user }) => {
-  const loadBlockchainData = () => {
-    console.log('connect button clicked...')
-  }
-  // const { status, connect, account } = useMetaMask()
-
-  // const [connection, setConnection] = useState(
-  //   <Button variant='contained' type='submit' onClick={connect}>
-  //     CONNECT WALLET
-  //   </Button>
-  // )
-
-  // useEffect(() => {
-  //   if (status === 'initializing') {
-  //     setConnection(<div>Synchronization with MetaMask ongoing...</div>)
-  //   }
-
-  //   if (status === 'unavailable') {
-  //     setConnection(<div>MetaMask not available.</div>)
-  //   }
-
-  //   if (status === 'notConnected') {
-  //     setConnection(<Button variant='contained' type='submit' onClick={connect}>
-  //         CONNECT WALLET
-  //     </Button>)
-  //   }
-
-  //   if (status === 'connecting') {
-  //     setConnection(<div>Connecting...</div>)
-  //   }
-
-  //   if (status === 'connected') {
-  //     setConnection(<div>Connected account: {account}</div>)
-  //   }
-
-  //   return null
-  // }, [])
-
+const Header = ({ user, active, account, activate, deactivate, connect, disconnect }) => {
   const authenticatedOptions = (
     <Fragment>
-      <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/submit-art' className='nav-link'>Submit Art</NavLink>
-      <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/change-password' className='nav-link'>Change Password</NavLink>
-      <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/sign-out' className='nav-link'>Logout</NavLink>
-      <Button variant='contained' type='submit' onClick={loadBlockchainData}>
+      <NavLink
+        style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+        to='/submit-art'
+        className='nav-link'>
+        Submit Art
+      </NavLink>
+      <NavLink
+        style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+        to='/change-password'
+        className='nav-link'>
+        Change Password
+      </NavLink>
+      <NavLink
+        style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+        to='/sign-out'
+        className='nav-link'>
+        Logout
+      </NavLink>
+      {active ? (
+        <Button variant='contained' type='submit' onClick={disconnect}>
+          DISCONNECT
+        </Button>
+      ) : (
+        <Button variant='contained' type='submit' onClick={connect}>
           CONNECT WALLET
-      </Button>
+        </Button>
+      )}
     </Fragment>
+  )
+
+  const ethAccount = active ? account : ''
+  const walletAccount = (
+    <>
+      <Typography
+        sx={{
+          color: 'white',
+          width: '200px',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          marginLeft: 'auto',
+          marginRight: '10px',
+        }}>
+        account:&nbsp;{ethAccount.substring(0, 6)}...
+        {ethAccount.substring(ethAccount.length - 6, ethAccount.length)}
+      </Typography>
+    </>
   )
 
   const unauthenticatedOptions = (
@@ -98,25 +96,27 @@ const Header = ({ user }) => {
                     color: '#000',
                     textDecoration: 'none',
                     fontWeight: '100',
-                    flexGrow: 1
+                    flexGrow: 1,
                   }}>
                   <img
                     src={logo}
                     style={{
                       width: '200px',
-                      marginTop: 10
+                      marginTop: 10,
                     }}
                   />
                 </Link>
-                {user ? (
+                {active ? (
                   <Button
                     variant='contained'
                     type='submit'
-                    onClick={loadBlockchainData}>
-                    CONNECT
+                    onClick={disconnect}>
+                    DISCONNECT
                   </Button>
                 ) : (
-                  <></>
+                  <Button variant='contained' type='submit' onClick={connect}>
+                    CONNECT WALLET
+                  </Button>
                 )}
               </>
             ) : (
@@ -128,13 +128,13 @@ const Header = ({ user }) => {
                     color: '#000',
                     textDecoration: 'none',
                     fontWeight: '100',
-                    flexGrow: 1
+                    flexGrow: 1,
                   }}>
                   <img
                     src={logo}
                     style={{
                       width: '200px',
-                      marginTop: 10
+                      marginTop: 10,
                     }}
                   />
                 </Link>
@@ -148,6 +148,9 @@ const Header = ({ user }) => {
               </>
             )}
           </Toolbar>
+          <div style={{ backgroundColor: '#323232' }}>
+            {active ? walletAccount : <></>}
+          </div>
         </AppBar>
       </Box>
     </>

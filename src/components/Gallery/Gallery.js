@@ -13,6 +13,7 @@ import '../../App.css'
 import { indexArtwork } from '../../api/artwork'
 import ArtModal from './ArtModal'
 import { useMediaQuery } from 'react-responsive'
+import { Icon } from '@iconify/react'
 
 // import { withRouter } from 'react-router-dom'
 
@@ -21,7 +22,7 @@ import { useMediaQuery } from 'react-responsive'
 const phone = '32px'
 const desktop = '8px'
 
-const Gallery = ({ user }) => {
+const Gallery = ({ user, account }) => {
   const [cards, setCards] = useState([])
   const [index, setIndex] = useState(0)
   const [hovered, setHovered] = useState(false)
@@ -68,13 +69,17 @@ const Gallery = ({ user }) => {
     history.push(`/remove/${card._id}`)
   }
 
+  const onBuy = (i) => {
+    console.log(`purchasing ${i}...`)
+  }
+
   return (
     <div style={{ backgroundColor: '#202020' }}>
       <Container
         maxWidth='sm'
         sx={{
           padding: '8, 0, 6',
-          paddingTop: '100px'
+          paddingTop: '100px',
         }}>
         <Typography
           style={{ fontWeight: '100', color: 'white', marginTop: '15px' }}
@@ -102,11 +107,17 @@ const Gallery = ({ user }) => {
         maxWidth='flex'
         style={{ paddingRight: 0 }}
         sx={{
-          padding: '20px 0'
+          padding: '20px 0',
         }}>
         <Grid container spacing={4}>
           {cards.map((card, i) => (
-            <Grid item style={{ paddingLeft: mobileStyle, paddingTop: '10px' }} key={i} xs={12} sm={6} md={4}>
+            <Grid
+              item
+              style={{ paddingLeft: mobileStyle, paddingTop: '10px' }}
+              key={i}
+              xs={12}
+              sm={6}
+              md={4}>
               <Card
                 sx={{
                   height: '100%',
@@ -115,30 +126,34 @@ const Gallery = ({ user }) => {
                   borderRadius: '0',
                   margin: '0',
                   color: 'white',
-                  backgroundColor: '#505050'
+                  backgroundColor: '#505050',
                 }}>
                 <CardMedia
                   sx={{
-                    paddingTop: '92%' // 16:9 aspect ratio
+                    paddingTop: '92%', // 16:9 aspect ratio
                   }}
                   image={card.imageUrl}
-                  title='Image Title'
+                  title={card.title}
                   onClick={(e) => handleOpen(i)}
                   onPointerOver={() => setHovered(true)}
                   onPointerOut={() => setHovered(false)}
                 />
                 <CardContent
                   sx={{
-                    flexGrow: 1
+                    flexGrow: 1,
                   }}>
                   <Typography gutterBottom variant='h5'>
                     {card.artist}
                   </Typography>
-                  <Typography>{`'${card.title}'`}</Typography>{' '}
+                  <Typography>
+                    {`'${card.title}'`}&nbsp;&nbsp;&nbsp;Price:
+                    <Icon icon='teenyicons:ethereum-solid' width='13' />
+                    {card.price}
+                  </Typography>{' '}
                   {user && user._id === card.owner ? (
                     <>
                       <Button
-                        style={{ marginTop: '10px', marginRight: '20px' }}
+                        style={{ marginTop: '10px', marginRight: '10px' }}
                         size='small'
                         color='info'
                         variant='outlined'
@@ -146,12 +161,27 @@ const Gallery = ({ user }) => {
                         Update Artwork
                       </Button>
                       <Button
-                        style={{ marginTop: '10px' }}
+                        style={{ marginTop: '10px', marginRight: '10px' }}
                         size='small'
                         color='error'
                         variant='outlined'
                         onClick={(e) => onRemove(i)}>
                         Remove Artwork
+                      </Button>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                  {account ? (
+                    <>
+                      <Button
+                        style={{ marginTop: '10px' }}
+                        size='small'
+                        color='success'
+                        variant='outlined'
+                        onClick={(e) => onBuy(i)}>
+                        <Icon icon='teenyicons:ethereum-solid' width='13' />
+                        Buy
                       </Button>
                     </>
                   ) : (
