@@ -147,18 +147,20 @@ const About = () => {
           need to be verified by 3rd parties. Until a foolproof system for this
           can be created, authenticity will either be on an honor code system,
           or need to be verified by an expert. However, it would be impossible
-          for the counterfeiter to sell that art using the blockchain because they
-          will not have access to the ownership NFT. In order to game the
-          system, they would have to hack the ethereum network, which is virtually
-          impossible to do. So it really is almost foolproof and cannot be
-          &quot;gamed&quot;. If the economics remain on the blockchain, then
-          ownership cannot be faked by a 3rd party. The blockchain will have an
-          immutable ownership record, and only the current owner&apos;s ethereum
-          wallet will be able to transfer ownership to a buyer. If the artist is
-          well known, and their work has value and notoriety, then it should
-          also be common knowledge in the art world that ownership is controlled
-          by the NFT, so selling the counterfeit art for regular &apos;ol dollars
-          won&apos;t really work out very well for the counterfeiter.
+          for the counterfeiter to sell that art using the blockchain because
+          they will not have access to or control over the ownership token
+          (NFT). In order to game the system, they would have to hack the
+          ethereum network, which is virtually impossible to do. So it really is
+          almost foolproof and cannot be &quot;gamed&quot;. If the sale of the
+          artwork remains on the blockchain, then ownership cannot be faked by a 3rd
+          party. The blockchain will have an immutable ownership record, and
+          only the current owner&apos;s ethereum wallet will be able to transfer
+          ownership to a buyer. If the artist is well known, and their work has
+          value and notoriety, then it should also be common knowledge in the
+          art world that ownership is controlled by the NFT, and the NFT contract
+          address would be public record and fully transparent, so selling the
+          counterfeit art for regular &apos;ol dollars won&apos;t really work
+          out very well for the counterfeiter.
         </Typography>
       </div>
       <div style={{ height: '100x', color: 'white' }}>content</div>

@@ -1202,7 +1202,7 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     using SafeMath for uint256;
 
-    mapping (uint256 => uint256) private price;
+    mapping (uint256 => uint256) public price;
     mapping (uint256 => address) public artists;
     address public gallery;
     mapping (uint256 => uint256) public royalty;
@@ -1324,6 +1324,4 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
         _safeTransfer(from, to, tokenId, _data);
        
     }
-    // still needed in contract: 
-    // 'buyer' event needs date to be block-time time stamp.
 }

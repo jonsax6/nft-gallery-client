@@ -1,8 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import Web3 from 'web3'
+// import Web3 from 'web3'
 import { Link, NavLink } from 'react-router-dom'
-import ABI from '../../abis/abi'
-import { CONTRACT_ADDRESS } from '../../helpers'
+// import { CONTRACT_ADDRESS } from '../../helpers'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -10,53 +9,57 @@ import logo from '../../images/zyzygy_eclipse1.png'
 import DrawerComponent from './Drawer'
 import { useMediaQuery } from 'react-responsive'
 import { Button } from '@mui/material'
+import { useMetaMask } from 'metamask-react'
+
 // import getWeb3 from './getWeb3'
 // import detectEthereumProvider from '@metamask/detect-provider'
 
 const Header = ({ user }) => {
-  // const [accounts, setAccounts] = useState(undefined)
-  // const [web3, setWeb3] = useState(undefined)
-  // const [contract, setContract] = useState(undefined)
+  const loadBlockchainData = () => {
+    console.log('connect button clicked...')
+  }
+  // const { status, connect, account } = useMetaMask()
+
+  // const [connection, setConnection] = useState(
+  //   <Button variant='contained' type='submit' onClick={connect}>
+  //     CONNECT WALLET
+  //   </Button>
+  // )
 
   // useEffect(() => {
-  //   const init = async() => {
-  //     const web3 = await getWeb3()
-
-  //     const accounts = await web3.eth.getAccounts()
-  //     const networkId = await web3.eth.net.getId()
-  //     const deployedNetwork = SimpleStorageContract.networks[networkId]
-  //     const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS)
-  //     setWeb3(web3)
-  //     setAccounts(accounts)
-  //     setContract(contract)
+  //   if (status === 'initializing') {
+  //     setConnection(<div>Synchronization with MetaMask ongoing...</div>)
   //   }
-  //   init()
+
+  //   if (status === 'unavailable') {
+  //     setConnection(<div>MetaMask not available.</div>)
+  //   }
+
+  //   if (status === 'notConnected') {
+  //     setConnection(<Button variant='contained' type='submit' onClick={connect}>
+  //         CONNECT WALLET
+  //     </Button>)
+  //   }
+
+  //   if (status === 'connecting') {
+  //     setConnection(<div>Connecting...</div>)
+  //   }
+
+  //   if (status === 'connected') {
+  //     setConnection(<div>Connected account: {account}</div>)
+  //   }
+
+  //   return null
   // }, [])
-
-  // const loadWeb3 = () => {
-  //   const web3 = new Web3(window.ethereum)
-  //   setWeb3(web3)
-  // }
-
-  // const loadBlockChain = async () => {
-  //   // const web3 = new Web3(Web3.givenProvider || 'http://localhost:8080')
-  //   const network = await web3.eth.net.getNetworkType()
-  //   console.log(network) // should give you main if you're connected to the main network via metamask...
-  //   const accounts = await web3.eth.getAccounts()
-  //   setAccount(accounts[0])
-  //   console.log(account)
-  // }
 
   const authenticatedOptions = (
     <Fragment>
       <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/submit-art' className='nav-link'>Submit Art</NavLink>
       <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/change-password' className='nav-link'>Change Password</NavLink>
       <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} to='/sign-out' className='nav-link'>Logout</NavLink>
-      <Button
-        variant='contained'
-        type='submit'
-        onClick={console.log('clicked')}>
-      CONNECT WALLET</Button>
+      <Button variant='contained' type='submit' onClick={loadBlockchainData}>
+          CONNECT WALLET
+      </Button>
     </Fragment>
   )
 
@@ -109,7 +112,7 @@ const Header = ({ user }) => {
                   <Button
                     variant='contained'
                     type='submit'
-                    onClick={console.log('clicked')}>
+                    onClick={loadBlockchainData}>
                     CONNECT
                   </Button>
                 ) : (
