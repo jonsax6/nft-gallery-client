@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import {
   Typography,
   Container
@@ -37,7 +38,7 @@ const About = () => {
         paddingTop: '100px',
         paddingLeft: mobileStyle,
         paddingRight: mobileStyle,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       }}>
       <div style={{ marginBottom: '20px' }}>
         <Typography
@@ -63,7 +64,16 @@ const About = () => {
           at the intersection point where two worlds are coming into alignment -
           the digital world of blockchain technology, with the digital scarcity
           we can achieve through non-fungible tokens (NFTs), and the real world
-          of tangible scarcity like art, real estate, and property rights.
+          of tangible scarcity like art, real estate, and property rights.&nbsp;
+          <NavLink
+            style={{ textDecoration: 'none', color: 'blue' }}
+            exact
+            to='/faq'
+            className='nav-link'>
+            See our FAQ
+          </NavLink>{' '}
+          for more clarity on how blockchains and NFTs work and why this
+          technology is so revolutionary and paradigm shifting.
         </Typography>
       </div>
       <div>
@@ -71,7 +81,7 @@ const About = () => {
           src={eclipse}
           style={{
             width: '100%',
-            marginBottom: '35px'
+            marginBottom: '35px',
           }}
         />
       </div>
@@ -93,7 +103,8 @@ const About = () => {
           contract. In other words, the code is law, and it is impossible to
           alter it once deployed to the blockchain. The art pieces will have a
           cryptographic QR code embedded into it which will display the NFT
-          smart contract address.
+          smart contract address as well as the token ID for that specific piece
+          of artwork.
         </Typography>
       </div>
       <div style={{ marginBottom: '20px' }}>
@@ -130,7 +141,7 @@ const About = () => {
           If it&apos;s also coded into the smart contract, Zyzygy studios can
           receive a small royalty either as a taper-off, or also in perpetuity.
           This can be decided when the contract is deployed to the blockchain
-          and the NFT is issued.
+          and the NFT is minted.
         </Typography>
       </div>
       <div style={{ marginBottom: '20px' }}>
@@ -149,18 +160,19 @@ const About = () => {
           or need to be verified by an expert. However, it would be impossible
           for the counterfeiter to sell that art using the blockchain because
           they will not have access to or control over the ownership token
-          (NFT). In order to game the system, they would have to hack the
-          ethereum network, which is virtually impossible to do. So it really is
-          almost foolproof and cannot be &quot;gamed&quot;. If the sale of the
-          artwork remains on the blockchain, then ownership cannot be faked by a 3rd
-          party. The blockchain will have an immutable ownership record, and
-          only the current owner&apos;s ethereum wallet will be able to transfer
-          ownership to a buyer. If the artist is well known, and their work has
-          value and notoriety, then it should also be common knowledge in the
-          art world that ownership is controlled by the NFT, and the NFT contract
-          address would be public record and fully transparent, so selling the
-          counterfeit art for regular &apos;ol dollars won&apos;t really work
-          out very well for the counterfeiter.
+          (NFT). In order to &quot;game the system&quot;, they would have to not
+          only make an identical copy of the actual artwork, but also successfully
+          hack the ethereum network, which is virtually impossible to do. So it
+          really is almost foolproof and cannot be gamed. If the
+          sale of the artwork remains on the blockchain, then ownership cannot
+          be faked by a 3rd party. The blockchain will have an immutable
+          ownership record, and only the current owner&apos;s ethereum wallet
+          will be able to transfer ownership to a buyer. If the artist is well
+          known, and their work has value and notoriety, then it should also be
+          common knowledge in the art world that ownership is controlled by the
+          NFT, and the NFT contract address would be public record and fully
+          transparent, so selling the counterfeit art for regular &apos;ol
+          dollars won&apos;t really work out very well for the counterfeiter.
         </Typography>
       </div>
       <div style={{ height: '100x', color: 'white' }}>content</div>

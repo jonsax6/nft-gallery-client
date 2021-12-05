@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Container } from '@mui/material'
 import { useMediaQuery } from 'react-responsive'
-import TxProcess from '../../images/Transactions2.png'
+import TxProcess from '../../images/Transactions3.png'
 
 const desktop = '200px'
 const tablet = '100px'
@@ -33,7 +33,7 @@ const FAQ = () => {
         paddingTop: '100px',
         paddingLeft: mobileStyle,
         paddingRight: mobileStyle,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       }}>
       <div style={{ marginBottom: '20px' }}>
         <Typography
@@ -97,16 +97,17 @@ const FAQ = () => {
           align='center'
           color='black'
           gutterBottom={true}>
-          A consensus algorithm will detect if there are copies of the
-          blockchain that do not match the majority (a minimum 51% consensus)
-          and that copy of the blockchain will then be ignored and excluded from
-          the network unless it comes back into consensus by fixing what has
-          been changed. Due to the very secure cryptography that MUST BE exactly
-          the same as all the other copies on the network, the blockchain
-          ensures that it&apos;s historical record is fully immutable and
-          trustless. This makes blockchains resistant to government censorship,
-          or manipulation, because it is impossible to shut it down, or to
-          change it&apos;s history.
+          Blockchains have unique and immutable (unable to be altered) security
+          feature. A consensus algorithm will detect if there are copies of the
+          blockchain that do not match the majority version found in other nodes
+          (a minimum 51% consensus). Any altered copies of the blockchain will
+          then be ignored and excluded from the network unless it comes back
+          into consensus by fixing what has been changed. Due to the very secure
+          cryptography that MUST BE exactly the same as all the other copies on
+          the network, the blockchain ensures that it&apos;s historical record
+          is fully immutable and trustless. This makes blockchains resistant to
+          government censorship, or manipulation, because it is impossible to
+          shut it down, or to change it&apos;s history.
         </Typography>
       </div>
       <div>
@@ -124,7 +125,7 @@ const FAQ = () => {
           src={TxProcess}
           style={{
             width: '100%',
-            marginBottom: '35px'
+            marginBottom: '35px',
           }}
         />
       </div>
@@ -198,7 +199,7 @@ const FAQ = () => {
           width: '100%',
           height: '0',
           paddingBottom: '56.25%',
-          marginBottom: '20px'
+          marginBottom: '20px',
         }}>
         <iframe
           style={{
@@ -206,7 +207,7 @@ const FAQ = () => {
             top: '0',
             left: '0',
             width: '100%',
-            height: '100%'
+            height: '100%',
           }}
           src='https://www.youtube.com/embed/ZE2HxTmxfrI'
           title='YouTube video player'
