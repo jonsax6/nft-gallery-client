@@ -126,7 +126,7 @@ const Gallery = ({ user, account }) => {
                   borderRadius: '0',
                   margin: '0',
                   color: 'white',
-                  backgroundColor: '#505050',
+                  backgroundColor: '#404040',
                 }}>
                 <CardMedia
                   sx={{
@@ -147,12 +147,6 @@ const Gallery = ({ user, account }) => {
                   </Typography>
                   <Typography>
                     {`'${card.title}'`}&nbsp;&nbsp;&nbsp;
-                    {account
-                      ? <> Price:
-                        <Icon icon='teenyicons:ethereum-solid' width='13' />
-                        {card.price}</>
-                      : <></>
-                    }
                   </Typography>
                   {user && user._id === card.owner ? (
                     <>
@@ -184,8 +178,8 @@ const Gallery = ({ user, account }) => {
                         color='success'
                         variant='outlined'
                         onClick={(e) => onBuy(i)}>
-                        <Icon icon='teenyicons:ethereum-solid' width='13' />
-                        Buy
+                        Buy&nbsp;<Icon icon='teenyicons:ethereum-solid' width='11' />
+                        {card.price}
                       </Button>
                     </>
                   ) : (

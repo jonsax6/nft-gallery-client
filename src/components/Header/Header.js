@@ -49,14 +49,14 @@ const Header = ({ user, active, account, activate, deactivate, connect, disconne
       <Typography
         sx={{
           color: 'white',
-          width: '200px',
+          width: '180px',
           textOverflow: 'ellipsis',
           overflow: 'hidden',
           marginLeft: 'auto',
           marginRight: '10px',
         }}>
         account:&nbsp;{ethAccount.substring(0, 6)}...
-        {ethAccount.substring(ethAccount.length - 6, ethAccount.length)}
+        {ethAccount.substring(ethAccount.length - 4, ethAccount.length)}
       </Typography>
     </>
   )
