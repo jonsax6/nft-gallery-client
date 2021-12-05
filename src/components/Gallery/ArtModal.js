@@ -95,7 +95,11 @@ const ArtModal = ({ card, handleClose, open }) => {
                 alt={card.artist}
               />
             </div>
-            <div style={{ padding: '20px' }}>
+            <div style={{
+              padding: '20px',
+              overflow: 'auto',
+              height: '200px'
+            }}>
               <Typography gutterBottom variant='h4'>
                 {card.artist}
               </Typography>
@@ -104,14 +108,9 @@ const ArtModal = ({ card, handleClose, open }) => {
               </Typography>
               <Typography
                 style={{
-                  overflow: 'auto',
-                  height: '75px',
                   marginBottom: '6px'
                 }}>
                 {card.notes}
-              </Typography>
-              <Typography style={{ marginBottom: '10px' }}>
-                ...scroll for more
               </Typography>
               <Typography variant='h5'>Medium</Typography>
               <Typography>{card.medium}</Typography>{' '}
