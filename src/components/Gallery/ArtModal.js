@@ -4,10 +4,12 @@ import {
   Fade,
   Box,
   Typography,
-  Backdrop
+  Backdrop,
+  Button
 } from '@mui/material'
 import { useMediaQuery } from 'react-responsive'
 import CloseIcon from '@mui/icons-material/Close'
+import { Icon } from '@iconify/react'
 
 const desktop = {
   position: 'absolute',
@@ -42,7 +44,7 @@ const phone = {
   p: 1
 }
 
-const ArtModal = ({ card, handleClose, open }) => {
+const ArtModal = ({ card, handleClose, open, account }) => {
   const [hovered, setHovered] = useState(false)
   const isPhone = useMediaQuery({
     query: '(max-width: 600px)'
@@ -66,6 +68,10 @@ const ArtModal = ({ card, handleClose, open }) => {
     mobileStyle = desktop
   }
 
+  const onBuy = () => {
+    console.log(`purchasing ${card.title}...`)
+  }
+
   return (
     <>
       <Modal
@@ -76,7 +82,7 @@ const ArtModal = ({ card, handleClose, open }) => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 500
+          timeout: 500,
         }}
         style={{ overflow: 'auto' }}>
         <Fade in={open}>
@@ -95,11 +101,12 @@ const ArtModal = ({ card, handleClose, open }) => {
                 alt={card.artist}
               />
             </div>
-            <div style={{
-              padding: '20px',
-              overflow: 'auto',
-              height: '200px'
-            }}>
+            <div
+              style={{
+                padding: '20px',
+                overflow: 'auto',
+                height: '200px',
+              }}>
               <Typography gutterBottom variant='h4'>
                 {card.artist}
               </Typography>
@@ -108,12 +115,40 @@ const ArtModal = ({ card, handleClose, open }) => {
               </Typography>
               <Typography
                 style={{
-                  marginBottom: '6px'
+                  marginBottom: '6px',
                 }}>
                 {card.notes}
               </Typography>
-              <Typography variant='h5'>Medium</Typography>
-              <Typography>{card.medium}</Typography>{' '}
+              <Typography variant='h6'>Medium</Typography>
+              <Typography
+                style={{
+                  marginBottom: '6px',
+                }}>
+                {card.medium}
+              </Typography>{' '}
+              <Typography variant='h6'>Release Date</Typography>
+              <Typography
+                style={{
+                  marginBottom: '6px',
+                }}>
+                {card.releaseDate}
+              </Typography>{' '}
+              {account ? (
+                <>
+                  <Button
+                    style={{ marginTop: '10px' }}
+                    size='small'
+                    color='success'
+                    variant='outlined'
+                    onClick={(e) => onBuy()}>
+                    Buy&nbsp;
+                    <Icon icon='teenyicons:ethereum-solid' width='11' />
+                    {card.price}
+                  </Button>
+                </>
+              ) : (
+                <></>
+              )}
             </div>
           </Box>
         </Fade>

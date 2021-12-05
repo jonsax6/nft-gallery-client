@@ -70,7 +70,7 @@ const Gallery = ({ user, account }) => {
   }
 
   const onBuy = (i) => {
-    console.log(`purchasing ${i}...`)
+    console.log(`purchasing ${cards[i].title}...`)
   }
 
   return (
@@ -194,6 +194,7 @@ const Gallery = ({ user, account }) => {
               card={cards[index]}
               handleClose={handleClose}
               open={open}
+              account={account}
             />
           ) : (
             <></>

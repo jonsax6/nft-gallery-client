@@ -19,7 +19,6 @@ import HistoryIcon from '@mui/icons-material/History'
 import PublishIcon from '@mui/icons-material/Publish'
 import NoteIcon from '@mui/icons-material/Note'
 import TextFieldComponent from '../TextField/TextFieldComponent'
-import { upload } from './Upload'
 
 const SubmitArt = ({ msgAlert, user }) => {
   const [artist, setArtist] = useState(null)
@@ -86,30 +85,6 @@ const SubmitArt = ({ msgAlert, user }) => {
 
   const handleChangeNotes = (event) =>
     setNotes(event.target.value)
-
-  // const createFile = (obj) => {
-  //   const jsonString = JSON.stringify(obj)
-  //   console.log(jsonString)
-  //   console.log(obj.publishingHistory)
-  //   fs.writeFile(
-  //     `../metadata/${obj.publishingHistory}.json`,
-  //     jsonString,
-  //     (err) => {
-  //       if (err) {
-  //         console.log('Error writing file', err)
-  //       } else {
-  //         console.log('metadata file created successfully')
-  //       }
-  //     }
-  //   )
-  // }
-
-  const mintArtwork = async (data) => {
-    console.log(data)
-    console.log(data.publishingHistory)
-    const hashUrl = await upload(data)
-    console.log(hashUrl)
-  }
 
   const onCreateArtwork = (event) => {
     if (event) {
@@ -315,16 +290,6 @@ const SubmitArt = ({ msgAlert, user }) => {
                       type='submit'
                       onClick={onCreateArtwork}>
                       Submit Artwork
-                    </Button>
-                  </Grid>
-                </Grid>
-                <Grid container>
-                  <Grid item xs={10} md={6} style={{ marginTop: '20px' }}>
-                    <Button
-                      variant='contained'
-                      type='submit'
-                      onClick={() => mintArtwork(art)}>
-                      Mint
                     </Button>
                   </Grid>
                 </Grid>

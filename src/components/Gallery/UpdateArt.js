@@ -23,6 +23,7 @@ import HistoryIcon from '@mui/icons-material/History'
 import PublishIcon from '@mui/icons-material/Publish'
 import NoteIcon from '@mui/icons-material/Note'
 import TextFieldComponent from '../TextField/TextFieldComponent'
+import { upload } from './Upload'
 
 const UpdateArt = ({ msgAlert, user }) => {
   const { id } = useParams()
@@ -111,6 +112,13 @@ const UpdateArt = ({ msgAlert, user }) => {
         setNotes(art.notes)
       })
   }, [id])
+
+  const mintArtwork = async (data) => {
+    console.log(data)
+    console.log(data.publishingHistory)
+    const hashUrl = await upload(data)
+    console.log(hashUrl)
+  }
 
   const onUpdateArtwork = (event) => {
     if (event) {
@@ -314,6 +322,16 @@ const UpdateArt = ({ msgAlert, user }) => {
                       type='submit'
                       onClick={onUpdateArtwork}>
                       Update Artwork
+                    </Button>
+                  </Grid>
+                </Grid>
+                <Grid container>
+                  <Grid item xs={10} md={6} style={{ marginTop: '20px' }}>
+                    <Button
+                      variant='contained'
+                      type='submit'
+                      onClick={() => mintArtwork(art)}>
+                      Mint NFT
                     </Button>
                   </Grid>
                 </Grid>
