@@ -81,15 +81,33 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
       <Typography
         sx={{
           color: 'white',
-          width: '400px',
+          textAlign: 'right',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          marginLeft: 'auto',
+          marginRight: '20px'
+        }}>
+        &nbsp;{ethAccount.substring(0, 6)}...
+        {ethAccount.substring(ethAccount.length - 4, ethAccount.length)}
+      </Typography>
+    </>
+  )
+
+  const accountDisplay = (
+    <>
+      <Typography
+        sx={{
+          color: 'white',
           textAlign: 'right',
           textOverflow: 'ellipsis',
           overflow: 'hidden',
           marginLeft: 'auto',
           marginRight: '20px',
         }}>
-        {user && user.email}:
-        &nbsp;{ethAccount.substring(0, 6)}...
+        {user && user.email}
+        {account && ':'}
+        &nbsp;{ethAccount.substring(0, 6)}
+        {account && '...'}
         {ethAccount.substring(ethAccount.length - 4, ethAccount.length)}
       </Typography>
     </>
@@ -183,7 +201,7 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
             )}
           </Toolbar>
           <div style={{ backgroundColor: '#323232' }}>
-            {active ? walletAccount : <></>}
+            {user ? accountDisplay : <></>}
           </div>
         </AppBar>
       </Box>

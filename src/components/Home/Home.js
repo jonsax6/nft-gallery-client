@@ -12,7 +12,7 @@ const Home = ({ account }) => {
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       maxWidth: '100%',
-      paddingTop: '70px'
+      paddingTop: '100px'
     }}>
       <Typography
         style={{ fontWeight: '100', padding: '20px' }}
