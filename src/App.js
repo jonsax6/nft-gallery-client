@@ -24,7 +24,7 @@ import { injected } from './components/Wallet/Connectors'
 const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
-  const { active, account, library, connector, activate, deactivate } =
+  const { active, account, library, networkId, connector, activate, deactivate } =
     useWeb3React()
 
   const connect = async () => {
@@ -60,6 +60,7 @@ const App = () => {
           user={user}
           active={active}
           account={account}
+          networkId={networkId}
           connect={connect}
           disconnect={disconnect}
         />

@@ -10,7 +10,7 @@ import DrawerComponent from './Drawer'
 import { useMediaQuery } from 'react-responsive'
 import { Button, Typography } from '@mui/material'
 
-const Header = ({ user, active, account, activate, deactivate, connect, disconnect }) => {
+const Header = ({ user, active, account, networkId, activate, deactivate, connect, disconnect }) => {
   const authenticatedOptions = (
     <Fragment>
       <NavLink
@@ -43,19 +43,53 @@ const Header = ({ user, active, account, activate, deactivate, connect, disconne
     </Fragment>
   )
 
+  const currentNetwork = (networkId) => {
+    if (networkId === 1) {
+      return 'main'
+    } else if (networkId === 3) {
+      return 'Ropsten'
+    } else if (networkId === 4) {
+      return 'Rinkeby'
+    } else if (networkId === 5) {
+      return 'Goerli'
+    } else if (networkId === 42) {
+      return 'Kovan'
+    } else if (networkId === 1337) {
+      return 'Local'
+    } else if (networkId === 5) {
+      return 'Goerli'
+    } else if (networkId === 56) {
+      return 'BSC'
+    } else if (networkId === 137) {
+      return 'Polygon'
+    } else if (networkId === 10) {
+      return 'Optimism'
+    } else if (networkId === 137) {
+      return 'Polygon'
+    } else if (networkId === 42161) {
+      return 'Arbitrum'
+    } else {
+      return 'none'
+    }
+  }
+
+  currentNetwork(networkId)
+
   const ethAccount = active ? account : ''
   const walletAccount = (
     <>
       <Typography
         sx={{
           color: 'white',
-          width: '180px',
+          width: '400px',
+          textAlign: 'right',
           textOverflow: 'ellipsis',
           overflow: 'hidden',
           marginLeft: 'auto',
-          marginRight: '10px',
+          marginRight: '20px',
         }}>
-        account:&nbsp;{ethAccount.substring(0, 6)}...
+        {user && user.email}:
+        &nbsp;{ethAccount.substring(0, 6)}...
         {ethAccount.substring(ethAccount.length - 4, ethAccount.length)}
       </Typography>
     </>

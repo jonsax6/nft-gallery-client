@@ -11,8 +11,7 @@ const pinata = pinataSDK(
 
 const createFile = (data) => {
   const jsonString = JSON.stringify(data)
-  fs.writeFile(
-    path.resolve(`./metadata/${data.publishingHistory}.json`),
+  fs.writeFile(`./metadata/${data.publishingHistory}.json`,
     jsonString,
     (err) => {
       if (err) {
@@ -32,11 +31,7 @@ export const upload = async (metadata) => {
 
     createFile(metadata)
 
-    const ipfsTransfer = await pinata.pinFileToIPFS(
-      fs.createReadStream(
-        path.resolve(`./metadata/${metadata.publishingHistory}.json`)
-      )
-    )
+    const ipfsTransfer = await pinata.pinFileToIPFS(fs.createReadStream(`./metadata/${metadata.publishingHistory}.json`))
 
     const filehash = `https://gateway.pinata.cloud/ipfs/${ipfsTransfer.IpfsHash}`
     console.log(filehash)

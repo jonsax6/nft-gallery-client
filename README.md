@@ -11,7 +11,17 @@ For example Zyzygy Studios sells an art piece created by Bob.  Jane buys this ar
 
 If it's also coded into the smart contract, Zyzygy studios can receive a small royalty either as a taper-off, or also in perpetuity.  This can be decided when the contract is deployed to the blockchain and the NFT is issued.
 
-There are however a few technical issues that need to be solved in order to prevent counterfeiting. There is nothing stopping someone from creating a copy of the art, and placing the same QR code on the counterfeit art piece. So the authenticity of the artwork will still need to be verified by 3rd parties.  Until a foolproof system for this can be created, authenticity will either be on an honor code system, or need to be verified by an expert.  In the example of real estate or land rights, this is not an issue because physical land or a house, cannot be "faked" in any way, so the ownership rights, or deeds, will simply be the NFT that stores all the ownership rights, which itself, cannot be altered or faked.  But small-scale artwork can be faked, so this could present an opportunity for counterfeiting. Bad actors will be bad actors, so for now, authenticity will still be in question, in the same way that it is now, without the NFT ownership rights.  The NFT will simply protect the artist's royalty rights by enforcing the contract automatically.  If the sale of the art takes place, the royalties will be paid, no matter what. 
+There are however a few technical issues that need to be solved in order to prevent counterfeiting. There is nothing stopping someone
+from creating a copy of the art, and placing the same QR code on the counterfeit art piece. So the authenticity of the artwork will still
+need to be verified by 3rd parties. Until a foolproof system for this can be created, authenticity will either be on an honor code system,
+or need to be verified by an expert. However, it would be impossible for the counterfeiter to sell that art using the blockchain because
+they will not have access to or control over the ownership token (NFT). In order to &quot;game the system&quot;, they would have to not
+only make an identical copy of the actual artwork, but also successfully hack the ethereum network, which is virtually impossible to do. So it
+really is almost foolproof and cannot be gamed. If the sale of the artwork remains on the blockchain, then ownership cannot
+be faked by a 3rd party. The blockchain will have an immutable ownership record, and only the current owner&apos;s ethereum wallet
+will be able to transfer ownership to a buyer. If the artist is well known, and their work has value and notoriety, then it should also be
+common knowledge in the art world that ownership is controlled by the NFT, and the NFT contract address would be public record and fully
+transparent, so selling the counterfeit art for regular &apos;ol dollars won&apos;t really work out very well for the counterfeiter.
 
 ### Website URL: 
 https://jonsax6.github.io/nft-gallery-client/
