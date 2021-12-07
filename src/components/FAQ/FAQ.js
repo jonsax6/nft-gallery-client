@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Container } from '@mui/material'
 import { useMediaQuery } from 'react-responsive'
-import TxProcess from '../../images/Transactions4.png'
+import TxProcess from '../../images/Transactions.png'
 
 const desktop = '200px'
 const tablet = '100px'
