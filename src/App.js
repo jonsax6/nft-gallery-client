@@ -19,7 +19,7 @@ import FAQ from './components/FAQ/FAQ'
 import { CssBaseline, Container } from '@mui/material'
 import './App.css'
 import { useWeb3React } from '@web3-react/core'
-import { injected } from './components/Wallet/Connectors'
+import { injected } from './components/wallet/Connectors'
 
 const App = () => {
   const [user, setUser] = useState(null)
