@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
 const pinataSDK = require('@pinata/sdk')
 
-const pinata = pinataSDK(
-  'da4ce3d3962c18c57f28',
-  '32d3b4b4a6891285e700c25ad00bb743359531ead28a39e9fafefadf0777dcca'
-)
-
 // const pinata = pinataSDK(
-//   '0bb0c044b7a21bf172e3',
-//   'a0ad52fafb5f13fcda75fc033edae30d78e946775e9383b2f15d24446f79a0be'
+//   'da4ce3d3962c18c57f28',
+//   '32d3b4b4a6891285e700c25ad00bb743359531ead28a39e9fafefadf0777dcca'
 // )
+
+const pinata = pinataSDK(
+  '0bb0c044b7a21bf172e3',
+  'a0ad52fafb5f13fcda75fc033edae30d78e946775e9383b2f15d24446f79a0be'
+)
 
 // This method is not needed anymore but for demo
 // fileObject can be returned from frontend without saving to FS
