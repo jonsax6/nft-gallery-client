@@ -21,25 +21,27 @@ export const createArtwork = (user, data) => {
     method: 'POST',
     url: apiUrl + '/artwork',
     headers: {
-      Authorization: `Bearer ${user.token}`
+      Authorization: `Bearer ${user.token}`,
     },
     data: {
       artwork: {
         artist: data.artist,
         title: data.title,
         price: data.price,
-        imageUrl: data.imageUrl,
-        releaseDate: data.releaseDate,
+        image: data.image,
+        displayImageUrl: data.displayImageUrl,
         medium: data.medium,
         artistRoyalty: data.artistRoyalty,
         curatorRoyalty: data.curatorRoyalty,
         provenance: data.provenance,
         exhibitionHistory: data.exhibitionHistory,
         publishingHistory: data.publishingHistory,
+        releaseDate: data.releaseDate,
         notes: data.notes,
-        owner: user
-      }
-    }
+        contractAddress: data.contractAddress,
+        owner: user,
+      },
+    },
   })
 }
 
@@ -52,26 +54,27 @@ export const updateArtwork = (id, data, user) => {
     method: 'PATCH',
     url: apiUrl + `/artwork/${id}`,
     headers: {
-      Authorization: `Bearer ${user.token}`
+      Authorization: `Bearer ${user.token}`,
     },
     data: {
       artwork: {
         artist: data.artist,
         title: data.title,
         price: data.price,
-        imageUrl: data.imageUrl,
-        releaseDate: data.releaseDate,
+        image: data.image,
+        displayImageUrl: data.displayImageUrl,
         medium: data.medium,
         artistRoyalty: data.artistRoyalty,
         curatorRoyalty: data.curatorRoyalty,
         provenance: data.provenance,
         exhibitionHistory: data.exhibitionHistory,
         publishingHistory: data.publishingHistory,
-        catalogId: data.catalogId,
+        releaseDate: data.releaseDate,
         notes: data.notes,
-        owner: data.owner
-      }
-    }
+        contractAddress: data.contractAddress,
+        owner: data.owner,
+      },
+    },
   })
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router'
+import Web3 from 'web3'
 import { updateArtwork, showArtwork } from '../../api/artwork'
 import {
   updateArtworkSuccess
@@ -22,16 +23,19 @@ import EventIcon from '@mui/icons-material/Event'
 import HistoryIcon from '@mui/icons-material/History'
 import PublishIcon from '@mui/icons-material/Publish'
 import NoteIcon from '@mui/icons-material/Note'
+import GavelIcon from '@mui/icons-material/Gavel'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 import { upload } from './Upload'
+import Zyzygy from '../../abis/Zyzygy.json'
 
-const UpdateArt = ({ msgAlert, user }) => {
+const UpdateArt = ({ msgAlert, user, account }) => {
   const { id } = useParams()
   const [card, setCard] = useState(null)
   const [artist, setArtist] = useState(card ? card.artist : '')
   const [price, setPrice] = useState(card ? card.price : '')
   const [title, setTitle] = useState(card ? card.title : '')
-  const [imageUrl, setImageUrl] = useState(card ? card.imageUrl : '')
+  const [image, setImage] = useState(card ? card.image : '')
+  const [displayImageUrl, setDisplayImageUrl] = useState(card ? card.displayImageUrl : '')
   const [releaseDate, setReleaseDate] = useState(card ? card.releaseDate : '')
   const [medium, setMedium] = useState(card ? card.medium : '')
   const [artistRoyalty, setArtistRoyalty] = useState(card ? card.artistRoyalty : '')
@@ -40,22 +44,29 @@ const UpdateArt = ({ msgAlert, user }) => {
   const [exhibitionHistory, setExhibitionHistory] = useState(card ? card.exhibitionHistory : '')
   const [publishingHistory, setPublishingHistory] = useState(card ? card.publishingHistory : '')
   const [notes, setNotes] = useState(card ? card.notes : '')
+  const [contractAddress, setContractAddress] = useState(card ? card.contractAddress : '')
   const history = useHistory()
 
   const art = {
     artist: artist,
     title: title,
     price: price,
-    imageUrl: imageUrl,
-    releaseDate: releaseDate,
+    image: image,
+    displayImageUrl: displayImageUrl,
     medium: medium,
     artistRoyalty: artistRoyalty,
     curatorRoyalty: curatorRoyalty,
     provenance: provenance,
     exhibitionHistory: exhibitionHistory,
     publishingHistory: publishingHistory,
-    notes: notes
+    releaseDate: releaseDate,
+    notes: notes,
+    contractAddress: contractAddress,
   }
+
+  const web3 = new Web3(Web3.givenProvider)
+  const ZyzygyContract = Zyzygy.abi
+  const Instance = new web3.eth.Contract(ZyzygyContract, contractAddress)
 
   const handleChangeArtist = (event) =>
     setArtist(event.target.value)
@@ -66,11 +77,11 @@ const UpdateArt = ({ msgAlert, user }) => {
   const handleChangePrice = (event) =>
     setPrice(event.target.value)
 
-  const handleChangeImageUrl = (event) =>
-    setImageUrl(event.target.value)
+  const handleChangeImage = (event) =>
+    setImage(event.target.value)
 
-  const handleChangeReleaseDate = (event) =>
-    setReleaseDate(event.target.value)
+  const handleChangeDisplayImageUrl = (event) =>
+    setDisplayImageUrl(event.target.value)
 
   const handleChangeMedium = (event) =>
     setMedium(event.target.value)
@@ -87,11 +98,14 @@ const UpdateArt = ({ msgAlert, user }) => {
   const handleChangeExhibitionHistory = (event) =>
     setExhibitionHistory(event.target.value)
 
-  const handleChangePublishingHistory = (event) =>
-    setPublishingHistory(event.target.value)
+  const handleChangeReleaseDate = (event) =>
+    setReleaseDate(event.target.value)
 
   const handleChangeNotes = (event) =>
     setNotes(event.target.value)
+
+  const handleChangeContractAddress = (event) =>
+    setContractAddress(event.target.value)
 
   useEffect(() => {
     showArtwork(id)
@@ -101,23 +115,50 @@ const UpdateArt = ({ msgAlert, user }) => {
         setArtist(art.artist)
         setTitle(art.title)
         setPrice(art.price)
-        setImageUrl(art.imageUrl)
-        setReleaseDate(art.releaseDate)
+        setImage(art.image)
+        setDisplayImageUrl(art.displayImageUrl)
         setMedium(art.medium)
         setArtistRoyalty(art.artistRoyalty)
         setCuratorRoyalty(art.curatorRoyalty)
         setProvenance(art.provenance)
         setExhibitionHistory(art.exhibitionHistory)
-        setPublishingHistory(art.publishingHistory)
+        setReleaseDate(art.releaseDate)
         setNotes(art.notes)
+        setContractAddress(art.contractAddress)
       })
   }, [id])
 
+  // let mintVal = await _contract.methods
+  //   .mint(
+  //     tokenId,
+  //     web3.utils.toWei(TokenPrice.toString(), 'ether'),
+  //     'hbvjhbghbhbasdasdasdadaad'
+  //   )
+  //   .send({
+  //     from: accounts[0],
+  //     value: web3.utils.toWei(TokenPrice.toString(), 'ether'),
+  //   })
+
   const mintArtwork = async (data) => {
-    console.log(data)
-    console.log(data.publishingHistory)
-    const hashUrl = await upload(data)
-    console.log(hashUrl)
+    try {
+      const accountAddress = await web3.eth.getAccounts()
+      console.log(data)
+      console.log(data.publishingHistory)
+      console.log(contractAddress)
+      const hashUrl = await upload(data)
+      const price = data.price
+      console.log(hashUrl)
+      const Mint = await Instance.methods
+        .safeMint(
+          accountAddress[0],
+          hashUrl,
+          web3.utils.toWei(price.toString(), 'ether')
+        )
+        .send({ from: accountAddress[0] })
+      console.log(Mint)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   const onUpdateArtwork = (event) => {
@@ -146,7 +187,8 @@ const UpdateArt = ({ msgAlert, user }) => {
         setArtist('')
         setTitle('')
         setPrice('')
-        setImageUrl('')
+        setImage('')
+        setDisplayImageUrl('')
         setReleaseDate('')
         setMedium('')
         setArtistRoyalty('')
@@ -221,21 +263,21 @@ const UpdateArt = ({ msgAlert, user }) => {
                   <Grid item xs={12} md={6}>
                     <TextFieldComponent
                       required={true}
-                      id={'imageUrl'}
-                      label={'Image URL'}
+                      id={'image'}
+                      label={'Image'}
                       icon={<HttpIcon sx={{ color: 'white' }} />}
-                      value={imageUrl}
-                      onChange={handleChangeImageUrl}
+                      value={image}
+                      onChange={handleChangeImage}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <TextFieldComponent
                       required={true}
-                      id={'releaseDate'}
-                      label={'Release Date'}
-                      icon={<EventIcon sx={{ color: 'white' }} />}
-                      value={releaseDate}
-                      onChange={handleChangeReleaseDate}
+                      id={'displayImgUrl'}
+                      label={'Display Image Url'}
+                      icon={<HttpIcon sx={{ color: 'white' }} />}
+                      value={displayImageUrl}
+                      onChange={handleChangeDisplayImageUrl}
                     />
                   </Grid>
                 </Grid>
@@ -295,11 +337,12 @@ const UpdateArt = ({ msgAlert, user }) => {
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <TextFieldComponent
-                      id={'publishingHistory'}
-                      label={'Publishing History'}
-                      icon={<PublishIcon sx={{ color: 'white' }} />}
-                      value={publishingHistory}
-                      onChange={handleChangePublishingHistory}
+                      required={true}
+                      id={'releaseDate'}
+                      label={'Release Date'}
+                      icon={<EventIcon sx={{ color: 'white' }} />}
+                      value={releaseDate}
+                      onChange={handleChangeReleaseDate}
                     />
                   </Grid>
                 </Grid>
@@ -311,6 +354,18 @@ const UpdateArt = ({ msgAlert, user }) => {
                       icon={<NoteIcon sx={{ color: 'white' }} />}
                       value={notes}
                       onChange={handleChangeNotes}
+                      keyPress={handleKeypress}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <TextFieldComponent
+                      id={'contractAddress'}
+                      label={'Contract Address'}
+                      icon={<GavelIcon sx={{ color: 'white' }} />}
+                      value={contractAddress}
+                      onChange={handleChangeContractAddress}
                       keyPress={handleKeypress}
                     />
                   </Grid>

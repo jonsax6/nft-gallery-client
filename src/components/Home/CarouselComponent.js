@@ -47,7 +47,7 @@ const CarouselComp = () => {
         {cards.map((card) => {
           return (
             <div key={card._id}>
-              <img style={{ maxWidth: mobileStyle }} src={`${card.imageUrl}`} />
+              <img style={{ maxWidth: mobileStyle }} src={`${card.displayImageUrl}`} />
               {/* <p style={{ width: '300px', margin: 'auto', color: 'white', paddingTop: '30px' }}>{card.title}</p> */}
             </div>
           )

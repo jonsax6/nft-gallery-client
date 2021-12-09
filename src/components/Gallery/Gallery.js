@@ -132,7 +132,7 @@ const Gallery = ({ user, account }) => {
                   sx={{
                     paddingTop: '92%', // 16:9 aspect ratio
                   }}
-                  image={card.imageUrl}
+                  image={card.displayImageUrl}
                   title={card.title}
                   onClick={(e) => handleOpen(i)}
                   onPointerOver={() => setHovered(true)}

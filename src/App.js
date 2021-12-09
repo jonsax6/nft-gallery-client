@@ -1,9 +1,10 @@
 /* eslint-disable no-tabs */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
+import { indexArtwork } from './api/artwork'
 import Header from './components/Header/Header'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
@@ -24,6 +25,7 @@ import { injected } from './components/Wallet/Connectors'
 const App = () => {
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
+  const [zyzygyContract, setZyzygyContract] = useState('')
   const { active, account, library, networkId, connector, activate, deactivate } =
     useWeb3React()
 
@@ -50,6 +52,13 @@ const App = () => {
   const msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
     setMsgAlerts([...msgAlerts, { heading, message, variant, id }])
+  }
+
+  const setContract = () => {
+    indexArtwork()
+      .then((res) => {
+        setZyzygyContract(res.data.artwork[0].contractAddress)
+      })
   }
 
   return (
@@ -158,6 +167,7 @@ const App = () => {
                 style={{ backgroundColor: 'black' }}
                 msgAlert={msgAlert}
                 user={user}
+                account={account}
               />
             )}
           />
