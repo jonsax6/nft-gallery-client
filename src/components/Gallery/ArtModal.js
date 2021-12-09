@@ -97,8 +97,8 @@ const ArtModal = ({ card, handleClose, open, account }) => {
             <div style={{ padding: '0px' }}>
               <img
                 style={{ maxWidth: '100%' }}
-                src={card.imageUrl}
-                alt={card.artist}
+                src={card.displayImageUrl}
+                alt={card.title}
               />
             </div>
             <div

@@ -49,6 +49,7 @@ const Gallery = ({ user, account }) => {
     indexArtwork()
       .then((res) => {
         setCards(res.data.artwork)
+        console.log(cards)
       })
   }, [])
 
