@@ -101,6 +101,17 @@ const DrawerComponent = ({ user }) => {
           <NavLink
             style={{ color: 'black', textDecoration: 'none' }}
             exact
+            to='/faq'
+            className='nav-link'>
+            FAQ
+          </NavLink>
+        </ListItemText>
+      </ListItem>
+      <ListItem onClick={() => setOpenDrawer(false)}>
+        <ListItemText>
+          <NavLink
+            style={{ color: 'black', textDecoration: 'none' }}
+            exact
             to='/gallery'
             className='nav-link'>
             View Gallery
