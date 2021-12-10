@@ -18,13 +18,15 @@ import EventIcon from '@mui/icons-material/Event'
 import HistoryIcon from '@mui/icons-material/History'
 import PublishIcon from '@mui/icons-material/Publish'
 import NoteIcon from '@mui/icons-material/Note'
+import GavelIcon from '@mui/icons-material/Gavel'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 
 const SubmitArt = ({ msgAlert, user }) => {
   const [artist, setArtist] = useState(null)
   const [title, setTitle] = useState(null)
   const [price, setPrice] = useState(null)
-  const [imageUrl, setImageUrl] = useState(null)
+  const [image, setImage] = useState(null)
+  const [displayImageUrl, setDisplayImageUrl] = useState(null)
   const [releaseDate, setReleaseDate] = useState(null)
   const [medium, setMedium] = useState(null)
   const [artistRoyalty, setArtistRoyalty] = useState(null)
@@ -33,21 +35,24 @@ const SubmitArt = ({ msgAlert, user }) => {
   const [exhibitionHistory, setExhibitionHistory] = useState(null)
   const [publishingHistory, setPublishingHistory] = useState(null)
   const [notes, setNotes] = useState(null)
+  const [contractAddress, setContractAddress] = useState(null)
   const history = useHistory()
 
   const art = {
     artist: artist,
     title: title,
     price: price,
-    imageUrl: imageUrl,
-    releaseDate: releaseDate,
+    image: image,
+    displayImageUrl: displayImageUrl,
     medium: medium,
     artistRoyalty: artistRoyalty,
     curatorRoyalty: curatorRoyalty,
     provenance: provenance,
     exhibitionHistory: exhibitionHistory,
     publishingHistory: publishingHistory,
-    notes: notes
+    releaseDate: releaseDate,
+    notes: notes,
+    contractAddress: contractAddress,
   }
 
   const handleChangeArtist = (event) =>
@@ -59,11 +64,11 @@ const SubmitArt = ({ msgAlert, user }) => {
   const handleChangePrice = (event) =>
     setPrice(event.target.value)
 
-  const handleChangeImageUrl = (event) =>
-    setImageUrl(event.target.value)
+  const handleChangeImage = (event) =>
+    setImage(event.target.value)
 
-  const handleChangeReleaseDate = (event) =>
-    setReleaseDate(event.target.value)
+  const handleChangeDisplayImageUrl = (event) =>
+    setDisplayImageUrl(event.target.value)
 
   const handleChangeMedium = (event) =>
     setMedium(event.target.value)
@@ -80,11 +85,14 @@ const SubmitArt = ({ msgAlert, user }) => {
   const handleChangeExhibitionHistory = (event) =>
     setExhibitionHistory(event.target.value)
 
-  const handleChangePublishingHistory = (event) =>
-    setPublishingHistory(event.target.value)
+  const handleChangeReleaseDate = (event) =>
+    setReleaseDate(event.target.value)
 
   const handleChangeNotes = (event) =>
     setNotes(event.target.value)
+
+  const handleChangeContractAddress = (event) =>
+    setContractAddress(event.target.value)
 
   const onCreateArtwork = (event) => {
     if (event) {
@@ -114,7 +122,9 @@ const SubmitArt = ({ msgAlert, user }) => {
       .finally(() => {
         setArtist('')
         setTitle('')
-        setImageUrl('')
+        setPrice('')
+        setImage('')
+        setDisplayImageUrl('')
         setReleaseDate('')
         setMedium('')
         setArtistRoyalty('')
@@ -189,21 +199,21 @@ const SubmitArt = ({ msgAlert, user }) => {
                   <Grid item xs={12} md={6}>
                     <TextFieldComponent
                       required={true}
-                      id={'imageUrl'}
-                      label={'Image URL'}
+                      id={'image'}
+                      label={'Image'}
                       icon={<HttpIcon sx={{ color: 'white' }} />}
-                      value={imageUrl}
-                      onChange={handleChangeImageUrl}
+                      value={image}
+                      onChange={handleChangeImage}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <TextFieldComponent
                       required={true}
-                      id={'releaseDate'}
-                      label={'Release Date'}
-                      icon={<EventIcon sx={{ color: 'white' }} />}
-                      value={releaseDate}
-                      onChange={handleChangeReleaseDate}
+                      id={'displayImgUrl'}
+                      label={'Display Image Url'}
+                      icon={<HttpIcon sx={{ color: 'white' }} />}
+                      value={displayImageUrl}
+                      onChange={handleChangeDisplayImageUrl}
                     />
                   </Grid>
                 </Grid>
@@ -263,11 +273,12 @@ const SubmitArt = ({ msgAlert, user }) => {
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <TextFieldComponent
-                      id={'publishingHistory'}
-                      label={'Publishing History'}
-                      icon={<PublishIcon sx={{ color: 'white' }} />}
-                      value={publishingHistory}
-                      onChange={handleChangePublishingHistory}
+                      required={true}
+                      id={'releaseDate'}
+                      label={'Release Date'}
+                      icon={<EventIcon sx={{ color: 'white' }} />}
+                      value={releaseDate}
+                      onChange={handleChangeReleaseDate}
                     />
                   </Grid>
                 </Grid>
@@ -279,6 +290,18 @@ const SubmitArt = ({ msgAlert, user }) => {
                       icon={<NoteIcon sx={{ color: 'white' }} />}
                       value={notes}
                       onChange={handleChangeNotes}
+                      keyPress={handleKeypress}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <TextFieldComponent
+                      id={'contractAddress'}
+                      label={'Contract Address'}
+                      icon={<GavelIcon sx={{ color: 'white' }} />}
+                      value={contractAddress}
+                      onChange={handleChangeContractAddress}
                       keyPress={handleKeypress}
                     />
                   </Grid>

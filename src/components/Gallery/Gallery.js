@@ -73,6 +73,10 @@ const Gallery = ({ user, account }) => {
     console.log(`purchasing ${cards[i].title}...`)
   }
 
+  const onSetPrice = (i) => {
+    console.log(`set buy price for: ${cards[i].title}...`)
+  }
+
   return (
     <div style={{ backgroundColor: '#202020' }}>
       <Container
@@ -145,9 +149,7 @@ const Gallery = ({ user, account }) => {
                   <Typography gutterBottom variant='h5'>
                     {card.artist}
                   </Typography>
-                  <Typography>
-                    {`'${card.title}'`}&nbsp;&nbsp;&nbsp;
-                  </Typography>
+                  <Typography>{`'${card.title}'`}&nbsp;&nbsp;&nbsp;</Typography>
                   {user && user._id === card.owner ? (
                     <>
                       <Button
@@ -170,7 +172,7 @@ const Gallery = ({ user, account }) => {
                   ) : (
                     <></>
                   )}
-                  {account ? (
+                  {user && account && user._id !== card.owner ? (
                     <>
                       <Button
                         style={{ marginTop: '10px' }}
@@ -178,7 +180,25 @@ const Gallery = ({ user, account }) => {
                         color='success'
                         variant='outlined'
                         onClick={(e) => onBuy(i)}>
-                        Buy&nbsp;<Icon icon='teenyicons:ethereum-solid' width='11' />
+                        Buy&nbsp;
+                        {/* {user._id !== card.owner ? 'Buy' : 'Set Price'} */}
+                        <Icon icon='teenyicons:ethereum-solid' width='11' />
+                        {card.price}
+                      </Button>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                  {user && account && user._id === card.owner ? (
+                    <>
+                      <Button
+                        style={{ marginTop: '10px' }}
+                        size='small'
+                        color='success'
+                        variant='outlined'
+                        onClick={(e) => onSetPrice(i)}>
+                        Set Price&nbsp;
+                        <Icon icon='teenyicons:ethereum-solid' width='11' />
                         {card.price}
                       </Button>
                     </>

@@ -110,7 +110,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   useEffect(() => {
     showArtwork(id)
       .then((res) => {
-        // setCard(res.data.artwork)
+        setCard(res.data.artwork)
         const art = res.data.artwork
         setArtist(art.artist)
         setTitle(art.title)
