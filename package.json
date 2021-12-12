@@ -39,6 +39,7 @@
     "lodash": "^4.17.21",
     "metamask-react": "^2.1.1",
     "moment": "^2.29.1",
+    "muicss": "^0.10.3",
     "object-assign": "^4.1.1",
     "openzeppelin-solidity": "^4.3.3",
     "promise": "^8.1.0",

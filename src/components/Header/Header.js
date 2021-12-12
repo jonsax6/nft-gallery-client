@@ -5,14 +5,16 @@ import { Link, NavLink } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import logo from '../../images/zyzygy_eclipse1.png'
+import logo from '../../images/zyzygy_art.png'
+import logoSmall from '../../images/zyzygy_compact.png'
 import DrawerComponent from './Drawer'
 import { useMediaQuery } from 'react-responsive'
 import { Button, Typography } from '@mui/material'
-// import Dropdown from 'muicss/lib/react/dropdown'
-// import DropdownItem from 'muicss/lib/react/dropdown-item'
+import Dropdown from 'muicss/lib/react/dropdown'
+import DropdownItem from 'muicss/lib/react/dropdown-item'
 
 const Header = ({ user, active, account, networkId, activate, deactivate, connect, disconnect }) => {
+  const isAdmin = user && user.email === 'jonsax@gmail.com'
   const authenticatedOptions = (
     <Fragment>
       <NavLink
@@ -41,6 +43,27 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
         <Button variant='contained' type='submit' onClick={connect}>
           CONNECT WALLET
         </Button>
+      )}
+      {isAdmin ? (
+        <Dropdown
+          sx={{ marginRight: '20px' }}
+          variant='default'
+          label='Admin'
+          color='danger'>
+          <DropdownItem link='#/link1'>
+            <NavLink
+              style={{ color: 'black', textDecoration: 'none' }}
+              to='/sign-out'
+              className='nav-link'>
+              Authorize Buyer
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem>Approve Artist</DropdownItem>
+          <DropdownItem>Option 3</DropdownItem>
+          <DropdownItem>Option 4</DropdownItem>
+        </Dropdown>
+      ) : (
+        <></>
       )}
     </Fragment>
   )
@@ -77,23 +100,9 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
 
   currentNetwork(networkId)
 
+  // this terniary is needed to prevent an error if substring method (below) tries to
+  // work on an undefined account (if not connected to metamask)
   const ethAccount = active ? account : ''
-  const walletAccount = (
-    <>
-      <Typography
-        sx={{
-          color: 'white',
-          textAlign: 'right',
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
-          marginLeft: 'auto',
-          marginRight: '20px'
-        }}>
-        &nbsp;{ethAccount.substring(0, 6)}...
-        {ethAccount.substring(ethAccount.length - 4, ethAccount.length)}
-      </Typography>
-    </>
-  )
 
   const accountDisplay = (
     <>
@@ -103,14 +112,17 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
           textAlign: 'right',
           textOverflow: 'ellipsis',
           overflow: 'hidden',
-          marginLeft: 'auto',
+          marginLeft: '20px',
           marginRight: '20px',
         }}>
+        {/* shows email if user is logged in */}
         {user && user.email}
+        {/* shows the colon if wallet is connected */}
         {account && ':'}
-        &nbsp;{ethAccount.substring(0, 6)}
+        &nbsp;{ethAccount}
+        {/* &nbsp;{ethAccount.substring(0, 6)}
         {account && '...'}
-        {ethAccount.substring(ethAccount.length - 4, ethAccount.length)}
+        {ethAccount.substring(ethAccount.length - 4, ethAccount.length)} */}
       </Typography>
     </>
   )
@@ -132,7 +144,7 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
   )
 
   const isMobile = useMediaQuery({
-    query: '(max-width: 1100px)'
+    query: '(max-width: 1155px)'
   })
 
   return (
@@ -146,16 +158,15 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
                 <Link
                   to='/'
                   style={{
-                    paddingLeft: '20px',
                     color: '#000',
                     textDecoration: 'none',
                     fontWeight: '100',
                     flexGrow: 1,
                   }}>
                   <img
-                    src={logo}
+                    src={logoSmall}
                     style={{
-                      width: '200px',
+                      width: '100px',
                       marginTop: 10,
                     }}
                   />
@@ -169,8 +180,29 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
                   </Button>
                 ) : (
                   <Button variant='contained' type='submit' onClick={connect}>
-                    CONNECT WALLET
+                    CONNECT
                   </Button>
+                )}
+                {isAdmin ? (
+                  <Dropdown
+                    sx={{ marginRight: '20px' }}
+                    variant='default'
+                    label='Admin'
+                    color='danger'>
+                    <DropdownItem link='#/link1'>
+                      <NavLink
+                        style={{ color: 'black', textDecoration: 'none' }}
+                        to='/sign-out'
+                        className='nav-link'>
+                        Authorize Buyer
+                      </NavLink>
+                    </DropdownItem>
+                    <DropdownItem>Approve Artist</DropdownItem>
+                    <DropdownItem>Option 3</DropdownItem>
+                    <DropdownItem>Option 4</DropdownItem>
+                  </Dropdown>
+                ) : (
+                  <></>
                 )}
               </>
             ) : (
@@ -178,7 +210,6 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
                 <Link
                   to='/'
                   style={{
-                    paddingLeft: '20px',
                     color: '#000',
                     textDecoration: 'none',
                     fontWeight: '100',
