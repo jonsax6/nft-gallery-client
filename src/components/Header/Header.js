@@ -9,6 +9,8 @@ import logo from '../../images/zyzygy_eclipse1.png'
 import DrawerComponent from './Drawer'
 import { useMediaQuery } from 'react-responsive'
 import { Button, Typography } from '@mui/material'
+// import Dropdown from 'muicss/lib/react/dropdown'
+// import DropdownItem from 'muicss/lib/react/dropdown-item'
 
 const Header = ({ user, active, account, networkId, activate, deactivate, connect, disconnect }) => {
   const authenticatedOptions = (

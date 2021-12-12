@@ -1212,6 +1212,10 @@ contract Zyzygy is ERC721, ERC721URIStorage, Ownable {
     constructor() ERC721("Zyzygy", "ZYZ") {
         gallery = msg.sender;
     }
+
+    function getNextTokenId() public view returns (uint256) {
+      return _tokenIdCounter.current();
+    }
     
     function safeMint(address to, string memory uri, uint256 amount) public {
         uint256 tokenId = _tokenIdCounter.current();

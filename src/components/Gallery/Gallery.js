@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Web3 from 'web3'
 import {
   Typography,
   Container,
@@ -10,10 +11,11 @@ import {
   CardContent
 } from '@mui/material'
 import '../../App.css'
-import { indexArtwork } from '../../api/artwork'
+import { indexArtwork, showArtwork } from '../../api/artwork'
 import ArtModal from './ArtModal'
 import { useMediaQuery } from 'react-responsive'
 import { Icon } from '@iconify/react'
+import Zyzygy from '../../abis/Zyzygy.json'
 
 // import { withRouter } from 'react-router-dom'
 
@@ -27,10 +29,15 @@ const Gallery = ({ user, account }) => {
   const [index, setIndex] = useState(0)
   const [hovered, setHovered] = useState(false)
   const [open, setOpen] = useState(false)
+  const [contractAddress, setContractAddress] = useState('')
   const history = useHistory()
 
+  const web3 = new Web3(Web3.givenProvider)
+  const ZyzygyContract = Zyzygy.abi
+  const Instance = new web3.eth.Contract(ZyzygyContract, contractAddress)
+
   const isPhone = useMediaQuery({
-    query: '(max-width: 600px)'
+    query: '(max-width: 600px)',
   })
 
   let mobileStyle
@@ -46,10 +53,9 @@ const Gallery = ({ user, account }) => {
   }, [hovered])
 
   useEffect(() => {
-    indexArtwork()
-      .then((res) => {
-        setCards(res.data.artwork)
-      })
+    indexArtwork().then((res) => {
+      setCards(res.data.artwork)
+    })
   }, [])
 
   const handleOpen = (i) => {
@@ -69,8 +75,39 @@ const Gallery = ({ user, account }) => {
     history.push(`/remove/${card._id}`)
   }
 
-  const onBuy = (i) => {
+  // let mintVal = await _contract.methods
+  //   .mint(
+  //     tokenId,
+  //     web3.utils.toWei(TokenPrice.toString(), 'ether'),
+  //     'hbvjhbghbhbasdasdasdadaad'
+  //   )
+  //   .send({
+  //     from: accounts[0],
+  //     value: web3.utils.toWei(TokenPrice.toString(), 'ether'),
+  //   })
+
+  const onBuy = async (i) => {
+    const contractAddress = cards[i].contractAddress
+    const card = cards[i]
     console.log(`purchasing ${cards[i].title}...`)
+    console.log(account)
+    console.log(contractAddress)
+    try {
+      // const accountAddress = await web3.eth.getAccounts()
+      console.log(card)
+      console.log(card.title)
+      await Instance.methods.approve
+      const price = card.price
+      const buyNFT = await Instance.methods
+        .transferFrom(
+          account,
+          web3.utils.toWei(price.toString(), 'ether')
+        )
+        .send({ from: account })
+      console.log(buyNFT)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   const onSetPrice = (i) => {

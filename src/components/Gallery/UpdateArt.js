@@ -13,7 +13,6 @@ import {
   Card,
   CardContent
 } from '@mui/material'
-import TextField from '@mui/material/TextField'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import ArtTrackIcon from '@mui/icons-material/ArtTrack'
 import HttpIcon from '@mui/icons-material/Http'
@@ -24,6 +23,7 @@ import HistoryIcon from '@mui/icons-material/History'
 import PublishIcon from '@mui/icons-material/Publish'
 import NoteIcon from '@mui/icons-material/Note'
 import GavelIcon from '@mui/icons-material/Gavel'
+import FilterIcon from '@mui/icons-material/Filter'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 import { upload } from './Upload'
 import Zyzygy from '../../abis/Zyzygy.json'
@@ -45,6 +45,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   const [publishingHistory, setPublishingHistory] = useState(card ? card.publishingHistory : '')
   const [notes, setNotes] = useState(card ? card.notes : '')
   const [contractAddress, setContractAddress] = useState(card ? card.contractAddress : '')
+  const [tokenId, setTokenId] = useState(null)
   const history = useHistory()
 
   const art = {
@@ -62,6 +63,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
     releaseDate: releaseDate,
     notes: notes,
     contractAddress: contractAddress,
+    tokenId: tokenId
   }
 
   const web3 = new Web3(Web3.givenProvider)
@@ -107,11 +109,14 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   const handleChangeContractAddress = (event) =>
     setContractAddress(event.target.value)
 
+  const handleChangeTokenId = (event) =>
+    setTokenId(event.target.value)
+
   useEffect(() => {
     showArtwork(id)
       .then((res) => {
-        setCard(res.data.artwork)
         const art = res.data.artwork
+        setCard(art)
         setArtist(art.artist)
         setTitle(art.title)
         setPrice(art.price)
@@ -125,6 +130,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
         setReleaseDate(art.releaseDate)
         setNotes(art.notes)
         setContractAddress(art.contractAddress)
+        setTokenId(art.tokenId)
       })
   }, [id])
 
@@ -145,6 +151,14 @@ const UpdateArt = ({ msgAlert, user, account }) => {
       console.log(data)
       console.log(data.publishingHistory)
       console.log(contractAddress)
+
+      const tokenId = await Instance.methods
+        .getNextTokenId().call()
+      console.log(tokenId)
+      setTokenId(tokenId)
+
+      updateArtwork(id, art, user)
+
       const hashUrl = await upload(data)
       const price = data.price
       console.log(hashUrl)
@@ -197,6 +211,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
         setPublishingHistory('')
         setProvenance('')
         setNotes('')
+        setTokenId('')
       })
   }
 
