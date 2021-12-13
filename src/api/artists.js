@@ -9,7 +9,7 @@ export const indexArtists = () => {
   })
 }
 
-export const showArtwork = (id) => {
+export const showArtist = (id) => {
   return axios({
     method: 'GET',
     url: apiUrl + `/artists/${id}`,
