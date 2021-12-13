@@ -15,6 +15,8 @@ import Gallery from './components/Gallery/Gallery'
 import SubmitArt from './components/Gallery/submitArt'
 import UpdateArt from './components/Gallery/UpdateArt'
 import RemoveArt from './components/Gallery/RemoveArt'
+import ApproveBuyer from './components/Header/ApproveBuyer'
+import ApproveArtist from './components/Header/ApproveArtist'
 import About from './components/About/About'
 import FAQ from './components/FAQ/FAQ'
 import { CssBaseline, Container } from '@mui/material'
@@ -86,14 +88,13 @@ const App = () => {
         <Container style={{ width: '100vw', padding: '0', maxWidth: '100%' }}>
           <Route
             exact
-            path="/"
-            render={() => <Home
-              style={{ backgroundColor: '#202020' }}
-              account={account}
-            />}
+            path='/'
+            render={() => (
+              <Home style={{ backgroundColor: '#202020' }} account={account} />
+            )}
           />
           <Route
-            path="/sign-up"
+            path='/sign-up'
             render={() => (
               <SignUp
                 style={{ backgroundColor: 'black' }}
@@ -103,34 +104,32 @@ const App = () => {
             )}
           />
           <Route
-            path="/sign-in"
-            render={() => (
-              <SignIn msgAlert={msgAlert} setUser={setUser} />
-            )}
+            path='/sign-in'
+            render={() => <SignIn msgAlert={msgAlert} setUser={setUser} />}
           />
           <Route
-            path="/about"
+            path='/about'
+            render={() => <About style={{ backgroundColor: 'white' }} />}
+          />
+          <Route
+            path='/gallery'
             render={() => (
-              <About
-                style={{ backgroundColor: 'white' }}
+              <Gallery
+                user={user}
+                account={account}
+                style={{ backgroundColor: '#202020' }}
               />
             )}
           />
           <Route
-            path="/gallery"
-            render={() => <Gallery
-              user={user}
-              account={account}
-              style={{ backgroundColor: '#202020' }}
-            />}
-          />
-          <Route
-            path="/faq"
-            render={() => <FAQ user={user} style={{ backgroundColor: '#202020' }} />}
+            path='/faq'
+            render={() => (
+              <FAQ user={user} style={{ backgroundColor: '#202020' }} />
+            )}
           />
           <AuthenticatedRoute
             user={user}
-            path="/sign-out"
+            path='/sign-out'
             render={() => (
               <SignOut
                 style={{ backgroundColor: 'black' }}
@@ -143,14 +142,12 @@ const App = () => {
           />
           <AuthenticatedRoute
             user={user}
-            path="/change-password"
-            render={() => (
-              <ChangePassword msgAlert={msgAlert} user={user} />
-            )}
+            path='/change-password'
+            render={() => <ChangePassword msgAlert={msgAlert} user={user} />}
           />
           <AuthenticatedRoute
             user={user}
-            path="/submit-art"
+            path='/submit-art'
             render={() => (
               <SubmitArt
                 style={{ backgroundColor: 'black' }}
@@ -161,7 +158,7 @@ const App = () => {
           />
           <AuthenticatedRoute
             user={user}
-            path="/update/:id"
+            path='/update/:id'
             render={() => (
               <UpdateArt
                 style={{ backgroundColor: 'black' }}
@@ -173,9 +170,31 @@ const App = () => {
           />
           <AuthenticatedRoute
             user={user}
-            path="/remove/:id"
+            path='/remove/:id'
             render={() => (
               <RemoveArt
+                style={{ backgroundColor: 'black' }}
+                msgAlert={msgAlert}
+                user={user}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/approve-buyer'
+            render={() => (
+              <ApproveBuyer
+                style={{ backgroundColor: 'black' }}
+                msgAlert={msgAlert}
+                user={user}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/approve-artist'
+            render={() => (
+              <ApproveArtist
                 style={{ backgroundColor: 'black' }}
                 msgAlert={msgAlert}
                 user={user}

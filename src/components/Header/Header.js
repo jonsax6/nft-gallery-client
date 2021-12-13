@@ -53,12 +53,20 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
           <DropdownItem link='#/link1'>
             <NavLink
               style={{ color: 'black', textDecoration: 'none' }}
-              to='/sign-out'
+              to='/approve-buyer'
               className='nav-link'>
-              Authorize Buyer
+              Approve Buyer
             </NavLink>
           </DropdownItem>
-          <DropdownItem>Approve Artist</DropdownItem>
+          <DropdownItem>
+            {' '}
+            <NavLink
+              style={{ color: 'black', textDecoration: 'none' }}
+              to='/approve-artist'
+              className='nav-link'>
+              Approve Artist
+            </NavLink>
+          </DropdownItem>
           <DropdownItem>Option 3</DropdownItem>
           <DropdownItem>Option 4</DropdownItem>
         </Dropdown>
@@ -113,7 +121,7 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
           textOverflow: 'ellipsis',
           overflow: 'hidden',
           marginLeft: '20px',
-          marginRight: '20px',
+          marginRight: '20px'
         }}>
         {/* shows email if user is logged in */}
         {user && user.email}
