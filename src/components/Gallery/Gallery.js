@@ -75,6 +75,11 @@ const Gallery = ({ user, account }) => {
     history.push(`/remove/${card._id}`)
   }
 
+  const onApprove = (i) => {
+    const card = cards[i]
+    history.push(`/approve-buyer/${card.contractAddress}/${card.tokenId}`)
+  }
+
   // let mintVal = await _contract.methods
   //   .mint(
   //     tokenId,
@@ -192,7 +197,7 @@ const Gallery = ({ user, account }) => {
                       <Button
                         style={{ marginTop: '10px', marginRight: '10px' }}
                         size='small'
-                        color='info'
+                        color='warning'
                         variant='outlined'
                         onClick={(e) => onUpdate(i)}>
                         Update Artwork
@@ -204,6 +209,14 @@ const Gallery = ({ user, account }) => {
                         variant='outlined'
                         onClick={(e) => onRemove(i)}>
                         Remove Artwork
+                      </Button>
+                      <Button
+                        style={{ marginTop: '10px', marginRight: '10px' }}
+                        size='small'
+                        color='info'
+                        variant='outlined'
+                        onClick={(e) => onApprove(i)}>
+                        Approve Buyer
                       </Button>
                     </>
                   ) : (

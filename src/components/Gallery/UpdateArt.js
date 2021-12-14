@@ -45,7 +45,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   const [publishingHistory, setPublishingHistory] = useState(card ? card.publishingHistory : '')
   const [notes, setNotes] = useState(card ? card.notes : '')
   const [contractAddress, setContractAddress] = useState(card ? card.contractAddress : '')
-  const [tokenId, setTokenId] = useState(null)
+  const [tokenId, setTokenId] = useState(card ? card.tokenId : '')
   const history = useHistory()
 
   const art = {
@@ -109,9 +109,6 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   const handleChangeContractAddress = (event) =>
     setContractAddress(event.target.value)
 
-  const handleChangeTokenId = (event) =>
-    setTokenId(event.target.value)
-
   useEffect(() => {
     showArtwork(id)
       .then((res) => {
@@ -147,32 +144,27 @@ const UpdateArt = ({ msgAlert, user, account }) => {
 
   const mintArtwork = async (data) => {
     try {
-      const accountAddress = await web3.eth.getAccounts()
-      console.log(data)
-      console.log(data.publishingHistory)
-      console.log(contractAddress)
-
-      const tokenId = await Instance.methods
-        .getNextTokenId().call()
-      console.log(tokenId)
-      setTokenId(tokenId)
-
-      updateArtwork(id, art, user)
-
       const hashUrl = await upload(data)
       const price = data.price
       console.log(hashUrl)
       const Mint = await Instance.methods
         .safeMint(
-          accountAddress[0],
+          account,
           hashUrl,
           web3.utils.toWei(price.toString(), 'ether')
         )
-        .send({ from: accountAddress[0] })
+        .send({ from: account })
       console.log(Mint)
     } catch (err) {
       console.log(err)
     }
+  }
+
+  const onNextTokenId = async () => {
+    const _tokenId = await Instance.methods.getNextTokenId().call()
+    console.log(_tokenId)
+    setTokenId(_tokenId)
+    console.log(tokenId)
   }
 
   const onUpdateArtwork = (event) => {
@@ -248,6 +240,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                     id={'artist'}
                     label={'Artist'}
                     icon={<AccountCircle sx={{ color: 'white' }} />}
+                    variant={'outlined'}
                     value={artist}
                     onChange={handleChangeArtist}
                   />
@@ -259,6 +252,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'title'}
                       label={'Title'}
                       icon={<ArtTrackIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={title}
                       onChange={handleChangeTitle}
                     />
@@ -269,6 +263,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'price'}
                       label={'Price (eth)'}
                       icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={price}
                       onChange={handleChangePrice}
                     />
@@ -281,6 +276,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'image'}
                       label={'Image'}
                       icon={<HttpIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={image}
                       onChange={handleChangeImage}
                     />
@@ -291,6 +287,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'displayImgUrl'}
                       label={'Display Image Url'}
                       icon={<HttpIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={displayImageUrl}
                       onChange={handleChangeDisplayImageUrl}
                     />
@@ -303,6 +300,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'medium'}
                       label={'Medium'}
                       icon={<PaletteIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={medium}
                       onChange={handleChangeMedium}
                     />
@@ -313,6 +311,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'artistRoyalty'}
                       label={'Artist Royalty'}
                       icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={artistRoyalty}
                       onChange={handleChangeArtistRoyalty}
                     />
@@ -325,6 +324,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'curatorRoyalty'}
                       label={'Curator Royalty'}
                       icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={curatorRoyalty}
                       onChange={handleChangeCuratorRoyalty}
                     />
@@ -335,6 +335,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'provenance'}
                       label={'Provenance'}
                       icon={<HttpIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={provenance}
                       onChange={handleChangeProvenance}
                     />
@@ -346,6 +347,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'exhibitionHistory'}
                       label={'Exhibition History'}
                       icon={<HistoryIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={exhibitionHistory}
                       onChange={handleChangeExhibitionHistory}
                     />
@@ -356,6 +358,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'releaseDate'}
                       label={'Release Date'}
                       icon={<EventIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={releaseDate}
                       onChange={handleChangeReleaseDate}
                     />
@@ -367,6 +370,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'notes'}
                       label={'Notes'}
                       icon={<NoteIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={notes}
                       onChange={handleChangeNotes}
                       keyPress={handleKeypress}
@@ -379,10 +383,49 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       id={'contractAddress'}
                       label={'Contract Address'}
                       icon={<GavelIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
                       value={contractAddress}
                       onChange={handleChangeContractAddress}
                       keyPress={handleKeypress}
                     />
+                  </Grid>
+                </Grid>
+                {/* <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <TextFieldComponent
+                      disabled={true}
+                      id={'tokenId'}
+                      label={'Token ID'}
+                      icon={<FilterIcon sx={{ color: 'white' }} />}
+                      variant={'outlined'}
+                      value={tokenId}
+                    />
+                  </Grid>
+                </Grid> */}
+                <Grid container style={{ marginTop: '20px' }}>
+                  <Grid item>
+                    <FilterIcon
+                      sx={{
+                        color: 'white',
+                        marginRight: '10px',
+                        height: '30px'
+                      }}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography sx={{ marginTop: '20px' }} variant='p'>
+                      Next available token ID to mint: {art.tokenId}
+                    </Typography>
+                  </Grid>
+                </Grid>
+                <Grid container>
+                  <Grid item xs={10} md={6} style={{ marginTop: '20px' }}>
+                    <Button
+                      variant='contained'
+                      type='submit'
+                      onClick={onNextTokenId}>
+                      Fetch ID
+                    </Button>
                   </Grid>
                 </Grid>
                 <Grid container>
@@ -401,7 +444,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       variant='contained'
                       type='submit'
                       onClick={() => mintArtwork(art)}>
-                      Mint NFT
+                      Mint NFT {art.tokenId ? art.tokenId : ''}
                     </Button>
                   </Grid>
                 </Grid>

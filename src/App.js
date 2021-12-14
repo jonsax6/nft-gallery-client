@@ -181,12 +181,13 @@ const App = () => {
           />
           <AuthenticatedRoute
             user={user}
-            path='/approve-buyer'
+            path='/approve-buyer/:contractAddress/:tokenId'
             render={() => (
               <ApproveBuyer
                 style={{ backgroundColor: 'black' }}
                 msgAlert={msgAlert}
                 user={user}
+                account={account}
               />
             )}
           />

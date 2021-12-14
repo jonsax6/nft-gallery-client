@@ -59,7 +59,6 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
             </NavLink>
           </DropdownItem>
           <DropdownItem>
-            {' '}
             <NavLink
               style={{ color: 'black', textDecoration: 'none' }}
               to='/approve-artist'
@@ -67,8 +66,6 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
               Approve Artist
             </NavLink>
           </DropdownItem>
-          <DropdownItem>Option 3</DropdownItem>
-          <DropdownItem>Option 4</DropdownItem>
         </Dropdown>
       ) : (
         <></>
@@ -150,7 +147,7 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
       <NavLink style={{ color: 'white', margin: 15, textDecoration: 'none' }} exact to='/faq' className='nav-link'>FAQ</NavLink>
     </Fragment>
   )
-
+  // screens smaller than 1155 isMobile returns true
   const isMobile = useMediaQuery({
     query: '(max-width: 1155px)'
   })
