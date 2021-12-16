@@ -9,7 +9,7 @@
     "@fontsource/roboto": "^4.5.1",
     "@iconify/iconify": "^2.1.0",
     "@metamask/detect-provider": "^1.2.0",
-    "@mui/icons-material": "^5.0.4",
+    "@mui/icons-material": "^5.2.4",
     "@mui/material": "^5.0.4",
     "@mui/styled-engine-sc": "^5.0.3",
     "@mui/system": "^5.0.4",

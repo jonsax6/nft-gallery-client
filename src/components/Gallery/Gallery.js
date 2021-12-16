@@ -66,18 +66,19 @@ const Gallery = ({ user, account }) => {
   const handleClose = () => setOpen(false)
 
   const onUpdate = (i) => {
-    const card = cards[i]
-    history.push(`/update/${card._id}`)
+    history.push(`/update/${cards[i]._id}`)
+  }
+
+  const onBuy = (i) => {
+    history.push(`/buy/${cards[i].contractAddress}/${cards[i].tokenId}/${cards[i].price}`)
   }
 
   const onRemove = (i) => {
-    const card = cards[i]
-    history.push(`/remove/${card._id}`)
+    history.push(`/remove/${cards[i]._id}`)
   }
 
   const onApprove = (i) => {
-    const card = cards[i]
-    history.push(`/approve-buyer/${card.contractAddress}/${card.tokenId}`)
+    history.push(`/approve-buyer/${cards[i].contractAddress}/${cards[i].tokenId}`)
   }
 
   // let mintVal = await _contract.methods
@@ -91,32 +92,15 @@ const Gallery = ({ user, account }) => {
   //     value: web3.utils.toWei(TokenPrice.toString(), 'ether'),
   //   })
 
-  const onBuy = async (i) => {
+  const onSetPrice = (i) => {
+    console.log(`set buy price for: ${cards[i].title}...`)
     const contractAddress = cards[i].contractAddress
     const card = cards[i]
-    console.log(`purchasing ${cards[i].title}...`)
-    console.log(account)
-    console.log(contractAddress)
     try {
-      // const accountAddress = await web3.eth.getAccounts()
-      console.log(card)
-      console.log(card.title)
-      await Instance.methods.approve
-      const price = card.price
-      const buyNFT = await Instance.methods
-        .transferFrom(
-          account,
-          web3.utils.toWei(price.toString(), 'ether')
-        )
-        .send({ from: account })
-      console.log(buyNFT)
+      console.log('setting price...')
     } catch (err) {
       console.log(err)
     }
-  }
-
-  const onSetPrice = (i) => {
-    console.log(`set buy price for: ${cards[i].title}...`)
   }
 
   return (

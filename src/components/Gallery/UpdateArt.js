@@ -4,7 +4,9 @@ import { useHistory } from 'react-router'
 import Web3 from 'web3'
 import { updateArtwork, showArtwork } from '../../api/artwork'
 import {
-  updateArtworkSuccess
+  updateArtworkSuccess,
+  mintArtworkSuccess,
+  mintArtworkFailure
 } from '../AutoDismissAlert/messages'
 import {
   Typography,
@@ -24,13 +26,17 @@ import PublishIcon from '@mui/icons-material/Publish'
 import NoteIcon from '@mui/icons-material/Note'
 import GavelIcon from '@mui/icons-material/Gavel'
 import FilterIcon from '@mui/icons-material/Filter'
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 import { upload } from './Upload'
+import { Icon } from '@iconify/react'
 import Zyzygy from '../../abis/Zyzygy.json'
+import { UpdateTwoTone } from '@mui/icons-material'
 
 const UpdateArt = ({ msgAlert, user, account }) => {
   const { id } = useParams()
   const [card, setCard] = useState(null)
+  // const [web3, setWeb3] = useState(null)
   const [artist, setArtist] = useState(card ? card.artist : '')
   const [price, setPrice] = useState(card ? card.price : '')
   const [title, setTitle] = useState(card ? card.title : '')
@@ -46,6 +52,8 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   const [notes, setNotes] = useState(card ? card.notes : '')
   const [contractAddress, setContractAddress] = useState(card ? card.contractAddress : '')
   const [tokenId, setTokenId] = useState(card ? card.tokenId : '')
+  const [lastMinted, setLastMinted] = useState(card ? card.lastMinted : null)
+  const [isMinted, setIsMinted] = useState(card ? card.isMinted : false)
   const history = useHistory()
 
   const art = {
@@ -63,7 +71,9 @@ const UpdateArt = ({ msgAlert, user, account }) => {
     releaseDate: releaseDate,
     notes: notes,
     contractAddress: contractAddress,
-    tokenId: tokenId
+    tokenId: tokenId,
+    lastMinted: lastMinted,
+    isMinted: isMinted
   }
 
   const web3 = new Web3(Web3.givenProvider)
@@ -75,9 +85,6 @@ const UpdateArt = ({ msgAlert, user, account }) => {
 
   const handleChangeTitle = (event) =>
     setTitle(event.target.value)
-
-  const handleChangePrice = (event) =>
-    setPrice(event.target.value)
 
   const handleChangeImage = (event) =>
     setImage(event.target.value)
@@ -128,6 +135,8 @@ const UpdateArt = ({ msgAlert, user, account }) => {
         setNotes(art.notes)
         setContractAddress(art.contractAddress)
         setTokenId(art.tokenId)
+        setLastMinted(art.lastMinted)
+        setIsMinted(art.isMinted)
       })
   }, [id])
 
@@ -137,34 +146,92 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   //     web3.utils.toWei(TokenPrice.toString(), 'ether'),
   //     'hbvjhbghbhbasdasdasdadaad'
   //   )
-  //   .send({
-  //     from: accounts[0],
-  //     value: web3.utils.toWei(TokenPrice.toString(), 'ether'),
-  //   })
+  // .send({
+  //   from: accounts[0],
+  //   value: web3.utils.toWei(TokenPrice.toString(), 'ether'),
+  // })
 
   const mintArtwork = async (data) => {
     try {
       const hashUrl = await upload(data)
       const price = data.price
       console.log(hashUrl)
-      const Mint = await Instance.methods
+      Instance.methods
         .safeMint(
           account,
           hashUrl,
           web3.utils.toWei(price.toString(), 'ether')
         )
         .send({ from: account })
-      console.log(Mint)
+        .then((res) => console.log(res))
+        .then(() => {
+          setIsMinted(true)
+          setLastMinted(tokenId)
+        })
+        .then(() => {
+          msgAlert({
+            heading: 'Mint Artwork Success',
+            message: mintArtworkSuccess,
+            variant: 'success',
+          })
+        })
+        .finally(() => {
+          onFetchId()
+        })
+      const updateMinted = {
+        lastMinted: tokenId,
+        isMinted: true,
+      }
+
+      const setArtist = await Instance.methods
+        .setArtist(data.tokenId, account)
+        .send({ from: account })
+      console.log(setArtist)
+
+      updateArtwork(id, updateMinted, user)
+        .then(() =>
+          msgAlert({
+            heading: 'Update Artwork Success',
+            message: updateArtworkSuccess,
+            variant: 'success',
+          })
+        )
+        .catch((error) => {
+          msgAlert({
+            heading: 'Update Art Failed',
+            message: error.message,
+            variant: 'error',
+          })
+        })
     } catch (err) {
       console.log(err)
     }
   }
 
-  const onNextTokenId = async () => {
-    const _tokenId = await Instance.methods.getNextTokenId().call()
-    console.log(_tokenId)
-    setTokenId(_tokenId)
-    console.log(tokenId)
+  const onFetchId = async () => {
+    console.log(isMinted)
+    const nextId = await Instance.methods.getNextTokenId().call()
+    setTokenId(nextId)
+    const newToken = {
+      tokenId: nextId
+    }
+    console.log(newToken)
+
+    updateArtwork(id, newToken, user)
+      .then(() =>
+        msgAlert({
+          heading: 'Update Artwork Success',
+          message: updateArtworkSuccess,
+          variant: 'success',
+        })
+      )
+      .catch((error) => {
+        msgAlert({
+          heading: 'Update Art Failed',
+          message: error.message,
+          variant: 'error',
+        })
+      })
   }
 
   const onUpdateArtwork = (event) => {
@@ -173,7 +240,9 @@ const UpdateArt = ({ msgAlert, user, account }) => {
     }
 
     updateArtwork(id, art, user)
-      .then((res) => {})
+      .then((res) => {
+        console.log(res)
+      })
       .then(() =>
         msgAlert({
           heading: 'Update Artwork Success',
@@ -204,6 +273,8 @@ const UpdateArt = ({ msgAlert, user, account }) => {
         setProvenance('')
         setNotes('')
         setTokenId('')
+        setLastMinted('')
+        setIsMinted(false)
       })
   }
 
@@ -234,18 +305,18 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid item xs={12}>
-                  <TextFieldComponent
-                    required={true}
-                    id={'artist'}
-                    label={'Artist'}
-                    icon={<AccountCircle sx={{ color: 'white' }} />}
-                    variant={'outlined'}
-                    value={artist}
-                    onChange={handleChangeArtist}
-                  />
-                </Grid>
                 <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <TextFieldComponent
+                      required={true}
+                      id={'artist'}
+                      label={'Artist'}
+                      icon={<AccountCircle sx={{ color: 'white' }} />}
+                      variant={'outlined'}
+                      value={artist}
+                      onChange={handleChangeArtist}
+                    />
+                  </Grid>
                   <Grid item xs={12} md={6}>
                     <TextFieldComponent
                       required={true}
@@ -255,17 +326,6 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       variant={'outlined'}
                       value={title}
                       onChange={handleChangeTitle}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <TextFieldComponent
-                      required={false}
-                      id={'price'}
-                      label={'Price (eth)'}
-                      icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
-                      variant={'outlined'}
-                      value={price}
-                      onChange={handleChangePrice}
                     />
                   </Grid>
                 </Grid>
@@ -377,7 +437,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                     />
                   </Grid>
                 </Grid>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} sx={{ marginBottom: '15px' }}>
                   <Grid item xs={12}>
                     <TextFieldComponent
                       id={'contractAddress'}
@@ -402,19 +462,55 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                     />
                   </Grid>
                 </Grid> */}
-                <Grid container style={{ marginTop: '20px' }}>
+                {isMinted ? (
+                  <Grid container>
+                    <Grid item>
+                      <FilterIcon
+                        sx={{
+                          color: 'white',
+                          marginRight: '10px',
+                          height: '30px',
+                        }}
+                      />
+                    </Grid>
+                    <Grid item sx={{ marginTop: '3px' }}>
+                      <Typography variant='p'>
+                        Minted ID: {art.lastMinted}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                ) : (
+                  <></>
+                )}
+                <Grid container style={{ marginTop: '0px' }}>
                   <Grid item>
-                    <FilterIcon
+                    <AddPhotoAlternateIcon
                       sx={{
                         color: 'white',
                         marginRight: '10px',
-                        height: '30px'
+                        height: '30px',
                       }}
                     />
                   </Grid>
-                  <Grid item>
-                    <Typography sx={{ marginTop: '20px' }} variant='p'>
+                  <Grid item sx={{ marginTop: '3px' }}>
+                    <Typography variant='p'>
                       Next available token ID to mint: {art.tokenId}
+                    </Typography>
+                  </Grid>
+                </Grid>
+                <Grid container style={{ marginTop: '0px' }}>
+                  <Grid item sx={{ marginTop: '3px' }}>
+                    <Icon
+                      icon='teenyicons:ethereum-solid'
+                      width='22'
+                      style={{ marginRight: '10px' }}
+                    />
+                  </Grid>
+                  <Grid item sx={{ marginTop: '3px' }}>
+                    <Typography variant='p'>
+                      Current Price:{' '}
+                      <Icon icon='teenyicons:ethereum-solid' width='11' />
+                      {price}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -423,7 +519,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                     <Button
                       variant='contained'
                       type='submit'
-                      onClick={onNextTokenId}>
+                      onClick={onFetchId}>
                       Fetch ID
                     </Button>
                   </Grid>
