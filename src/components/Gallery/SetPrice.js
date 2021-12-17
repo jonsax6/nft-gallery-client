@@ -23,8 +23,7 @@ const SetPrice = ({ msgAlert, user, account }) => {
   const [price, setPrice] = useState('')
   const [title, setTitle] = useState('')
   const [lastMinted, setLastMinted] = useState('')
-  const { contractAddress } = useParams()
-  // const { lastMinted } = useParams()
+  const [contractAddress, setContractAddress] = useState('')
   const { id } = useParams()
   const history = useHistory()
 
@@ -37,6 +36,7 @@ const SetPrice = ({ msgAlert, user, account }) => {
       const art = res.data.artwork
       setTitle(art.title)
       setPrice(art.price)
+      setContractAddress(art.contractAddress)
       setLastMinted(art.lastMinted)
     })
   }, [id])
