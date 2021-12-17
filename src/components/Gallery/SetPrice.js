@@ -34,7 +34,7 @@ const SetPrice = ({ msgAlert, user, account }) => {
   const handleChangePrice = (event) =>
     setPrice(event.target.value)
 
-  const onSetPrice = async () => {
+  const onSetPrice = () => {
     console.log(`setting buy price for: ${lastMinted}...`)
     console.log(contractAddress)
 
@@ -43,28 +43,21 @@ const SetPrice = ({ msgAlert, user, account }) => {
       price: price
     }
     try {
-      await Instance.methods
+      Instance.methods
         .setPrice(lastMinted, priceInEth)
         .send({ from: account })
-        .then(() => {
-          msgAlert({
-            heading: 'Set Price Success',
-            message: setPriceSuccess,
-            variant: 'success',
-          })
-        })
         .then(() => {
           updateArtwork(id, updatePrice, user)
             .then(() =>
               msgAlert({
-                heading: 'Update Artwork Success',
-                message: updateArtworkSuccess,
+                heading: 'Set Price Success',
+                message: setPriceSuccess,
                 variant: 'success',
               })
             )
             .catch((error) => {
               msgAlert({
-                heading: 'Update Art Failed',
+                heading: 'Set Price Failed',
                 message: error.message,
                 variant: 'error',
               })
