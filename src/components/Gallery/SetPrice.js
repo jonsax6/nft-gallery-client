@@ -74,7 +74,6 @@ const SetPrice = ({ msgAlert, user, account }) => {
             })
         })
         .then(() => history.push('/gallery'))
-
     } catch (err) {
       console.log(err)
     }
