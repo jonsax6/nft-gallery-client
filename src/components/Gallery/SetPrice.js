@@ -23,7 +23,6 @@ const SetPrice = ({ msgAlert, user, account }) => {
   const [price, setPrice] = useState('')
   const { contractAddress } = useParams()
   const { lastMinted } = useParams()
-  const { title } = useParams()
   const { id } = useParams()
   const history = useHistory()
 
@@ -85,7 +84,7 @@ const SetPrice = ({ msgAlert, user, account }) => {
                 </Grid>
                 <Grid item>
                   <Typography variant='h5'>
-                    Set Price for &apos;{title}&apos;
+                    Set Price for NFT {lastMinted}
                   </Typography>
                 </Grid>
               </Grid>

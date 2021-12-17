@@ -81,7 +81,7 @@ const Gallery = ({ user, account }) => {
   }
 
   const onSetPrice = (i) => {
-    history.push(`/set-price/${cards[i]._id}/${cards[i].contractAddress}/${cards[i].title}/${cards[i].lastMinted}`)
+    history.push(`/set-price/${cards[i]._id}/${cards[i].contractAddress}/${cards[i].lastMinted}`)
   }
 
   // let mintVal = await _contract.methods
