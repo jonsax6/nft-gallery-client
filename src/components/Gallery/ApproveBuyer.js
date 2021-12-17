@@ -11,7 +11,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 const ApproveBuyer = ({ account }) => {
   const [buyerAccount, setBuyerAccount] = useState('')
   const { contractAddress } = useParams()
-  const { tokenId } = useParams()
+  const { lastMinted } = useParams()
   const history = useHistory()
 
   const web3 = new Web3(Web3.givenProvider)
@@ -24,11 +24,11 @@ const ApproveBuyer = ({ account }) => {
   const onApprove = async () => {
     console.log('clicked onApprove...')
     console.log(contractAddress)
-    console.log(tokenId)
+    console.log(lastMinted)
     console.log(buyerAccount)
     console.log(account)
     await Instance.methods
-      .approve(buyerAccount, tokenId)
+      .approve(buyerAccount, lastMinted)
       .send({ from: account })
   }
 

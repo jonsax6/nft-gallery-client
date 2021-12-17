@@ -175,7 +175,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
             variant: 'success',
           })
         })
-        .finally(() => {
+        .then(() => {
           onFetchId()
         })
       const updateMinted = {

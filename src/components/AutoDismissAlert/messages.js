@@ -12,4 +12,5 @@ export const removeArtworkSuccess = 'Thank you for removing art from our collect
 export const changePasswordSuccess = 'Password changed successfully!'
 export const mintArtworkSuccess = 'NFT successfully minted!'
 export const mintArtworkFailure = 'Error, NFT was not minted.'
+export const setPriceSuccess = 'NFT price was successfully set.'
 // export const changePasswordFailure = 'Failed to change passwords. Check your old password and try again.'

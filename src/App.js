@@ -15,7 +15,8 @@ import Gallery from './components/Gallery/Gallery'
 import SubmitArt from './components/Gallery/submitArt'
 import UpdateArt from './components/Gallery/UpdateArt'
 import RemoveArt from './components/Gallery/RemoveArt'
-import ApproveBuyer from './components/Header/ApproveBuyer'
+import ApproveBuyer from './components/Gallery/ApproveBuyer'
+import SetPrice from './components/Gallery/SetPrice'
 import BuyNft from './components/Gallery/BuyNft'
 import ApproveArtist from './components/Header/ApproveArtist'
 import About from './components/About/About'
@@ -182,7 +183,7 @@ const App = () => {
           />
           <AuthenticatedRoute
             user={user}
-            path='/approve-buyer/:contractAddress/:tokenId'
+            path='/approve-buyer/:contractAddress/:lastMinted'
             render={() => (
               <ApproveBuyer
                 style={{ backgroundColor: 'black' }}
@@ -208,6 +209,18 @@ const App = () => {
             path='/buy/:contractAddress/:tokenId/:price'
             render={() => (
               <BuyNft
+                style={{ backgroundColor: 'black' }}
+                msgAlert={msgAlert}
+                user={user}
+                account={account}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/set-price/:id/:contractAddress/:title/:lastMinted'
+            render={() => (
+              <SetPrice
                 style={{ backgroundColor: 'black' }}
                 msgAlert={msgAlert}
                 user={user}

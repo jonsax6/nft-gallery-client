@@ -29,12 +29,10 @@ const Gallery = ({ user, account }) => {
   const [index, setIndex] = useState(0)
   const [hovered, setHovered] = useState(false)
   const [open, setOpen] = useState(false)
-  const [contractAddress, setContractAddress] = useState('')
   const history = useHistory()
 
   const web3 = new Web3(Web3.givenProvider)
   const ZyzygyContract = Zyzygy.abi
-  const Instance = new web3.eth.Contract(ZyzygyContract, contractAddress)
 
   const isPhone = useMediaQuery({
     query: '(max-width: 600px)',
@@ -55,6 +53,7 @@ const Gallery = ({ user, account }) => {
   useEffect(() => {
     indexArtwork().then((res) => {
       setCards(res.data.artwork)
+      // setContractAddress(res.data.artwork[0].contractAddress)
     })
   }, [])
 
@@ -78,7 +77,11 @@ const Gallery = ({ user, account }) => {
   }
 
   const onApprove = (i) => {
-    history.push(`/approve-buyer/${cards[i].contractAddress}/${cards[i].tokenId}`)
+    history.push(`/approve-buyer/${cards[i].contractAddress}/${cards[i].lastMinted}`)
+  }
+
+  const onSetPrice = (i) => {
+    history.push(`/set-price/${cards[i]._id}/${cards[i].contractAddress}/${cards[i].title}/${cards[i].lastMinted}`)
   }
 
   // let mintVal = await _contract.methods
@@ -91,17 +94,6 @@ const Gallery = ({ user, account }) => {
   //     from: accounts[0],
   //     value: web3.utils.toWei(TokenPrice.toString(), 'ether'),
   //   })
-
-  const onSetPrice = (i) => {
-    console.log(`set buy price for: ${cards[i].title}...`)
-    const contractAddress = cards[i].contractAddress
-    const card = cards[i]
-    try {
-      console.log('setting price...')
-    } catch (err) {
-      console.log(err)
-    }
-  }
 
   return (
     <div style={{ backgroundColor: '#202020' }}>
