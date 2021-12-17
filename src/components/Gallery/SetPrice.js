@@ -79,6 +79,13 @@ const SetPrice = ({ msgAlert, user, account }) => {
     }
   }
 
+  const handleKeypress = (event) => {
+    // it triggers by pressing the enter key
+    if (event.keyCode === 13 || event.which === 13) {
+      onSetPrice()
+    }
+  }
+
   return (
     <>
       <Grid style={{ paddingTop: '150px' }} container justify='center'>
@@ -116,6 +123,7 @@ const SetPrice = ({ msgAlert, user, account }) => {
                     variant={'outlined'}
                     value={price}
                     onChange={handleChangePrice}
+                    keyPress={handleKeypress}
                   />
                 </Grid>
                 <Grid container>
