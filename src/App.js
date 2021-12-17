@@ -218,7 +218,7 @@ const App = () => {
           />
           <AuthenticatedRoute
             user={user}
-            path='/set-price/:id/:contractAddress/:lastMinted'
+            path='/set-price/:id'
             render={() => (
               <SetPrice
                 style={{ backgroundColor: 'black' }}

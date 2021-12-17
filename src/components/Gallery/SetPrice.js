@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router'
-import { updateArtwork } from '../../api/artwork'
+import { updateArtwork, showArtwork } from '../../api/artwork'
 import {
   updateArtworkSuccess,
   setPriceSuccess
@@ -21,14 +21,25 @@ import { Icon } from '@iconify/react'
 
 const SetPrice = ({ msgAlert, user, account }) => {
   const [price, setPrice] = useState('')
+  const [title, setTitle] = useState('')
+  const [lastMinted, setLastMinted] = useState('')
   const { contractAddress } = useParams()
-  const { lastMinted } = useParams()
+  // const { lastMinted } = useParams()
   const { id } = useParams()
   const history = useHistory()
 
   const web3 = new Web3(Web3.givenProvider)
   const ZyzygyContract = Zyzygy.abi
   const Instance = new web3.eth.Contract(ZyzygyContract, contractAddress)
+
+  useEffect(() => {
+    showArtwork(id).then((res) => {
+      const art = res.data.artwork
+      setTitle(art.title)
+      setPrice(art.price)
+      setLastMinted(art.lastMinted)
+    })
+  }, [id])
 
   const handleChangePrice = (event) =>
     setPrice(event.target.value)
@@ -84,7 +95,7 @@ const SetPrice = ({ msgAlert, user, account }) => {
                 </Grid>
                 <Grid item>
                   <Typography variant='h5'>
-                    Set Price for NFT {lastMinted}
+                    Set Price for NFT {lastMinted}: &apos;{title}&apos;
                   </Typography>
                 </Grid>
               </Grid>
