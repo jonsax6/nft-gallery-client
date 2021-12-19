@@ -62,13 +62,11 @@ const Gallery = ({ user, account }) => {
     setOpen(true)
   }
 
-  const isOwner = async (id, contract) => {
+  const getOwner = async (id, contract) => {
     const Instance = new web3.eth.Contract(ZyzygyContract, contract)
     const owner = await Instance.methods.ownerOf(id).call()
     console.log('owner: ', owner)
-    console.log('account: ', account)
-    console.log(owner === account)
-    return owner === account
+    return owner
   }
 
   const handleClose = () => setOpen(false)
@@ -224,7 +222,7 @@ const Gallery = ({ user, account }) => {
                   ) : (
                     <></>
                   )}
-                  {isOwner(card.lastMinted, card.contractAddress) && user ? (
+                  {getOwner(card.lastMinted, card.contractAddress) === account && user ? (
                     <>
                       <Button
                         style={{ marginTop: '10px' }}
