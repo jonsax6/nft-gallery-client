@@ -25,12 +25,12 @@ const ApproveBuyer = ({ account, msgAlert }) => {
   const handleChangeContractAddress = (event) =>
     setContractAddress(event.target.value)
 
-  const onApprove = async () => {
+  const onApprove = () => {
     console.log('clicked onApprove...')
     console.log(contractAddress)
     console.log(buyerAccount)
     console.log(account)
-    await Instance.methods
+    Instance.methods
       .setApprovalForAll(buyerAccount, true)
       .send({ from: account })
       .then(() =>
@@ -66,7 +66,7 @@ const ApproveBuyer = ({ account, msgAlert }) => {
                   />
                 </Grid>
                 <Grid item>
-                  <Typography variant='h5'>Approve Buyer Account</Typography>
+                  <Typography variant='h5'>Approve Buyer For All NFTs</Typography>
                 </Grid>
               </Grid>
               <Grid container>
