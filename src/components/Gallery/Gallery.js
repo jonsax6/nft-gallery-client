@@ -29,6 +29,7 @@ const Gallery = ({ user, account }) => {
   const [index, setIndex] = useState(0)
   const [hovered, setHovered] = useState(false)
   const [open, setOpen] = useState(false)
+  const [tokenOwner, setTokenOwner] = useState('')
   const history = useHistory()
 
   const web3 = new Web3(Web3.givenProvider)
@@ -53,13 +54,23 @@ const Gallery = ({ user, account }) => {
   useEffect(() => {
     indexArtwork().then((res) => {
       setCards(res.data.artwork)
-      // setContractAddress(res.data.artwork[0].contractAddress)
     })
   }, [])
 
   const handleOpen = (i) => {
     setIndex(i)
     setOpen(true)
+  }
+
+  const isOwner = async (id, contract) => {
+    const Instance = new web3.eth.Contract(ZyzygyContract, contract)
+    const owner = await Instance.methods.ownerOf(id).call()
+    console.log(owner)
+    if (owner === account) {
+      return true
+    } else {
+      return false
+    }
   }
 
   const handleClose = () => setOpen(false)
@@ -215,7 +226,7 @@ const Gallery = ({ user, account }) => {
                   ) : (
                     <></>
                   )}
-                  {user && account && user._id === card.owner ? (
+                  {user && isOwner(card.lastMinted, card.contractAddress) && user._id === card.owner ? (
                     <>
                       <Button
                         style={{ marginTop: '10px' }}
