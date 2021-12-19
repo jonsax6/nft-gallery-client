@@ -65,7 +65,8 @@ const Gallery = ({ user, account }) => {
   const isOwner = async (id, contract) => {
     const Instance = new web3.eth.Contract(ZyzygyContract, contract)
     const owner = await Instance.methods.ownerOf(id).call()
-    console.log(owner)
+    console.log('owner: ', owner)
+    console.log('account: ', account)
     console.log(owner === account)
     if (owner === account) {
       return true
