@@ -205,7 +205,7 @@ const Gallery = ({ user, account }) => {
                   ) : (
                     <></>
                   )}
-                  {user && account && (account !== card.tokenOwner) ? (
+                  {user && account && (account !== card.tokenOwner) && card.tokenOwner !== undefined ? (
                     <>
                       <Button
                         style={{ marginTop: '10px' }}
