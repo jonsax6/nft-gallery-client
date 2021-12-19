@@ -45,6 +45,21 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
     </NavLink>
   )
 
+  const connection = (
+    active ? (
+      <Button
+        variant='contained'
+        type='submit'
+        onClick={disconnect}>
+        DISCONNECT
+      </Button>
+    ) : (
+      <Button variant='contained' type='submit' onClick={connect}>
+        CONNECT
+      </Button>
+    )
+  )
+
   const isAdmin = user && user.email === 'jonsax@gmail.com'
   const authenticatedOptions = (
     <Fragment>
@@ -76,14 +91,6 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
           variant='default'
           label='Admin'
           color='danger'>
-          <DropdownItem link='#/link1'>
-            <NavLink
-              style={{ color: 'black', textDecoration: 'none' }}
-              to='/approve-buyer'
-              className='nav-link'>
-              Approve Buyer
-            </NavLink>
-          </DropdownItem>
           <DropdownItem>
             <NavLink
               style={{ color: 'black', textDecoration: 'none' }}
@@ -97,7 +104,7 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
               style={{ color: 'black', textDecoration: 'none' }}
               to='/artists'
               className='nav-link'>
-              Artist
+              All Artists
             </NavLink>
           </DropdownItem>
         </Dropdown>
@@ -193,7 +200,11 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
           <Toolbar>
             {isMobile ? (
               <>
-                <DrawerComponent user={user} />
+                <DrawerComponent
+                  user={user}
+                  isApproved={isApproved}
+                  isAdmin={isAdmin}
+                />
                 <Link
                   to='/'
                   style={{
@@ -210,7 +221,8 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
                     }}
                   />
                 </Link>
-                {active ? (
+                {user ? connection : <></>}
+                {/* {active ? (
                   <Button
                     variant='contained'
                     type='submit'
@@ -221,24 +233,29 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
                   <Button variant='contained' type='submit' onClick={connect}>
                     CONNECT
                   </Button>
-                )}
+                )} */}
                 {isAdmin ? (
                   <Dropdown
                     sx={{ marginRight: '20px' }}
                     variant='default'
                     label='Admin'
                     color='danger'>
-                    <DropdownItem link='#/link1'>
+                    <DropdownItem>
                       <NavLink
                         style={{ color: 'black', textDecoration: 'none' }}
-                        to='/sign-out'
+                        to='/approve-artist'
                         className='nav-link'>
-                        Authorize Buyer
+                        Approve Artist
                       </NavLink>
                     </DropdownItem>
-                    <DropdownItem>Approve Artist</DropdownItem>
-                    <DropdownItem>Option 3</DropdownItem>
-                    <DropdownItem>Option 4</DropdownItem>
+                    <DropdownItem>
+                      <NavLink
+                        style={{ color: 'black', textDecoration: 'none' }}
+                        to='/artists'
+                        className='nav-link'>
+                        All Artists
+                      </NavLink>
+                    </DropdownItem>
                   </Dropdown>
                 ) : (
                   <></>

@@ -1,4 +1,5 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
+import { indexArtists } from '../../api/artists'
 import {
   Drawer,
   IconButton,
@@ -11,19 +12,24 @@ import {
 import MenuIcon from '@mui/icons-material/Menu'
 import { NavLink } from 'react-router-dom'
 
-const DrawerComponent = ({ user }) => {
+const DrawerComponent = ({ user, isApproved }) => {
+  // variable for the submit link used below in the isApproved terniary expression
+  const submitLink = (
+    <ListItem onClick={() => setOpenDrawer(false)}>
+      <ListItemText>
+        <NavLink
+          style={{ color: 'black', textDecoration: 'none' }}
+          to='/submit-art'
+          className='nav-link'>
+          Submit Art
+        </NavLink>
+      </ListItemText>
+    </ListItem>
+  )
+
   const authenticatedOptions = (
     <Fragment>
-      <ListItem onClick={() => setOpenDrawer(false)}>
-        <ListItemText>
-          <NavLink
-            style={{ color: 'black', textDecoration: 'none' }}
-            to='/submit-art'
-            className='nav-link'>
-            Submit Art
-          </NavLink>
-        </ListItemText>
-      </ListItem>
+      {isApproved ? submitLink : <></>}
       <ListItem onClick={() => setOpenDrawer(false)}>
         <ListItemText>
           <NavLink
@@ -125,9 +131,7 @@ const DrawerComponent = ({ user }) => {
 
   return (
     <>
-      <Drawer
-        open={openDrawer}
-        onClose={() => setOpenDrawer(false)}>
+      <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <List>
           {/* {user && (
             <NavLink
