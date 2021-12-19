@@ -11,7 +11,7 @@ import TokenIcon from '@mui/icons-material/Token'
 
 const BuyNft = ({ account }) => {
   const { contractAddress } = useParams()
-  const { tokenId } = useParams()
+  const { lastMinted } = useParams()
   const { price } = useParams()
   const [buyerName, setBuyerName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -28,14 +28,14 @@ const BuyNft = ({ account }) => {
     setPhoneNumber(event.target.value)
 
   const onBuy = async (i) => {
-    console.log(`purchasing NFT ${tokenId}...`)
+    console.log(`purchasing NFT ${lastMinted}...`)
     try {
-      const owner = await Instance.methods.ownerOf(tokenId).call()
+      const owner = await Instance.methods.ownerOf(lastMinted).call()
       const buyNFT = await Instance.methods
         .transferFrom(
           owner,
           account,
-          tokenId,
+          lastMinted,
           buyerName,
           phoneNumber
         )
@@ -65,7 +65,7 @@ const BuyNft = ({ account }) => {
                   />
                 </Grid>
                 <Grid item>
-                  <Typography variant='h5'>Buy NFT {tokenId}</Typography>
+                  <Typography variant='h5'>Buy NFT {lastMinted}</Typography>
                 </Grid>
               </Grid>
               <Grid container>

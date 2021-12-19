@@ -223,7 +223,7 @@ const App = () => {
           />
           <AuthenticatedRoute
             user={user}
-            path='/buy/:contractAddress/:tokenId/:price'
+            path='/buy/:contractAddress/:lastMinted/:price'
             render={() => (
               <BuyNft
                 style={{ backgroundColor: 'black' }}
