@@ -71,6 +71,7 @@ export const updateArtwork = (id, data, user) => {
         tokenId: data.tokenId,
         lastMinted: data.lastMinted,
         isMinted: data.isMinted,
+        tokenOwner: data.tokenOwner,
         owner: data.owner,
       },
     },

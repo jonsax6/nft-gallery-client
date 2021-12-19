@@ -27,6 +27,7 @@ import NoteIcon from '@mui/icons-material/Note'
 import GavelIcon from '@mui/icons-material/Gavel'
 import FilterIcon from '@mui/icons-material/Filter'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
+import CopyrightIcon from '@mui/icons-material/Copyright'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 import { upload } from './Upload'
 import { Icon } from '@iconify/react'
@@ -53,6 +54,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   const [tokenId, setTokenId] = useState(card ? card.tokenId : '')
   const [lastMinted, setLastMinted] = useState(card ? card.lastMinted : null)
   const [isMinted, setIsMinted] = useState(card ? card.isMinted : false)
+  const [tokenOwner, setTokenOwner] = useState(card ? card.tokenOwner : '')
   const history = useHistory()
 
   const art = {
@@ -72,7 +74,8 @@ const UpdateArt = ({ msgAlert, user, account }) => {
     contractAddress: contractAddress,
     tokenId: tokenId,
     lastMinted: lastMinted,
-    isMinted: isMinted
+    isMinted: isMinted,
+    tokenOwner: tokenOwner
   }
 
   const web3 = new Web3(Web3.givenProvider)
@@ -136,6 +139,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
         setTokenId(art.tokenId)
         setLastMinted(art.lastMinted)
         setIsMinted(art.isMinted)
+        setTokenOwner(art.tokenOwner)
       })
   }, [id])
 
@@ -476,6 +480,26 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                     <Grid item sx={{ marginTop: '3px' }}>
                       <Typography variant='p'>
                         Minted ID: {art.lastMinted}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                ) : (
+                  <></>
+                )}
+                {tokenOwner ? (
+                  <Grid container>
+                    <Grid item>
+                      <CopyrightIcon
+                        sx={{
+                          color: 'white',
+                          marginRight: '10px',
+                          height: '30px',
+                        }}
+                      />
+                    </Grid>
+                    <Grid item sx={{ marginTop: '3px' }}>
+                      <Typography variant='p'>
+                        Token Owner: {art.tokenOwner}
                       </Typography>
                     </Grid>
                   </Grid>
