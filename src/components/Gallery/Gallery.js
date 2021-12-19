@@ -68,11 +68,7 @@ const Gallery = ({ user, account }) => {
     console.log('owner: ', owner)
     console.log('account: ', account)
     console.log(owner === account)
-    if (owner === account) {
-      return true
-    } else {
-      return false
-    }
+    return owner === account
   }
 
   const handleClose = () => setOpen(false)
