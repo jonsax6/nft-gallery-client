@@ -180,6 +180,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
       const updateMinted = {
         lastMinted: tokenId,
         isMinted: true,
+        tokenOwner: account
       }
 
       const setArtist = await Instance.methods

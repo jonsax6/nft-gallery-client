@@ -222,7 +222,7 @@ const Gallery = ({ user, account }) => {
                   ) : (
                     <></>
                   )}
-                  {user && (getOwner(card.lastMinted, card.contractAddress) === account) ? (
+                  {user && account && user._id === card.owner ? (
                     <>
                       <Button
                         style={{ marginTop: '10px' }}
