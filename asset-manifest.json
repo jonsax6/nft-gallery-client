@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/nft-gallery-client/static/css/main.c2457df2.chunk.css",
+    "main.css": "/nft-gallery-client/static/css/main.86e22fe7.chunk.css",
     "main.js": "/nft-gallery-client/static/js/main.fd1db0e8.chunk.js",
     "main.js.map": "/nft-gallery-client/static/js/main.fd1db0e8.chunk.js.map",
     "runtime-main.js": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js",
     "runtime-main.js.map": "/nft-gallery-client/static/js/runtime-main.5d4cb4c7.js.map",
-    "static/css/2.e2521d37.chunk.css": "/nft-gallery-client/static/css/2.e2521d37.chunk.css",
+    "static/css/2.b870c76b.chunk.css": "/nft-gallery-client/static/css/2.b870c76b.chunk.css",
     "static/js/2.7143b962.chunk.js": "/nft-gallery-client/static/js/2.7143b962.chunk.js",
     "static/js/2.7143b962.chunk.js.map": "/nft-gallery-client/static/js/2.7143b962.chunk.js.map",
     "index.html": "/nft-gallery-client/index.html",
-    "static/css/2.e2521d37.chunk.css.map": "/nft-gallery-client/static/css/2.e2521d37.chunk.css.map",
-    "static/css/main.c2457df2.chunk.css.map": "/nft-gallery-client/static/css/main.c2457df2.chunk.css.map",
+    "static/css/2.b870c76b.chunk.css.map": "/nft-gallery-client/static/css/2.b870c76b.chunk.css.map",
+    "static/css/main.86e22fe7.chunk.css.map": "/nft-gallery-client/static/css/main.86e22fe7.chunk.css.map",
     "static/js/2.7143b962.chunk.js.LICENSE.txt": "/nft-gallery-client/static/js/2.7143b962.chunk.js.LICENSE.txt",
     "static/media/Eclipse3.2003591d.jpg": "/nft-gallery-client/static/media/Eclipse3.2003591d.jpg",
     "static/media/Jose-Parla-Studio-Yellowtrace-54.a71ab207.jpeg": "/nft-gallery-client/static/media/Jose-Parla-Studio-Yellowtrace-54.a71ab207.jpeg",
@@ -24,9 +24,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.5d4cb4c7.js",
-    "static/css/2.e2521d37.chunk.css",
+    "static/css/2.b870c76b.chunk.css",
     "static/js/2.7143b962.chunk.js",
-    "static/css/main.c2457df2.chunk.css",
+    "static/css/main.86e22fe7.chunk.css",
     "static/js/main.fd1db0e8.chunk.js"
   ]
 }
