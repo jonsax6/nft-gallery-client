@@ -16,7 +16,7 @@ export const showArtist = (id) => {
   })
 }
 
-export const createArtists = (user, data) => {
+export const createArtist = (user, data) => {
   return axios({
     method: 'POST',
     url: apiUrl + '/artists',
@@ -28,6 +28,7 @@ export const createArtists = (user, data) => {
         name: data.name,
         email: data.email,
         phone: data.phone,
+        account: data.account,
         approved: data.approved,
       },
     },
@@ -46,6 +47,7 @@ export const updateArtist = (id, data, user) => {
         name: data.name,
         email: data.email,
         phone: data.phone,
+        account: data.account,
         approved: data.approved,
       },
     },

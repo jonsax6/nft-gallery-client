@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react'
 // import Web3 from 'web3'
 import { Link, NavLink } from 'react-router-dom'
+import { indexArtists } from '../../api/artists'
 // import { CONTRACT_ADDRESS } from '../../helpers'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -14,15 +15,40 @@ import Dropdown from 'muicss/lib/react/dropdown'
 import DropdownItem from 'muicss/lib/react/dropdown-item'
 
 const Header = ({ user, active, account, networkId, activate, deactivate, connect, disconnect }) => {
+  // sets the state of user approval (boolean)
+  const [isApproved, setIsApproved] = useState(false)
+  // the array of artists that are approved to submit art
+  const [artists, setArtists] = useState([])
+
+  // fetches the list of artists approved to submit art
+  useEffect(() => {
+    indexArtists()
+      .then((res) => {
+        const artistData = res.data.artists
+        setArtists(artistData)
+      })
+  }, [])
+
+  // upon user sign-in this useEffect sets the isApproved boolean to true or false
+  // based on if the users email is in the artists database
+  useEffect(() => {
+    setIsApproved(artists.some(a => a.email === user.email))
+  }, [user])
+
+  // variable for the submit link used below in the isApproved terniary expression
+  const submitLink = (
+    <NavLink
+      style={{ color: 'white', margin: 15, textDecoration: 'none' }}
+      to='/submit-art'
+      className='nav-link'>
+      Submit Art
+    </NavLink>
+  )
+
   const isAdmin = user && user.email === 'jonsax@gmail.com'
   const authenticatedOptions = (
     <Fragment>
-      <NavLink
-        style={{ color: 'white', margin: 15, textDecoration: 'none' }}
-        to='/submit-art'
-        className='nav-link'>
-        Submit Art
-      </NavLink>
+      {isApproved ? submitLink : <></>}
       <NavLink
         style={{ color: 'white', margin: 15, textDecoration: 'none' }}
         to='/change-password'
@@ -64,6 +90,14 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
               to='/approve-artist'
               className='nav-link'>
               Approve Artist
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem>
+            <NavLink
+              style={{ color: 'black', textDecoration: 'none' }}
+              to='/artists'
+              className='nav-link'>
+              Artist
             </NavLink>
           </DropdownItem>
         </Dropdown>

@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import { indexArtwork } from './api/artwork'
+import { indexArtists } from './api/artists'
 import Header from './components/Header/Header'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
@@ -19,6 +20,7 @@ import ApproveBuyer from './components/Gallery/ApproveBuyer'
 import SetPrice from './components/Gallery/SetPrice'
 import BuyNft from './components/Gallery/BuyNft'
 import ApproveArtist from './components/Header/ApproveArtist'
+import Artists from './components/Header/Artists'
 import About from './components/About/About'
 import FAQ from './components/FAQ/FAQ'
 import { CssBaseline, Container } from '@mui/material'
@@ -27,8 +29,9 @@ import { useWeb3React } from '@web3-react/core'
 import { injected } from './components/Wallet/Connectors'
 
 const App = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState('')
   const [msgAlerts, setMsgAlerts] = useState([])
+  const [artists, setArtists] = useState([])
   const [zyzygyContract, setZyzygyContract] = useState('')
   const { active, account, library, networkId, connector, activate, deactivate } =
     useWeb3React()
@@ -49,7 +52,7 @@ const App = () => {
     }
   }
 
-  const clearUser = () => setUser(null)
+  const clearUser = () => setUser('')
   const deleteAlert = (id) => {
     setMsgAlerts(msgAlerts.filter((msg) => msg.id !== id))
   }
@@ -58,12 +61,12 @@ const App = () => {
     setMsgAlerts([...msgAlerts, { heading, message, variant, id }])
   }
 
-  const setContract = () => {
-    indexArtwork()
-      .then((res) => {
-        setZyzygyContract(res.data.artwork[0].contractAddress)
-      })
-  }
+  useEffect(() => {
+    indexArtists().then((res) => {
+      const artists = res.data.artists
+      setArtists(artists)
+    })
+  }, [])
 
   return (
     <>
@@ -74,6 +77,7 @@ const App = () => {
           active={active}
           account={account}
           networkId={networkId}
+          artists={artists}
           connect={connect}
           disconnect={disconnect}
         />
@@ -225,6 +229,17 @@ const App = () => {
                 msgAlert={msgAlert}
                 user={user}
                 account={account}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/artists'
+            render={() => (
+              <Artists
+                style={{ backgroundColor: 'black' }}
+                msgAlert={msgAlert}
+                user={user}
               />
             )}
           />

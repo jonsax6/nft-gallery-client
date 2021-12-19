@@ -36,7 +36,6 @@ import { UpdateTwoTone } from '@mui/icons-material'
 const UpdateArt = ({ msgAlert, user, account }) => {
   const { id } = useParams()
   const [card, setCard] = useState(null)
-  // const [web3, setWeb3] = useState(null)
   const [artist, setArtist] = useState(card ? card.artist : '')
   const [price, setPrice] = useState(card ? card.price : '')
   const [title, setTitle] = useState(card ? card.title : '')
