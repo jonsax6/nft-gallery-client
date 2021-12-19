@@ -61,6 +61,7 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
   )
 
   const isAdmin = user && user.email === 'jonsax@gmail.com'
+  
   const authenticatedOptions = (
     <Fragment>
       {isApproved ? submitLink : <></>}

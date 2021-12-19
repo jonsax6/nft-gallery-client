@@ -81,6 +81,8 @@ const UpdateArt = ({ msgAlert, user, account }) => {
   const web3 = new Web3(Web3.givenProvider)
   const ZyzygyContract = Zyzygy.abi
   const Instance = new web3.eth.Contract(ZyzygyContract, contractAddress)
+  const isAdmin = user && user.email === 'jonsax@gmail.com'
+
 
   const handleChangeArtist = (event) =>
     setArtist(event.target.value)
