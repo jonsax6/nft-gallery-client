@@ -226,7 +226,7 @@ const Gallery = ({ user, account }) => {
                   ) : (
                     <></>
                   )}
-                  {isOwner(card.lastMinted, card.contractAddress) ? (
+                  {isOwner(card.lastMinted, card.contractAddress) && user ? (
                     <>
                       <Button
                         style={{ marginTop: '10px' }}
