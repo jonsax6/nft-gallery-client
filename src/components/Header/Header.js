@@ -94,6 +94,14 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
           <DropdownItem>
             <NavLink
               style={{ color: 'black', textDecoration: 'none' }}
+              to='/approve-buyer-all'
+              className='nav-link'>
+              Approve Buy All
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem>
+            <NavLink
+              style={{ color: 'black', textDecoration: 'none' }}
               to='/approve-artist'
               className='nav-link'>
               Approve Artist
@@ -240,6 +248,14 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
                     variant='default'
                     label='Admin'
                     color='danger'>
+                    <DropdownItem>
+                      <NavLink
+                        style={{ color: 'black', textDecoration: 'none' }}
+                        to='/approve-buyer-all'
+                        className='nav-link'>
+                        Approve Buy All
+                      </NavLink>
+                    </DropdownItem>
                     <DropdownItem>
                       <NavLink
                         style={{ color: 'black', textDecoration: 'none' }}

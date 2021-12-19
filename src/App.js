@@ -17,6 +17,7 @@ import SubmitArt from './components/Gallery/submitArt'
 import UpdateArt from './components/Gallery/UpdateArt'
 import RemoveArt from './components/Gallery/RemoveArt'
 import ApproveBuyer from './components/Gallery/ApproveBuyer'
+import ApproveBuyerAll from './components/Header/ApproveBuyerAll'
 import SetPrice from './components/Gallery/SetPrice'
 import BuyNft from './components/Gallery/BuyNft'
 import ApproveArtist from './components/Header/ApproveArtist'
@@ -190,6 +191,18 @@ const App = () => {
             path='/approve-buyer/:contractAddress/:lastMinted'
             render={() => (
               <ApproveBuyer
+                style={{ backgroundColor: 'black' }}
+                msgAlert={msgAlert}
+                user={user}
+                account={account}
+              />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/approve-buyer-all'
+            render={() => (
+              <ApproveBuyerAll
                 style={{ backgroundColor: 'black' }}
                 msgAlert={msgAlert}
                 user={user}
