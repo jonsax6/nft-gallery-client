@@ -37,6 +37,7 @@ const Artists = () => {
                 <TableCell>Artist</TableCell>
                 <TableCell align='right'>Email</TableCell>
                 <TableCell align='right'>ETH Account</TableCell>
+                <TableCell align='right'>Approved</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -49,6 +50,7 @@ const Artists = () => {
                   </TableCell>
                   <TableCell align='right'>{artist.email}</TableCell>
                   <TableCell align='right'>{artist.account}</TableCell>
+                  <TableCell align='right'>{artist.approved ? 'YES' : 'NO'}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
