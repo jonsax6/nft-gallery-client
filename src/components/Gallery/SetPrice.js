@@ -60,8 +60,8 @@ const SetPrice = ({ msgAlert, user, account }) => {
           updateArtwork(id, updatePrice, user)
             .then(() =>
               msgAlert({
-                heading: 'Set Price Success',
-                message: setPriceSuccess,
+                heading: 'Price Set Success!',
+                message: `${setPriceSuccess}${price} ETH`,
                 variant: 'success',
               })
             )

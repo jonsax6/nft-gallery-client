@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router'
+import { updateNftOwnerSuccess } from '../AutoDismissAlert/messages'
+import { updateArtwork } from '../../api/artwork'
 import Web3 from 'web3'
 import Zyzygy from '../../abis/Zyzygy.json'
 import TextFieldComponent from '../TextField/TextFieldComponent'
@@ -9,10 +11,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone'
 import TokenIcon from '@mui/icons-material/Token'
 
-const BuyNft = ({ account }) => {
+const BuyNft = ({ msgAlert, user, account }) => {
   const { contractAddress } = useParams()
   const { lastMinted } = useParams()
   const { price } = useParams()
+  const { id } = useParams()
   const [buyerName, setBuyerName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const history = useHistory()
@@ -43,7 +46,26 @@ const BuyNft = ({ account }) => {
           from: account,
           value: web3.utils.toWei(price.toString(), 'ether')
         })
-      console.log(buyNFT)
+
+      const newOwner = {
+        tokenOwner: account,
+      }
+
+      updateArtwork(id, newOwner, user)
+        .then(() =>
+          msgAlert({
+            heading: 'Update NFT Owner',
+            message: updateNftOwnerSuccess,
+            variant: 'success',
+          })
+        )
+        .catch((error) => {
+          msgAlert({
+            heading: 'Update NFT Owner Failed',
+            message: error.message,
+            variant: 'error',
+          })
+        })
     } catch (err) {
       console.log(err)
     }

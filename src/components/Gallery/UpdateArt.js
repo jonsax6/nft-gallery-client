@@ -6,7 +6,8 @@ import { updateArtwork, showArtwork } from '../../api/artwork'
 import {
   updateArtworkSuccess,
   mintArtworkSuccess,
-  mintArtworkFailure
+  mintArtworkFailure,
+  fetchIdSuccess,
 } from '../AutoDismissAlert/messages'
 import {
   Typography,
@@ -224,8 +225,8 @@ const UpdateArt = ({ msgAlert, user, account }) => {
     updateArtwork(id, newToken, user)
       .then(() =>
         msgAlert({
-          heading: 'Update Artwork Success',
-          message: updateArtworkSuccess,
+          heading: 'NFT Fetched Success',
+          message: fetchIdSuccess,
           variant: 'success',
         })
       )

@@ -76,7 +76,7 @@ const Gallery = ({ user, account }) => {
   }
 
   const onBuy = (i) => {
-    history.push(`/buy/${cards[i].contractAddress}/${cards[i].lastMinted}/${cards[i].price}`)
+    history.push(`/buy/${cards[i].contractAddress}/${cards[i].lastMinted}/${cards[i]._id}/${cards[i].price}`)
   }
 
   const onRemove = (i) => {
