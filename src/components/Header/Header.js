@@ -15,12 +15,12 @@ import Dropdown from 'muicss/lib/react/dropdown'
 import DropdownItem from 'muicss/lib/react/dropdown-item'
 
 const Header = ({ user, active, account, networkId, activate, deactivate, connect, disconnect }) => {
-  // sets the state of user approval (boolean)
+  // sets the state of user approval (boolean) to submit new artwork to the collection
   const [isApproved, setIsApproved] = useState(false)
   // the array of artists that are approved to submit art
   const [artists, setArtists] = useState([])
 
-  // fetches the list of artists approved to submit art
+  // fetches the list of artists pre-approved to submit art and sets the setArtists hook
   useEffect(() => {
     indexArtists()
       .then((res) => {
@@ -44,7 +44,7 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
       Submit Art
     </NavLink>
   )
-
+  // variable for the MetaMask wallet connect buttons
   const connection = (
     active ? (
       <Button
@@ -60,9 +60,13 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
     )
   )
 
+  // if the logged in user matches this email, they can have full admin access
   const isAdmin = user && user.email === 'jonsax@gmail.com'
+
+  // options only available to logged in users
   const authenticatedOptions = (
     <Fragment>
+      {/* the submit menu option only available if on the approved artist list */}
       {isApproved ? submitLink : <></>}
       <NavLink
         style={{ color: 'white', margin: 15, textDecoration: 'none' }}
@@ -76,15 +80,7 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
         className='nav-link'>
         Logout
       </NavLink>
-      {active ? (
-        <Button variant='contained' type='submit' onClick={disconnect}>
-          DISCONNECT
-        </Button>
-      ) : (
-        <Button variant='contained' type='submit' onClick={connect}>
-          CONNECT WALLET
-        </Button>
-      )}
+      {connection}
       {isAdmin ? (
         <Dropdown
           sx={{ marginRight: '20px' }}

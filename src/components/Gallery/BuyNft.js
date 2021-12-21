@@ -59,6 +59,7 @@ const BuyNft = ({ msgAlert, user, account }) => {
             variant: 'success',
           })
         )
+        .then(() => history.push('/gallery'))
         .catch((error) => {
           msgAlert({
             heading: 'Update NFT Owner Failed',
