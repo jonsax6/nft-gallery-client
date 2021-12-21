@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import {
   Modal,
   Fade,
@@ -44,8 +45,9 @@ const phone = {
   p: 1
 }
 
-const ArtModal = ({ card, handleClose, open, account }) => {
+const ArtModal = ({ card, handleClose, open, account, user }) => {
   const [hovered, setHovered] = useState(false)
+  const history = useHistory()
   const isPhone = useMediaQuery({
     query: '(max-width: 600px)'
   })
@@ -68,8 +70,12 @@ const ArtModal = ({ card, handleClose, open, account }) => {
     mobileStyle = desktop
   }
 
-  const onBuy = () => {
-    console.log(`purchasing ${card.title}...`)
+  const onBuy = (i) => {
+    history.push(`/buy/${card.contractAddress}/${card.lastMinted}/${card._id}/${card.price}`)
+  }
+
+  const onSetPrice = (i) => {
+    history.push(`/set-price/${card._id}`)
   }
 
   return (
@@ -133,7 +139,7 @@ const ArtModal = ({ card, handleClose, open, account }) => {
                 }}>
                 {card.releaseDate}
               </Typography>{' '}
-              {account ? (
+              {user && account && (account !== card.tokenOwner) && card.tokenOwner !== undefined ? (
                 <>
                   <Button
                     style={{ marginTop: '10px' }}
@@ -142,6 +148,23 @@ const ArtModal = ({ card, handleClose, open, account }) => {
                     variant='outlined'
                     onClick={(e) => onBuy()}>
                     Buy&nbsp;
+                    {/* {user._id !== card.owner ? 'Buy' : 'Set Price'} */}
+                    <Icon icon='teenyicons:ethereum-solid' width='11' />
+                    {card.price}
+                  </Button>
+                </>
+              ) : (
+                <></>
+              )}
+              {user && account && (account === card.tokenOwner) ? (
+                <>
+                  <Button
+                    style={{ marginTop: '10px' }}
+                    size='small'
+                    color='success'
+                    variant='outlined'
+                    onClick={(e) => onSetPrice()}>
+                    Set Price&nbsp;
                     <Icon icon='teenyicons:ethereum-solid' width='11' />
                     {card.price}
                   </Button>

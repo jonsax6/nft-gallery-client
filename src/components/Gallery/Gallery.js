@@ -244,6 +244,7 @@ const Gallery = ({ user, account }) => {
           ))}
           {cards.length > 0 ? (
             <ArtModal
+              user={user}
               card={cards[index]}
               handleClose={handleClose}
               open={open}
