@@ -18,7 +18,7 @@ import {
 } from '@mui/material'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import ArtTrackIcon from '@mui/icons-material/ArtTrack'
-import HttpIcon from '@mui/icons-material/Http'
+import DataObjectIcon from '@mui/icons-material/DataObject'
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn'
 import PaletteIcon from '@mui/icons-material/Palette'
 import EventIcon from '@mui/icons-material/Event'
@@ -29,6 +29,9 @@ import GavelIcon from '@mui/icons-material/Gavel'
 import FilterIcon from '@mui/icons-material/Filter'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import CopyrightIcon from '@mui/icons-material/Copyright'
+import LinkIcon from '@mui/icons-material/Link'
+import TokenIcon from '@mui/icons-material/Token'
+import GetAppIcon from '@mui/icons-material/GetApp'
 import TextFieldComponent from '../TextField/TextFieldComponent'
 import { upload } from './Upload'
 import { Icon } from '@iconify/react'
@@ -340,7 +343,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       required={true}
                       id={'image'}
                       label={'Image'}
-                      icon={<HttpIcon sx={{ color: 'white' }} />}
+                      icon={<LinkIcon sx={{ color: 'white' }} />}
                       variant={'outlined'}
                       value={image}
                       onChange={handleChangeImage}
@@ -351,7 +354,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       required={true}
                       id={'displayImgUrl'}
                       label={'Display Image Url'}
-                      icon={<HttpIcon sx={{ color: 'white' }} />}
+                      icon={<LinkIcon sx={{ color: 'white' }} />}
                       variant={'outlined'}
                       value={displayImageUrl}
                       onChange={handleChangeDisplayImageUrl}
@@ -399,7 +402,7 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       required={true}
                       id={'provenance'}
                       label={'Provenance'}
-                      icon={<HttpIcon sx={{ color: 'white' }} />}
+                      icon={<LinkIcon sx={{ color: 'white' }} />}
                       variant={'outlined'}
                       value={provenance}
                       onChange={handleChangeProvenance}
@@ -545,6 +548,13 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       variant='contained'
                       type='submit'
                       onClick={onFetchId}>
+                      <GetAppIcon
+                        sx={{
+                          color: 'primary',
+                          marginRight: '3px',
+                          height: '20px',
+                        }}
+                      />
                       Fetch ID
                     </Button>
                   </Grid>
@@ -555,6 +565,13 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       variant='contained'
                       type='submit'
                       onClick={onUpdateArtwork}>
+                      <DataObjectIcon
+                        sx={{
+                          color: 'primary',
+                          marginRight: '3px',
+                          height: '20px',
+                        }}
+                      />
                       Update Artwork
                     </Button>
                   </Grid>
@@ -565,6 +582,13 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       variant='contained'
                       type='submit'
                       onClick={() => mintArtwork(art)}>
+                      <TokenIcon
+                        sx={{
+                          color: 'primary',
+                          marginRight: '3px',
+                          height: '20px',
+                        }}
+                      />
                       Mint NFT {art.tokenId ? art.tokenId : ''}
                     </Button>
                   </Grid>

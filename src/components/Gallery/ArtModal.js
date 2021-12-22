@@ -8,6 +8,8 @@ import {
   Backdrop,
   Button
 } from '@mui/material'
+import LocalOfferIcon from '@mui/icons-material/LocalOffer'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import { useMediaQuery } from 'react-responsive'
 import CloseIcon from '@mui/icons-material/Close'
 import { Icon } from '@iconify/react'
@@ -147,6 +149,13 @@ const ArtModal = ({ card, handleClose, open, account, user }) => {
                     color='success'
                     variant='outlined'
                     onClick={(e) => onBuy()}>
+                    <ShoppingCartIcon
+                      sx={{
+                        color: 'success',
+                        marginRight: '10px',
+                        height: '20px',
+                      }}
+                    />
                     Buy&nbsp;
                     {/* {user._id !== card.owner ? 'Buy' : 'Set Price'} */}
                     <Icon icon='teenyicons:ethereum-solid' width='11' />
@@ -164,6 +173,13 @@ const ArtModal = ({ card, handleClose, open, account, user }) => {
                     color='success'
                     variant='outlined'
                     onClick={(e) => onSetPrice()}>
+                    <LocalOfferIcon
+                      sx={{
+                        color: 'success',
+                        marginRight: '10px',
+                        height: '20px',
+                      }}
+                    />
                     Set Price&nbsp;
                     <Icon icon='teenyicons:ethereum-solid' width='11' />
                     {card.price}

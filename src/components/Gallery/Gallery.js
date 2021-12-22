@@ -12,6 +12,11 @@ import {
 } from '@mui/material'
 import '../../App.css'
 import { indexArtwork, showArtwork } from '../../api/artwork'
+import DataObjectIcon from '@mui/icons-material/DataObject'
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
+import HowToRegIcon from '@mui/icons-material/HowToReg'
+import LocalOfferIcon from '@mui/icons-material/LocalOffer'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import ArtModal from './ArtModal'
 import { useMediaQuery } from 'react-responsive'
 import { Icon } from '@iconify/react'
@@ -183,6 +188,13 @@ const Gallery = ({ user, account }) => {
                         color='warning'
                         variant='outlined'
                         onClick={(e) => onUpdate(i)}>
+                        <DataObjectIcon
+                          sx={{
+                            color: 'warning',
+                            marginRight: '3px',
+                            height: '20px',
+                          }}
+                        />
                         Update Artwork
                       </Button>
                       <Button
@@ -191,6 +203,13 @@ const Gallery = ({ user, account }) => {
                         color='error'
                         variant='outlined'
                         onClick={(e) => onRemove(i)}>
+                        <DeleteOutlineIcon
+                          sx={{
+                            color: 'error',
+                            marginRight: '3px',
+                            height: '20px',
+                          }}
+                        />
                         Remove Artwork
                       </Button>
                       <Button
@@ -199,30 +218,47 @@ const Gallery = ({ user, account }) => {
                         color='info'
                         variant='outlined'
                         onClick={(e) => onApprove(i)}>
+                        <HowToRegIcon
+                          sx={{
+                            color: 'info',
+                            marginRight: '3px',
+                            height: '20px',
+                          }}
+                        />
                         Approve Buyer
                       </Button>
                     </>
                   ) : (
                     <></>
                   )}
-                  {user && account && (account !== card.tokenOwner) && card.tokenOwner !== undefined ? (
-                    <>
-                      <Button
-                        style={{ marginTop: '10px' }}
-                        size='small'
-                        color='success'
-                        variant='outlined'
-                        onClick={(e) => onBuy(i)}>
-                        Buy&nbsp;
-                        {/* {user._id !== card.owner ? 'Buy' : 'Set Price'} */}
-                        <Icon icon='teenyicons:ethereum-solid' width='11' />
-                        {card.price}
-                      </Button>
-                    </>
-                  ) : (
-                    <></>
-                  )}
-                  {user && account && (account === card.tokenOwner) ? (
+                  {user &&
+                  account &&
+                  account !== card.tokenOwner &&
+                  card.tokenOwner !== undefined ? (
+                      <>
+                        <Button
+                          style={{ marginTop: '10px' }}
+                          size='small'
+                          color='success'
+                          variant='outlined'
+                          onClick={(e) => onBuy(i)}>
+                          <ShoppingCartIcon
+                            sx={{
+                              color: 'success',
+                              marginRight: '3px',
+                              height: '20px',
+                            }}
+                          />
+                          Buy&nbsp;
+                          {/* {user._id !== card.owner ? 'Buy' : 'Set Price'} */}
+                          <Icon icon='teenyicons:ethereum-solid' width='11' />
+                          {card.price}
+                        </Button>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  {user && account && account === card.tokenOwner ? (
                     <>
                       <Button
                         style={{ marginTop: '10px' }}
@@ -230,6 +266,13 @@ const Gallery = ({ user, account }) => {
                         color='success'
                         variant='outlined'
                         onClick={(e) => onSetPrice(i)}>
+                        <LocalOfferIcon
+                          sx={{
+                            color: 'success',
+                            marginRight: '3px',
+                            height: '20px',
+                          }}
+                        />
                         Set Price&nbsp;
                         <Icon icon='teenyicons:ethereum-solid' width='11' />
                         {card.price}

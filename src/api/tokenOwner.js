@@ -2,24 +2,24 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // will get all artwork
-export const indexArtwork = () => {
+export const indexTokenOwners = () => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/artwork',
+    url: apiUrl + '/token-owner',
   })
 }
 
-export const showArtwork = (id) => {
+export const showTokenOwners = (id) => {
   return axios({
     method: 'GET',
-    url: apiUrl + `/artwork/${id}`,
+    url: apiUrl + `/token-owner/${id}`,
   })
 }
 
 export const createTokenOwner = (user, data) => {
   return axios({
     method: 'POST',
-    url: apiUrl + '/artwork',
+    url: apiUrl + '/token-owner',
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
@@ -50,10 +50,10 @@ export const updateTokenOwner = (id, data, user) => {
   })
 }
 
-export const removeArtwork = (id, user) => {
+export const removeTokenOwner = (id, user) => {
   return axios({
     method: 'DELETE',
-    url: apiUrl + `/artwork/${id}`,
+    url: apiUrl + `/token-owner/${id}`,
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
