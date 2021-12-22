@@ -378,7 +378,13 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       required={true}
                       id={'artistRoyalty'}
                       label={'Artist Royalty'}
-                      icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      icon={
+                        <Icon
+                          icon='teenyicons:ethereum-solid'
+                          width='22'
+                          style={{ color: 'white' }}
+                        />
+                      }
                       variant={'outlined'}
                       value={artistRoyalty}
                       onChange={handleChangeArtistRoyalty}
@@ -391,7 +397,13 @@ const UpdateArt = ({ msgAlert, user, account }) => {
                       required={true}
                       id={'curatorRoyalty'}
                       label={'Curator Royalty'}
-                      icon={<MonetizationOnIcon sx={{ color: 'white' }} />}
+                      icon={
+                        <Icon
+                          icon='teenyicons:ethereum-solid'
+                          width='22'
+                          style={{ color: 'white' }}
+                        />
+                      }
                       variant={'outlined'}
                       value={curatorRoyalty}
                       onChange={handleChangeCuratorRoyalty}

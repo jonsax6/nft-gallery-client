@@ -209,22 +209,23 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
                   isApproved={isApproved}
                   isAdmin={isAdmin}
                 />
-                <Link
-                  to='/'
-                  style={{
-                    color: '#000',
-                    textDecoration: 'none',
-                    fontWeight: '100',
-                    flexGrow: 1,
-                  }}>
-                  <img
-                    src={logoSmall}
+                <div style={{ flexGrow: 1 }}>
+                  <Link
+                    to='/'
                     style={{
-                      width: '100px',
-                      marginTop: 10,
-                    }}
-                  />
-                </Link>
+                      color: '#000',
+                      textDecoration: 'none',
+                      fontWeight: '100',
+                    }}>
+                    <img
+                      src={logoSmall}
+                      style={{
+                        width: '100px',
+                        marginTop: 10,
+                      }}
+                    />
+                  </Link>
+                </div>
                 {user ? connection : <></>}
                 {/* {active ? (
                   <Button
@@ -275,22 +276,23 @@ const Header = ({ user, active, account, networkId, activate, deactivate, connec
               </>
             ) : (
               <>
-                <Link
-                  to='/'
-                  style={{
-                    color: '#000',
-                    textDecoration: 'none',
-                    fontWeight: '100',
-                    flexGrow: 1,
-                  }}>
-                  <img
-                    src={logo}
+                <div style={{ flexGrow: 1 }}>
+                  <Link
+                    to='/'
                     style={{
-                      width: '200px',
-                      marginTop: 10,
-                    }}
-                  />
-                </Link>
+                      color: '#000',
+                      textDecoration: 'none',
+                      fontWeight: '100',
+                    }}>
+                    <img
+                      src={logo}
+                      style={{
+                        width: '200px',
+                        marginTop: 10,
+                      }}
+                    />
+                  </Link>
+                </div>
                 <div sx={{ marginLeft: '10px', display: 'flex' }}>
                   {alwaysOptions}
                   {user ? authenticatedOptions : unauthenticatedOptions}
