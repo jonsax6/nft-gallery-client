@@ -192,7 +192,7 @@ const Gallery = ({ user, account }) => {
                           sx={{
                             color: 'warning',
                             marginRight: '3px',
-                            height: '20px',
+                            height: '18px',
                           }}
                         />
                         Update Artwork
@@ -207,7 +207,7 @@ const Gallery = ({ user, account }) => {
                           sx={{
                             color: 'error',
                             marginRight: '3px',
-                            height: '20px',
+                            height: '18px',
                           }}
                         />
                         Remove Artwork
@@ -222,7 +222,7 @@ const Gallery = ({ user, account }) => {
                           sx={{
                             color: 'info',
                             marginRight: '3px',
-                            height: '20px',
+                            height: '18px',
                           }}
                         />
                         Approve Buyer
@@ -246,7 +246,7 @@ const Gallery = ({ user, account }) => {
                             sx={{
                               color: 'success',
                               marginRight: '3px',
-                              height: '20px',
+                              height: '18px',
                             }}
                           />
                           Buy&nbsp;
@@ -270,7 +270,7 @@ const Gallery = ({ user, account }) => {
                           sx={{
                             color: 'success',
                             marginRight: '3px',
-                            height: '20px',
+                            height: '18px',
                           }}
                         />
                         Set Price&nbsp;
