@@ -153,7 +153,7 @@ const ArtModal = ({ card, handleClose, open, account, user }) => {
                       sx={{
                         color: 'success',
                         marginRight: '10px',
-                        height: '20px',
+                        height: '18px',
                       }}
                     />
                     Buy&nbsp;
@@ -177,7 +177,7 @@ const ArtModal = ({ card, handleClose, open, account, user }) => {
                       sx={{
                         color: 'success',
                         marginRight: '10px',
-                        height: '20px',
+                        height: '18px',
                       }}
                     />
                     Set Price&nbsp;
