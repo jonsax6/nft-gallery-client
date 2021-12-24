@@ -57,8 +57,8 @@ const Artists = ({ msgAlert, user }) => {
       container
       justify='center'>
       <Grid item md>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table sitckyHeader aria-label='sticky table'>
+        <TableContainer sx={{ maxHeight: 600 }}>
+          <Table stickyHeader aria-label='sticky table'>
             <TableHead>
               <TableRow>
                 <TableCell>Artist</TableCell>
