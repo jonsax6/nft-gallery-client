@@ -59,7 +59,7 @@ const About = () => {
           gutterBottom={true}>
           A zyzygy is a rare fleeting moment in a gravitational system where 3
           celestial bodies come into perfect alignment. The best known examples
-          of a zyzygy are the solar and lunar eclipses. Zyzygy Studios is an art
+          of a zyzygy are the solar and lunar eclipses. Zyzygy Art is an art
           gallery. Why are we naming our art gallery Zyzygy? We believe we are
           at the intersection point where two worlds are coming into alignment -
           the digital world of blockchain technology, with the digital scarcity
@@ -92,7 +92,7 @@ const About = () => {
           align='center'
           color='black'
           gutterBottom>
-          Our vision at Zyzygy Studios is to allow for the sale of art, and the
+          Our vision at Zyzygy Art is to allow for the sale of art, and the
           ownership rights to that art to be deployed to a public blockchain
           such as ethereum. The transfer of ownership at any point in the future
           will be done by transferring this NFT to the new owner of that art.
@@ -114,8 +114,8 @@ const About = () => {
           align='center'
           color='black'
           gutterBottom>
-          For example Zyzygy Studios sells an art piece created by Bob. Jane
-          buys this art piece from Zyzygy Studios with Ethereum (a popular
+          For example Zyzygy Art sells an art piece created by Bob. Jane
+          buys this art piece from Zyzygy Art with Ethereum (a popular
           crypto-currency with NFT and smart contract capability) and the
           transaction transfers the bill of sale to Jane, who now controls the
           ownership of Bob&apos;s art. The studio receives a royalty and initial
@@ -138,7 +138,7 @@ const About = () => {
           align='center'
           color='black'
           gutterBottom>
-          If it&apos;s also coded into the smart contract, Zyzygy studios can
+          If it&apos;s also coded into the smart contract, Zyzygy Art can
           receive a small royalty either as a taper-off, or also in perpetuity.
           This can be decided when the contract is deployed to the blockchain
           and the NFT is minted.
