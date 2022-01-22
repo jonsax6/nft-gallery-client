@@ -93,6 +93,4 @@ The Gallery admin can remove these art submissions at their discretion.
 ![GALLERY VIEW](https://i.imgur.com/uKC6zqt.png)
 ---
 
-Current implementation is V1.
-
-V2 implementation will include blockchain integration, artist profiles, featured artists, and specific artist catalogs.
+Current implementation is V2.
