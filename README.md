@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/7MoUwiX.png" alt="zyzygy-logo" width="700"/>
+<img src="https://i.imgur.com/EWCo09w.png" alt="zyzygy-logo" width="700"/>
 
 
 ## What is a zyzygy? 
